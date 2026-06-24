@@ -1,201 +1,262 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
-function CaretDownIcon() {
-  return (
-    <svg viewBox="0 0 10 10" aria-hidden="true" className="icon-inline small-caret">
-      <path d="M2 3.5 5 6.5l3-3" />
-    </svg>
-  );
+function ChevLeft() {
+  return <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16,flexShrink:0}}><path d="M10 3L5 8l5 5"/></svg>;
 }
-
-function MinimizeIcon() {
-  return (
-    <svg viewBox="0 0 12 12" aria-hidden="true" className="icon-inline window-icon">
-      <path d="M2 10h8" />
-    </svg>
-  );
+function ChevRight() {
+  return <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16,flexShrink:0}}><path d="M6 3l5 5-5 5"/></svg>;
 }
-
-function MaximizeIcon() {
-  return (
-    <svg viewBox="0 0 12 12" aria-hidden="true" className="icon-inline window-icon">
-      <rect x="2" y="2" width="8" height="8" rx="1" />
-    </svg>
-  );
+function CheckIcon() {
+  return <svg viewBox="0 0 16 16" aria-hidden="true" className="icon-inline bullet-icon"><circle cx="8" cy="8" r="6"/><path d="m5.2 8.1 1.8 1.9 3.8-4"/></svg>;
 }
-
-function CloseIcon() {
-  return (
-    <svg viewBox="0 0 12 12" aria-hidden="true" className="icon-inline window-icon">
-      <path d="M3 3l6 6M9 3L3 9" />
-    </svg>
-  );
-}
-
-function DocIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" className="icon-inline window-icon">
-      <path d="M4 2v12h8V6l-4-4H4z" fill="none" />
-      <path d="M8 2v4h4" fill="none" />
-      <path d="M6 10h4M6 12h3" />
-    </svg>
-  );
-}
-
-function LinkIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" className="icon-inline tool-icon">
-      <path d="M6.2 10.2 4.5 12A2.5 2.5 0 0 1 1 8.5l1.8-1.8" />
-      <path d="m9.8 5.8 1.7-1.8A2.5 2.5 0 1 1 15 7.5l-1.8 1.8" />
-      <path d="m5.5 10.5 5-5" />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="icon-inline tool-icon">
-      <circle cx="10.5" cy="10.5" r="5.5" />
-      <path d="m15 15 4 4" />
-    </svg>
-  );
-}
-
-function SettingsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="icon-inline tool-icon">
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-    </svg>
-  );
-}
-
-function CommentIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="icon-inline tool-icon">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-    </svg>
-  );
+function ArrowIcon() {
+  return <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{width:13,height:13,flexShrink:0,marginTop:1}}><path d="M3 8h10M9 4l4 4-4 4"/></svg>;
 }
 
 export default function RetroPopover({ app, onClose }) {
+  const [gallerySlide, setGallerySlide] = useState(0);
+  const [strategySlide, setStrategySlide] = useState(0);
+  const autoRef = useRef(null);
+
+  useEffect(() => { setGallerySlide(0); setStrategySlide(0); }, [app]);
+
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    if (!app) return;
+    const imgs = (app.gallery ?? [app.image]).filter(Boolean);
+    if (imgs.length <= 1) return;
+    autoRef.current = setInterval(() => setGallerySlide(s => (s + 1) % imgs.length), 3500);
+    return () => clearInterval(autoRef.current);
+  }, [app]);
+
+  useEffect(() => {
+    const fn = e => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', fn);
+    return () => window.removeEventListener('keydown', fn);
   }, [onClose]);
 
   if (!app) return null;
 
+  const gallery      = (app.gallery ?? [app.image]).filter(Boolean);
+  const strategy     = app.strategy     ?? [];
+  const stats        = app.stats        ?? [];
+  const highlights   = app.highlights   ?? [];
+  const userJourney  = app.userJourney  ?? [];
+  const richContent  = app.richContent  ?? null;
+  const currentPhase = strategy[strategySlide];
+
+  function prevG() { clearInterval(autoRef.current); setGallerySlide(s => (s - 1 + gallery.length) % gallery.length); }
+  function nextG() { clearInterval(autoRef.current); setGallerySlide(s => (s + 1) % gallery.length); }
+
   return (
     <div className="retro-backdrop" onClick={onClose}>
-      <div className="retro-window" onClick={(e) => e.stopPropagation()}>
-        
-        {/* Title Bar */}
+      <div className="retro-window pop-window" onClick={e => e.stopPropagation()}>
+
+        {/* Title bar */}
         <div className="retro-titlebar">
           <div className="retro-titlebar-left">
-            <button className="retro-icon-btn">
-              <DocIcon />
-              <CaretDownIcon />
-            </button>
+            <div className="pop-dots">
+              <button className="pop-dot pop-dot-close" onClick={onClose} aria-label="Tutup"/>
+              <button className="pop-dot pop-dot-min" aria-label="Minimise"/>
+              <button className="pop-dot pop-dot-max" aria-label="Maximise"/>
+            </div>
           </div>
-          
-          <div className="retro-titlebar-center">
-            <span>Product OS — {app.name}</span>
-            <CaretDownIcon />
+          <div className="retro-titlebar-center pop-tb-center">
+            <span className="pop-tb-brand">Builders</span>
+            <span className="pop-tb-sep">—</span>
+            <span className="pop-tb-name">{app.name}</span>
           </div>
-          
           <div className="retro-titlebar-right">
-            <button className="retro-icon-btn"><MinimizeIcon /></button>
-            <button className="retro-icon-btn"><MaximizeIcon /></button>
-            <button className="retro-icon-btn close-btn" onClick={onClose}><CloseIcon /></button>
+            <button className="retro-share-btn">Hubungi kami</button>
           </div>
         </div>
 
-        {/* Tool Bar */}
-        <div className="retro-toolbar">
-          <div className="retro-tool-group">
-            <button className="retro-tool-btn rotate-left">↺</button>
-            <button className="retro-tool-btn">↻</button>
-          </div>
-          
-          <div className="retro-tool-group">
-            <button className="retro-dropdown-btn">
-              Zoom <CaretDownIcon />
-            </button>
-          </div>
-          
-          <div className="retro-tool-group">
-            <button className="retro-tool-btn font-b">B</button>
-            <button className="retro-tool-btn font-i">I</button>
-            <button className="retro-tool-btn font-u">U</button>
-          </div>
-          
-          <div className="retro-tool-group">
-            <button className="retro-dropdown-btn">
-              Font <CaretDownIcon />
-            </button>
-          </div>
-          
-          <div className="retro-tool-group flex-group">
-            <button className="retro-tool-btn align-left">≡</button>
-            <button className="retro-tool-btn align-center">≡</button>
-            <button className="retro-tool-btn align-right">≡</button>
-          </div>
-          
-          <div className="retro-tool-group disabled-group">
-            <button className="retro-tool-btn"><LinkIcon /></button>
-            <button className="retro-tool-btn"><CommentIcon /></button>
-          </div>
-          
-          <div className="retro-toolbar-spacer"></div>
-          
-          <div className="retro-tool-group no-border">
-            <button className="retro-tool-btn"><SearchIcon /></button>
-            <button className="retro-tool-btn"><SettingsIcon /></button>
-            <button className="retro-share-btn">Share</button>
-          </div>
-        </div>
+        {/* Full-width scroll */}
+        <div className="pop-scroll">
 
-        {/* Content Area */}
-        <div className="retro-content">
-          <div className="popover-content-layout">
-            <div className="popover-main-area">
-              <div className="popover-main-text">
-                <h1>{app.name}</h1>
-                <p>{app.tagline}. Everything you need to collect and analyze product usage data — and build and ship new features — lives in one place.</p>
-              </div>
-              
-              <img src={app.image} alt={app.name} className="popover-image" />
-            </div>
-
-            <div className="popover-sidebar">
-              <div className="community-card">
-                <h3>Community Feedback</h3>
-                
-                <div className="community-stat">
-                  <span className="stat-label">Upvotes</span>
-                  <span className="stat-value">▲ {app.upvotes || 156}</span>
-                </div>
-                
-                <div className="community-stat">
-                  <span className="stat-label">Status</span>
-                  <span className="stat-value" style={{color: '#1d6e61'}}>Live</span>
-                </div>
-                
-                <div className="community-stat">
-                  <span className="stat-label">Category</span>
-                  <span className="stat-value">{app.category || 'Productivity'}</span>
-                </div>
-
-                <button className="ghost-button feedback-btn">Leave a comment</button>
+          {/* ── 1. GALLERY HERO ── */}
+          <div className="pop-gallery">
+            <div className="pop-gallery-slide">
+              {gallery[gallerySlide] ? (
+                <img key={gallerySlide} src={gallery[gallerySlide]} alt={"Tampilan " + (gallerySlide+1)} className="pop-gallery-img"/>
+              ) : (
+                <div className="pop-gallery-empty"><span>{app.name}</span></div>
+              )}
+              {gallery.length > 1 && <>
+                <button className="pop-gallery-arrow pop-gallery-prev" onClick={prevG} aria-label="Sebelumnya"><ChevLeft/></button>
+                <button className="pop-gallery-arrow pop-gallery-next" onClick={nextG} aria-label="Selanjutnya"><ChevRight/></button>
+              </>}
+              <div className="pop-gallery-overlay">
+                <span className="pop-label-pill">{app.role}</span>
+                {gallery.length > 1 && <span className="pop-gallery-counter">{gallerySlide+1} / {gallery.length}</span>}
               </div>
             </div>
+            {gallery.length > 1 && (
+              <div className="pop-gallery-dots">
+                {gallery.map((_,i) => (
+                  <button key={i} className={"pop-gallery-dot"+(i===gallerySlide?" active":"")}
+                    onClick={() => { clearInterval(autoRef.current); setGallerySlide(i); }} aria-label={"Gambar "+(i+1)}/>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
 
+          {/* ── 2. PROJECT HEADER ── */}
+          <div className="pop-content">
+
+            <header className="pop-project-header">
+              <div className="pop-project-meta">
+                <div className="pop-project-logo">
+                  <img src={app.image} alt={app.name}
+                    onError={e => { e.currentTarget.style.display='none'; e.currentTarget.nextSibling.style.display='flex'; }}/>
+                  <div className="pop-logo-fallback" style={{display:'none'}}>{app.name?.charAt(0)}</div>
+                </div>
+                <div className="pop-project-meta-info">
+                  <h2 className="pop-project-name">{app.name}</h2>
+                  <div className="pop-project-chips">
+                    <span className="pop-label-pill">{app.role}</span>
+                    {app.team && <span className="pop-label-pill">{app.team}</span>}
+                  </div>
+                </div>
+              </div>
+
+              {stats.length > 0 && (
+                <div className="pop-stats-row">
+                  {stats.map(s => (
+                    <div key={s.label} className="pop-stat">
+                      <span className="pop-stat-val">{s.value}</span>
+                      <span className="pop-stat-lbl">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </header>
+
+            {/* ── 3. OVERVIEW ── */}
+            {app.overview && (
+              <section className="pop-section">
+                <span className="pop-label-pill">Tentang proyek ini</span>
+                <p className="pop-overview">{app.overview}</p>
+              </section>
+            )}
+
+            {/* ── 4. HIGHLIGHTS ── */}
+            {highlights.length > 0 && (
+              <section className="pop-section">
+                <span className="pop-label-pill">Mengapa kami</span>
+                <div className="pop-highlights-grid">
+                  {highlights.map(h => (
+                    <div key={h} className="pop-highlight-card">
+                      <CheckIcon/>
+                      <span>{h}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* ── 5. METHODOLOGY ── */}
+            {strategy.length > 0 && (
+              <section className="pop-section">
+                <div className="pop-carousel-hd">
+                  <span className="pop-label-pill">Metodologi</span>
+                  <div className="pop-carousel-nav">
+                    <button className="sc-nav-btn" onClick={() => setStrategySlide(s => Math.max(s-1,0))} disabled={strategySlide===0} aria-label="Sebelumnya"><ChevLeft/></button>
+                    <span className="pop-counter">{strategySlide+1} / {strategy.length}</span>
+                    <button className="sc-nav-btn" onClick={() => setStrategySlide(s => Math.min(s+1,strategy.length-1))} disabled={strategySlide===strategy.length-1} aria-label="Selanjutnya"><ChevRight/></button>
+                  </div>
+                </div>
+
+                <div className="pop-step-tabs">
+                  {strategy.map((ph,i) => (
+                    <button key={ph.phase}
+                      className={"pop-step-tab"+(i===strategySlide?" active":"")}
+                      onClick={() => setStrategySlide(i)}>{ph.phase}</button>
+                  ))}
+                </div>
+
+                {currentPhase && (
+                  <div className="pop-phase-card" key={strategySlide}>
+                    <div className="pop-phase-hd">
+                      <span className="pop-phase-num">0{strategySlide+1}</span>
+                      <h3 className="pop-phase-title">{currentPhase.phase}</h3>
+                    </div>
+                    <p className="pop-phase-desc">{currentPhase.desc}</p>
+                    <div className="pop-phase-img-slot">
+                      {currentPhase.image
+                        ? <img src={currentPhase.image} alt={currentPhase.phase} className="pop-phase-img"/>
+                        : <div className="pop-phase-img-ph"><span>Screenshot · {currentPhase.phase}</span></div>}
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* ── 6. USER JOURNEY ── */}
+            {userJourney.length > 0 && (
+              <section className="pop-section">
+                <span className="pop-label-pill">User journey</span>
+                <div className="pop-journey">
+                  {userJourney.map((step, i) => (
+                    <div key={step.step} className="pop-journey-step">
+                      <div className="pop-journey-left">
+                        <div className="pop-journey-node"><span className="pop-journey-num">{i+1}</span></div>
+                        {i < userJourney.length-1 && <div className="pop-journey-line"/>}
+                      </div>
+                      <div className="pop-journey-body">
+                        <div className="pop-journey-hd">
+                          <span className="pop-journey-title">{step.step}</span>
+                          {step.tag && <span className="pop-journey-tag">{step.tag}</span>}
+                        </div>
+                        <p className="pop-journey-desc">{step.desc}</p>
+                        {step.callout && (
+                          <div className="pop-journey-callout"><ArrowIcon/><span>{step.callout}</span></div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* ── 7. DYNAMIC RICH CONTENT ── */}
+            {richContent && (
+              <section className="pop-section">
+                {richContent.title && <span className="pop-label-pill">{richContent.title}</span>}
+                <div className="pop-rich-body">
+                  {(richContent.blocks ?? []).map((block, i) => {
+                    if (block.type === 'text') return <p key={i} className="pop-rich-text">{block.content}</p>;
+                    if (block.type === 'list') return (
+                      <ul key={i} className="pop-rich-list">
+                        {block.items.map((item,j) => <li key={j}><span className="pop-rich-bullet"/>{item}</li>)}
+                      </ul>
+                    );
+                    if (block.type === 'callout') return (
+                      <div key={i} className="pop-rich-callout"><ArrowIcon/><span>{block.content}</span></div>
+                    );
+                    if (block.type === 'kv') return (
+                      <div key={i} className="pop-rich-kv">
+                        {block.rows.map((row,j) => (
+                          <div key={j} className="pop-rich-kv-row">
+                            <span className="pop-rich-kv-lbl">{row.label}</span>
+                            <span className="pop-rich-kv-val">{row.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                    return null;
+                  })}
+                </div>
+              </section>
+            )}
+
+            {/* ── 8. CTA FOOTER ── */}
+            <footer className="pop-cta-footer">
+              <button className="cta-button" style={{fontSize:15,height:44,padding:'0 28px'}}>Minta proposal gratis</button>
+              <button className="ghost-button" style={{fontSize:15,height:44,padding:'0 28px'}}>Lihat portofolio lain</button>
+            </footer>
+
+          </div>{/* /pop-content */}
+        </div>{/* /pop-scroll */}
       </div>
     </div>
   );
