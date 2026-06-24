@@ -1,26 +1,29 @@
 :root {
-  font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
-  color: #111318;
-  background: #f6eddc;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    color: #111318;
+    background: #f6eddc;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    font-weight: 400;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
+    margin: 0;
+    min-width: 320px;
+    overflow-x: hidden;
 }
 
 button,
@@ -28,17 +31,19 @@ a,
 input,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
 }
 
 button {
-  appearance: none;
+    appearance: none;
 }
 
 a {
-  color: inherit;
+    color: inherit;
 }
 
 #root {
-  min-height: 100vh;
+    min-height: 100vh;
+    overflow-x: hidden;
+    max-width: 100%;
 }

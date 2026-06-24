@@ -1640,6 +1640,8 @@ function AppsPage() {
 }
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="page-shell">
       <div className="texture-rail" aria-hidden="true" />
@@ -1702,8 +1704,102 @@ function App() {
             >
               <UserIcon />
             </button>
+            <button
+              type="button"
+              className="hamburger-btn"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((m) => !m)}
+            >
+              {menuOpen ? (
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="icon-inline"
+                >
+                  <path d="M6 6l12 12M6 18L18 6" />
+                </svg>
+              ) : (
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="icon-inline"
+                >
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </header>
+
+        {menuOpen && (
+          <div
+            className="mobile-nav-overlay"
+            onClick={() => setMenuOpen(false)}
+          >
+            <nav
+              className="mobile-nav"
+              onClick={(e) => e.stopPropagation()}
+              aria-label="Mobile navigation"
+            >
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                Platform
+              </NavLink>
+              <NavLink
+                to="/apps"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                Apps
+              </NavLink>
+              <NavLink
+                to="/news"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                News
+              </NavLink>
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                }}
+              >
+                Solutions
+              </a>
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                }}
+              >
+                Docs
+              </a>
+              <div className="mobile-nav-cta">
+                <button
+                  type="button"
+                  className="cta-button"
+                  style={{ width: "100%", justifyContent: "center" }}
+                >
+                  Start free
+                </button>
+              </div>
+            </nav>
+          </div>
+        )}
 
         <Routes>
           {/* Home — with nested popover route so layout stays intact */}
