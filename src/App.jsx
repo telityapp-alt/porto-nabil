@@ -10,6 +10,8 @@ import {
 import "./App.css";
 import AppsList from "./AppsList";
 import NewsPage from "./NewsPage";
+import NewsArticlePage from "./NewsArticlePage";
+import PerksPage from "./PerksPage";
 import RetroPopover from "./RetroPopover";
 import OdooPage, { OdooPageWithPopover } from "./OdooPage";
 import SolutionsPage from "./SolutionsPage";
@@ -1670,6 +1672,14 @@ function App() {
                 Apps
               </NavLink>
               <NavLink
+                to="/perks"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+              >
+                Perks
+              </NavLink>
+              <NavLink
                 to="/news"
                 className={({ isActive }) =>
                   isActive ? "active-nav" : undefined
@@ -1780,6 +1790,15 @@ function App() {
                 Apps
               </NavLink>
               <NavLink
+                to="/perks"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                Perks
+              </NavLink>
+              <NavLink
                 to="/news"
                 className={({ isActive }) =>
                   isActive ? "active-nav" : undefined
@@ -1844,6 +1863,16 @@ function App() {
             <Route path=":slug" element={<AppsPageWithPopover />} />
           </Route>
 
+          {/* Perks */}
+          <Route
+            path="/perks"
+            element={
+              <main className="content content-wide">
+                <PerksPage />
+              </main>
+            }
+          />
+
           {/* News */}
           <Route
             path="/news"
@@ -1852,6 +1881,10 @@ function App() {
                 <NewsPage />
               </main>
             }
+          />
+          <Route
+            path="/news/:slug"
+            element={<NewsArticlePage />}
           />
         </Routes>
       </div>

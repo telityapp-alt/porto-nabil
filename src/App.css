@@ -1060,11 +1060,11 @@
 }
 
 /* ── News Page Brutalist Styles ── */
-.news-page {
+.perks-page {
     /* Kanan kirinya jadi default (no negative margins!) */
 }
 
-.news-board {
+.perks-board {
     display: grid;
     grid-template-columns: 260px minmax(0, 1fr);
     align-items: stretch;
@@ -1074,7 +1074,7 @@
 }
 
 /* Sidebar Accordions */
-.news-sidebar {
+.perks-sidebar {
     padding: 16px;
     background: #f4f5f5;
     display: flex;
@@ -1083,17 +1083,17 @@
     border-right: 1px solid #e0e0e0;
 }
 
-.news-faq-card {
+.perks-faq-card {
     border: 1px solid #d9d9d9;
     border-radius: 4px;
     background: #fff;
     overflow: hidden;
     transition: box-shadow 0.2s;
 }
-.news-faq-card.is-open {
+.perks-faq-card.is-open {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
-.news-faq-header {
+.perks-faq-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1103,78 +1103,78 @@
     transition: background 0.2s;
     user-select: none;
 }
-.news-faq-header:hover {
+.perks-faq-header:hover {
     background: #f9f9fa;
 }
-.news-faq-title-wrap {
+.perks-faq-title-wrap {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.news-check-icon {
+.perks-check-icon {
     width: 14px;
     height: 14px;
     color: #55a86a;
 }
-.news-chevron-icon {
+.perks-chevron-icon {
     width: 14px;
     height: 14px;
     color: #888;
     stroke-width: 2;
 }
-.news-faq-title-wrap h2 {
+.perks-faq-title-wrap h2 {
     font-size: 14px;
     font-weight: 700;
     color: #222;
     margin: 0;
 }
-.news-faq-body {
+.perks-faq-body {
     padding: 0 16px 16px 40px;
     background: #fff;
 }
-.news-faq-item {
+.perks-faq-item {
     font-size: 13px;
     color: #444;
     margin: 0 0 8px;
     line-height: 1.5;
 }
-.news-faq-item:last-child {
+.perks-faq-item:last-child {
     margin-bottom: 0;
 }
-.news-faq-item-list {
+.perks-faq-item-list {
     display: flex;
     align-items: flex-start;
     gap: 6px;
 }
-.news-faq-index {
+.perks-faq-index {
     color: #777;
     font-weight: 600;
 }
 
 /* Main Content */
-.news-main {
+.perks-main {
     display: flex;
     flex-direction: column;
     min-height: 100%;
 }
 
-.news-hero-container {
+.perks-hero-container {
     background: #101622;
     position: relative;
     padding: 60px 48px 100px;
     overflow: hidden;
 }
-.news-hero-content {
+.perks-hero-content {
     display: flex;
     gap: 40px;
     position: relative;
     z-index: 2;
 }
-.news-hero-text {
+.perks-hero-text {
     flex: 1;
     color: #fff;
 }
-.news-hero-title {
+.perks-hero-title {
     font-size: 42px;
     font-weight: 800;
     color: #fff;
@@ -1184,7 +1184,7 @@
     gap: 12px;
     letter-spacing: -0.03em;
 }
-.news-hero-title::before {
+.perks-hero-title::before {
     content: "";
     display: block;
     width: 32px;
@@ -1193,19 +1193,19 @@
         no-repeat center;
     background-size: contain;
 }
-.news-hero-desc {
+.perks-hero-desc {
     font-size: 16px;
     line-height: 1.6;
     color: #e2e4e8;
     margin: 0 0 28px;
     max-width: 520px;
 }
-.news-hero-list {
+.perks-hero-list {
     list-style: none;
     padding: 0;
     margin: 0 0 36px;
 }
-.news-hero-list li {
+.perks-hero-list li {
     font-size: 15px;
     color: #e2e4e8;
     margin-bottom: 12px;
@@ -1214,7 +1214,7 @@
     gap: 10px;
     font-weight: 500;
 }
-.news-hero-list li::before {
+.perks-hero-list li::before {
     content: "";
     display: block;
     width: 6px;
@@ -1223,7 +1223,7 @@
     background: #ffcc24;
 }
 
-.news-apply-btn {
+.perks-apply-btn {
     background: #ffcc24;
     color: #111;
     border: 3px solid #111;
@@ -1240,11 +1240,11 @@
     align-items: center;
     justify-content: center;
 }
-.news-apply-btn:active {
+.perks-apply-btn:active {
     transform: translate(4px, 4px);
     box-shadow: 0 0 0 #111;
 }
-.news-hero-note {
+.perks-hero-note {
     display: block;
     margin-top: 14px;
     font-size: 13px;
@@ -1252,7 +1252,7 @@
     font-style: italic;
 }
 
-.news-hero-cloud-divider {
+.perks-hero-cloud-divider {
     position: absolute;
     bottom: -1px;
     left: 0;
@@ -1262,7 +1262,7 @@
 }
 
 /* Grid */
-.news-card-grid {
+.perks-card-grid {
     padding: 40px 48px 80px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1270,7 +1270,7 @@
     background: #f4f5f5; /* Match cloud shape fill */
 }
 
-.news-poster-card {
+.perks-poster-card {
     display: flex;
     flex-direction: column;
     border: 4px solid #111;
@@ -1282,12 +1282,12 @@
         transform 0.2s,
         box-shadow 0.2s;
 }
-.news-poster-card:hover {
+.perks-poster-card:hover {
     transform: translate(-2px, -2px);
     box-shadow: 8px 8px 0 rgba(17, 17, 17, 1);
 }
 
-.news-card-image-wrap {
+.perks-card-image-wrap {
     aspect-ratio: 4 / 3;
     border-bottom: 4px solid #111;
     display: flex;
@@ -1296,7 +1296,7 @@
     padding: 20px;
     position: relative;
 }
-.news-card-image-wrap img {
+.perks-card-image-wrap img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -1304,7 +1304,7 @@
     inset: 0;
     z-index: 2;
 }
-.news-card-image-placeholder {
+.perks-card-image-placeholder {
     font-size: 54px;
     font-weight: 900;
     color: #fff;
@@ -1321,21 +1321,21 @@
     line-height: 1.1;
 }
 
-.news-card-body {
+.perks-card-body {
     padding: 20px;
     color: #111;
     min-height: 120px;
     display: flex;
     flex-direction: column;
 }
-.news-card-title {
+.perks-card-title {
     margin: 0 0 8px;
     font-size: 18px;
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: -0.01em;
 }
-.news-card-desc {
+.perks-card-desc {
     margin: 0;
     font-size: 14.5px;
     font-weight: 500;
@@ -1345,20 +1345,20 @@
 
 /* ── Apps List (Product Hunt Style) ─────────────────────────── */
 /* News page override: native Builders styling */
-.news-page {
+.perks-page {
     display: grid;
     gap: 28px;
     padding-bottom: 60px;
 }
 
-.news-header-row {
+.perks-header-row {
     display: flex;
     align-items: end;
     justify-content: space-between;
     gap: 18px;
 }
 
-.news-header-row h1 {
+.perks-header-row h1 {
     margin: 0;
     color: #0d1d38;
     font-size: 34px;
@@ -1366,14 +1366,14 @@
     letter-spacing: -0.04em;
 }
 
-.news-header-actions {
+.perks-header-actions {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.news-board {
+.perks-board {
     display: grid;
     grid-template-columns: 248px minmax(0, 1fr);
     gap: 24px;
@@ -1383,7 +1383,7 @@
     overflow: visible;
 }
 
-.news-sidebar {
+.perks-sidebar {
     position: sticky;
     top: 24px;
     padding: 0;
@@ -1391,7 +1391,7 @@
     border-right: 0;
 }
 
-.news-sidebar-card {
+.perks-sidebar-card {
     padding: 16px;
     border: 1px solid #d9d1c2;
     border-bottom-width: 2px;
@@ -1403,8 +1403,8 @@
         0 4px 12px rgba(21, 19, 16, 0.05);
 }
 
-.news-sidebar-kicker,
-.news-hero-eyebrow {
+.perks-sidebar-kicker,
+.perks-hero-eyebrow {
     display: inline-flex;
     align-items: center;
     color: #198d80;
@@ -1413,25 +1413,25 @@
     letter-spacing: -0.01em;
 }
 
-.news-accordion-list {
+.perks-accordion-list {
     display: grid;
     gap: 10px;
     margin-top: 14px;
 }
 
-.news-accordion-item {
+.perks-accordion-item {
     border: 1px solid #e2dbcf;
     border-radius: 10px;
     background: #faf6ef;
     overflow: hidden;
 }
 
-.news-accordion-item.open {
+.perks-accordion-item.open {
     background: #fffdf8;
     box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06);
 }
 
-.news-accordion-trigger {
+.perks-accordion-trigger {
     width: 100%;
     display: flex;
     align-items: center;
@@ -1447,38 +1447,38 @@
     cursor: pointer;
 }
 
-.news-accordion-panel {
+.perks-accordion-panel {
     padding: 0 14px 14px;
 }
 
-.news-accordion-panel p {
+.perks-accordion-panel p {
     margin: 0;
     color: #55606d;
     font-size: 13px;
     line-height: 1.55;
 }
 
-.news-accordion-points {
+.perks-accordion-points {
     margin-top: 12px;
     gap: 8px;
 }
 
-.news-accordion-points span {
+.perks-accordion-points span {
     font-size: 13px;
 }
 
-.news-chevron {
+.perks-chevron {
     width: 14px;
     height: 14px;
     color: #7b8594;
     transition: transform 180ms ease;
 }
 
-.news-chevron.open {
+.perks-chevron.open {
     transform: rotate(180deg);
 }
 
-.news-spark-icon {
+.perks-spark-icon {
     width: 14px;
     height: 14px;
     color: #f6a61e;
@@ -1486,13 +1486,13 @@
     stroke-width: 1.6;
 }
 
-.news-main {
+.perks-main {
     display: grid;
     gap: 22px;
     min-height: 0;
 }
 
-.news-hero-panel {
+.perks-hero-panel {
     position: relative;
     display: block;
     padding: 24px;
@@ -1518,11 +1518,11 @@
     min-height: 420px;
 }
 
-.news-hero-panel::after {
+.perks-hero-panel::after {
     content: none;
 }
 
-.news-hero-copy {
+.perks-hero-copy {
     position: relative;
     z-index: 1;
     color: #fffaf0;
@@ -1530,7 +1530,7 @@
     padding-top: 6px;
 }
 
-.news-hero-copy h2 {
+.perks-hero-copy h2 {
     max-width: 620px;
     margin: 8px 0 10px;
     font-size: 34px;
@@ -1538,7 +1538,7 @@
     letter-spacing: -0.04em;
 }
 
-.news-hero-copy p {
+.perks-hero-copy p {
     max-width: 620px;
     margin: 0;
     color: #d2d9e3;
@@ -1546,36 +1546,36 @@
     line-height: 1.56;
 }
 
-.news-trust-strip {
+.perks-trust-strip {
     border-top-color: rgba(230, 221, 208, 0.2);
 }
 
-.news-trust-strip .trust-label,
-.news-trust-strip .trust-logos span {
+.perks-trust-strip .trust-label,
+.perks-trust-strip .trust-logos span {
     color: #edf1f7;
 }
 
-.news-benefit-grid {
+.perks-benefit-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
 }
 
-.news-benefit-card {
+.perks-benefit-card {
     position: relative;
     min-height: 100%;
     overflow: hidden;
     background: #fffdf8;
 }
 
-.news-card-media {
+.perks-card-media {
     position: relative;
     aspect-ratio: 2 / 3;
     overflow: hidden;
     background: #172130;
 }
 
-.news-benefit-bg {
+.perks-benefit-bg {
     width: 100%;
     height: 100%;
     display: block;
@@ -1583,11 +1583,11 @@
     object-position: center;
 }
 
-.news-card-ribbon {
+.perks-card-ribbon {
     margin-top: -26px;
 }
 
-.news-card-meta p {
+.perks-card-meta p {
     min-height: 78px;
 }
 
@@ -2067,41 +2067,41 @@
         gap: 16px;
     }
     /* News page */
-    .news-board {
+    .perks-board {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    .news-sidebar {
+    .perks-sidebar {
         position: static;
         top: auto;
     }
-    .news-header-row {
+    .perks-header-row {
         flex-direction: column;
         align-items: flex-start;
         gap: 14px;
     }
-    .news-header-actions {
+    .perks-header-actions {
         display: flex;
     }
-    .news-header-actions .ghost-button,
-    .news-header-actions .cta-button {
+    .perks-header-actions .ghost-button,
+    .perks-header-actions .cta-button {
         height: 38px;
         font-size: 14px;
     }
-    .news-hero-panel {
+    .perks-hero-panel {
         min-height: 320px;
         padding: 20px;
     }
-    .news-hero-copy h2 {
+    .perks-hero-copy h2 {
         font-size: 26px;
     }
-    .news-hero-visual {
+    .perks-hero-visual {
         display: none;
     }
-    .news-hero-media-card {
+    .perks-hero-media-card {
         display: none;
     }
-    .news-benefit-grid {
+    .perks-benefit-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
     }
@@ -2220,23 +2220,23 @@
         flex-shrink: 0;
     }
     /* News page */
-    .news-header-row h1 {
+    .perks-header-row h1 {
         font-size: 26px;
     }
-    .news-hero-panel {
+    .perks-hero-panel {
         min-height: 260px;
         padding: 16px;
         border-width: 6px;
         border-bottom-width: 6px;
     }
-    .news-hero-copy h2 {
+    .perks-hero-copy h2 {
         font-size: 22px;
         letter-spacing: -0.03em;
     }
-    .news-hero-copy p {
+    .perks-hero-copy p {
         font-size: 14px;
     }
-    .news-benefit-grid {
+    .perks-benefit-grid {
         grid-template-columns: 1fr;
     }
     /* Popover */
@@ -2294,7 +2294,7 @@
     .pop-tb-center {
         display: none;
     }
-    .news-accordion-trigger {
+    .perks-accordion-trigger {
         font-size: 13px;
         padding: 11px 12px;
     }
@@ -3467,16 +3467,16 @@
     }
 
     /* News page */
-    .news-hero-panel {
+    .perks-hero-panel {
         min-height: 300px;
         padding: 18px;
     }
 
-    .news-hero-copy h2 {
+    .perks-hero-copy h2 {
         font-size: 24px;
     }
 
-    .news-benefit-grid {
+    .perks-benefit-grid {
         grid-template-columns: 1fr;
     }
 
@@ -3639,11 +3639,11 @@
 }
 
 /* ── News card read cue ───────────────────────────────────── */
-.news-benefit-card {
+.perks-benefit-card {
     cursor: pointer;
 }
 
-.news-card-read-cue {
+.perks-card-read-cue {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -3668,7 +3668,7 @@
     z-index: 2;
 }
 
-.news-benefit-card:hover .news-card-read-cue {
+.perks-benefit-card:hover .perks-card-read-cue {
     opacity: 1;
     transform: translateY(0);
 }
@@ -3676,7 +3676,7 @@
 /* ── News Detail Popover ──────────────────────────────────── */
 
 /* Hero strip */
-.news-pop-hero {
+.perks-pop-hero {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 7;
@@ -3685,20 +3685,20 @@
     flex-shrink: 0;
 }
 
-.news-pop-hero-img {
+.perks-pop-hero-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.news-pop-hero-empty {
+.perks-pop-hero-empty {
     width: 100%;
     height: 100%;
     background: linear-gradient(160deg, #f5f2ec 0%, #e8e3db 100%);
 }
 
-.news-pop-hero-overlay {
+.perks-pop-hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
@@ -3712,7 +3712,7 @@
     padding: 18px 22px;
 }
 
-.news-pop-hero-pills {
+.perks-pop-hero-pills {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -3720,7 +3720,7 @@
 }
 
 /* Override pill colors inside the dark hero */
-.news-pop-hero-pill {
+.perks-pop-hero-pill {
     background: rgba(255, 253, 248, 0.92) !important;
     border-color: rgba(217, 209, 194, 0.6) !important;
     color: #374352 !important;
@@ -3728,13 +3728,13 @@
     margin-bottom: 0 !important;
 }
 
-.news-pop-hero-pill--cat {
+.perks-pop-hero-pill--cat {
     background: rgba(246, 166, 30, 0.92) !important;
     border-color: rgba(199, 130, 14, 0.7) !important;
     color: #111 !important;
 }
 
-.news-pop-readtime {
+.perks-pop-readtime {
     position: absolute;
     top: 14px;
     right: 18px;
@@ -3751,7 +3751,7 @@
 }
 
 /* Meta row */
-.news-pop-meta {
+.perks-pop-meta {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -3759,7 +3759,7 @@
     margin-bottom: -8px;
 }
 
-.news-pop-avatar {
+.perks-pop-avatar {
     width: 32px;
     height: 32px;
     border-radius: 999px;
@@ -3775,27 +3775,27 @@
     letter-spacing: 0;
 }
 
-.news-pop-author-info {
+.perks-pop-author-info {
     display: flex;
     flex-direction: column;
     gap: 1px;
 }
 
-.news-pop-author-name {
+.perks-pop-author-name {
     font-size: 13px;
     font-weight: 800;
     color: #0d1d38;
     line-height: 1.2;
 }
 
-.news-pop-author-role {
+.perks-pop-author-role {
     font-size: 11px;
     font-weight: 600;
     color: #7b8594;
     line-height: 1.2;
 }
 
-.news-pop-dot {
+.perks-pop-dot {
     width: 3px;
     height: 3px;
     border-radius: 999px;
@@ -3803,14 +3803,14 @@
     flex-shrink: 0;
 }
 
-.news-pop-meta-text {
+.perks-pop-meta-text {
     font-size: 13px;
     font-weight: 600;
     color: #7b8594;
 }
 
 /* Title */
-.news-pop-title {
+.perks-pop-title {
     margin: 0;
     font-size: 30px;
     line-height: 1.06;
@@ -3820,19 +3820,19 @@
 }
 
 /* Chips override — inherit panel-chips flex */
-.news-pop-chips {
+.perks-pop-chips {
     margin-top: 0;
 }
 
 /* Article body */
-.news-pop-body {
+.perks-pop-body {
     display: grid;
     gap: 18px;
     padding-top: 4px;
     border-top: 1px solid #e6ddd0;
 }
 
-.news-pop-lead {
+.perks-pop-lead {
     margin: 0;
     font-size: 18px;
     font-weight: 400;
@@ -3840,7 +3840,7 @@
     line-height: 1.6;
 }
 
-.news-pop-h2 {
+.perks-pop-h2 {
     margin: 0;
     font-size: 20px;
     font-weight: 800;
@@ -3849,14 +3849,14 @@
     line-height: 1.2;
 }
 
-.news-pop-p {
+.perks-pop-p {
     margin: 0;
     font-size: 15px;
     color: #47576c;
     line-height: 1.64;
 }
 
-.news-pop-quote {
+.perks-pop-quote {
     margin: 0;
     padding: 14px 18px;
     border-left: 3px solid #f6a61e;
@@ -3866,14 +3866,14 @@
     gap: 8px;
 }
 
-.news-pop-quote-text {
+.perks-pop-quote-text {
     font-size: 16px;
     font-style: italic;
     color: #374352;
     line-height: 1.55;
 }
 
-.news-pop-quote-attr {
+.perks-pop-quote-attr {
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
@@ -3881,12 +3881,12 @@
     letter-spacing: -0.01em;
 }
 
-.news-pop-list-block {
+.perks-pop-list-block {
     display: grid;
     gap: 10px;
 }
 
-.news-pop-list-heading {
+.perks-pop-list-heading {
     margin: 0;
     font-size: 14px;
     font-weight: 800;
@@ -3894,7 +3894,7 @@
     letter-spacing: -0.02em;
 }
 
-.news-pop-list {
+.perks-pop-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -3902,7 +3902,7 @@
     gap: 8px;
 }
 
-.news-pop-list-item {
+.perks-pop-list-item {
     display: flex;
     align-items: flex-start;
     gap: 9px;
@@ -3911,18 +3911,18 @@
     line-height: 1.5;
 }
 
-.news-pop-list-item .news-spark-icon {
+.perks-pop-list-item .perks-spark-icon {
     flex-shrink: 0;
     margin-top: 2px;
 }
 
 /* Callout override for article context */
-.news-pop-callout {
+.perks-pop-callout {
     font-size: 14px;
 }
 
 /* Tags section */
-.news-pop-tags {
+.perks-pop-tags {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -3931,7 +3931,7 @@
     border-top: 1px solid #e6ddd0;
 }
 
-.news-pop-tags-label {
+.perks-pop-tags-label {
     font-size: 12px;
     font-weight: 700;
     color: #7b8594;
@@ -3939,33 +3939,33 @@
     margin-right: 2px;
 }
 
-.news-pop-tags .pop-label-pill {
+.perks-pop-tags .pop-label-pill {
     margin-bottom: 0;
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-    .news-pop-hero {
+    .perks-pop-hero {
         aspect-ratio: 16 / 8;
     }
 
-    .news-pop-title {
+    .perks-pop-title {
         font-size: 22px;
     }
 
-    .news-pop-lead {
+    .perks-pop-lead {
         font-size: 15px;
     }
 
-    .news-pop-h2 {
+    .perks-pop-h2 {
         font-size: 17px;
     }
 
-    .news-pop-meta {
+    .perks-pop-meta {
         gap: 7px;
     }
 
-    .news-pop-readtime {
+    .perks-pop-readtime {
         top: 10px;
         right: 12px;
     }
@@ -4026,3 +4026,210 @@
 
 
 
+/* -- NEW NEWS GALLERY & ARTICLE PAGES -- */
+
+.news-gallery-page {
+    padding: 60px 0 120px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.news-gallery-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.news-gallery-header h1 {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #111;
+    margin: 0 0 16px;
+}
+
+.news-gallery-header p {
+    font-size: 18px;
+    color: #55606d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.news-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+.news-gallery-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 120ms ease;
+}
+
+.news-gallery-card:hover {
+    transform: translateY(-4px);
+}
+
+.news-gallery-card-img-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #e6e0d4;
+    border-radius: 6px 6px 0 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.news-gallery-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.news-gallery-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.news-gallery-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.news-gallery-card-date {
+    font-size: 13px;
+    color: #8c97a5;
+    font-weight: 600;
+}
+
+.news-gallery-card-title {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #111;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+}
+
+.news-gallery-card-excerpt {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #5a6674;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* News Article Page */
+.news-article-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 0 120px;
+}
+
+.news-article-header {
+    margin-bottom: 40px;
+}
+
+.news-article-meta-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.news-back-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #55606d;
+    text-decoration: none;
+    transition: color 120ms ease;
+}
+
+.news-back-link:hover {
+    color: #111;
+}
+
+.news-article-category {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #c48a28;
+}
+
+.news-article-title {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: #111;
+    margin: 0 0 24px;
+}
+
+.news-article-meta-bottom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: #55606d;
+    font-weight: 600;
+}
+
+.news-article-dot {
+    color: #d1d8e0;
+}
+
+.news-article-hero {
+    width: 100%;
+    margin-bottom: 48px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e6e0d4;
+    border: 2px solid #111;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.1);
+}
+
+.news-article-hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply;
+}
+
+.news-article-body {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #2b3543;
+}
+
+.news-article-lead {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: #111;
+    margin-bottom: 32px;
+}
+
+.news-article-h2 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #111;
+    margin: 48px 0 24px;
+}
+
+.news-article-p {
+    margin: 0 0 24px;
+}
