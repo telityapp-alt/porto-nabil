@@ -32,8 +32,12 @@ export default function PromoPopup() {
   ];
 
   return (
-    <div className="retro-popover-overlay" style={{ zIndex: 9999 }}>
-      <div className="pop-window promo-popup-window" style={{ maxWidth: "860px", margin: "auto" }}>
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
+      <div 
+        className="retro-window pop-window promo-popup-window" 
+        style={{ maxWidth: "860px", height: "auto", maxHeight: "90vh" }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <header className="retro-titlebar">
           <div className="pop-tb-left">
             <span className="pop-tb-dot" />
@@ -58,7 +62,7 @@ export default function PromoPopup() {
           <div className="pop-content" style={{ padding: "24px 0", textAlign: "center" }}>
             <div style={{ padding: "0 40px" }}>
                 <h2 className="promo-popup-heading" style={{ fontSize: "28px", fontWeight: 800, marginBottom: "8px", letterSpacing: "-0.03em" }}>
-                Bikin Website Seseru Ini Cuma 4 Jutaan!
+                Research-based web seseru ini cuma 4 jutaan!
                 </h2>
                 <p className="promo-popup-desc" style={{ color: "#55606d", marginBottom: "16px", fontSize: "16px", lineHeight: 1.5 }}>
                 Dapetin website dengan desain kelas enterprise dan growth system bawaan. Nggak perlu budget ratusan juta buat tampil sekeren ini.
