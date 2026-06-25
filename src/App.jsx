@@ -1158,6 +1158,219 @@ const libraryCards = [
     },
     gallery: ["/lib-focus-room.png", null, null],
   },
+  {
+    name: "Coolio Barbershop",
+    role: "Premium Grooming Experience",
+    place: "Website Booking & Profile",
+    team: "Web Development",
+    image: "/showcase-coolio.jpg",
+    overview:
+      "Landing page modern dan maskulin untuk Coolio Barbershop. Kami fokus pada sistem booking yang mudah, showcase gaya rambut, dan menonjolkan vibe eksklusif barbershop untuk menarik target market pria modern.",
+    stats: [
+      { label: "Durasi proyek", value: "3 minggu" },
+      { label: "Peningkatan booking", value: "+45%" },
+      { label: "Konversi leads", value: "22%" },
+    ],
+    highlights: [
+      "Sistem booking terintegrasi langsung",
+      "Desain dark-mode premium dan maskulin",
+      "Showcase gaya rambut interaktif",
+    ],
+    strategy: [
+      {
+        phase: "Desain UI/UX",
+        desc: "Kami merancang tampilan dark-theme yang bold dan maskulin, sesuai dengan brand Coolio yang menargetkan pria modern dan eksklusif.",
+        image: null,
+      },
+      {
+        phase: "Sistem Booking",
+        desc: "Mengurangi friction pada proses booking dengan flow yang sederhana agar customer bisa reservasi dalam hitungan detik.",
+        image: null,
+      },
+      {
+        phase: "Pengembangan Website",
+        desc: "Implementasi menggunakan teknologi web modern agar website cepat dimuat, responsif di mobile, dan SEO-friendly.",
+        image: null,
+      },
+      {
+        phase: "Handover & Training",
+        desc: "Melatih tim operasional Coolio untuk mengelola booking masuk dan mengupdate promo di website dengan mudah.",
+        image: null,
+      },
+    ],
+    userJourney: [
+      {
+        step: "Eksplorasi Layanan",
+        tag: "Tahap 1",
+        desc: "User melihat layanan dan harga dengan jelas.",
+        callout: "Memudahkan decision making untuk pelanggan baru",
+      },
+      {
+        step: "Lihat Showcase",
+        tag: "Tahap 2",
+        desc: "User meyakinkan diri dengan melihat kualitas potongan dari galeri foto.",
+        callout: "Membangun trust",
+      },
+      {
+        step: "Booking Jadwal",
+        tag: "Tahap 3",
+        desc: "User memilih waktu dan barber dengan 3 kali klik.",
+        callout: "Frictionless booking flow",
+      },
+    ],
+    richContent: {
+      title: "Catatan dari tim Builders",
+      blocks: [
+        {
+          type: "text",
+          content: "Untuk bisnis layanan fisik seperti barbershop, website adalah ekstensi dari pelayanan mereka. Flow booking yang sulit sama buruknya dengan pelayanan barber yang lambat.",
+        },
+      ]
+    },
+    gallery: ["/showcase-coolio.jpg", null, null],
+  },
+  {
+    name: "Rych Water",
+    role: "Pure Mountain Spring Water",
+    place: "Company Profile",
+    team: "Web Design",
+    image: "/showcase-rych.jpg",
+    overview:
+      "Desain landing page yang fresh dan natural untuk Rych Water. Menekankan kemurnian air pegunungan Aceh dengan UI yang clean, interaktif, dan mudah dinavigasi untuk mengomunikasikan nilai keberlanjutan produk.",
+    stats: [
+      { label: "Durasi proyek", value: "4 minggu" },
+      { label: "Engagement", value: "+30%" },
+      { label: "Bounce rate", value: "< 25%" },
+    ],
+    highlights: [
+      "Desain fresh, nature-inspired",
+      "Storytelling interaktif tentang sumber air",
+      "Akses informasi produk yang intuitif",
+    ],
+    strategy: [
+      {
+        phase: "Visual Discovery",
+        desc: "Eksplorasi gaya desain yang memancarkan kemurnian alam dan kesegaran air pegunungan dengan warna biru dan elemen natural.",
+        image: null,
+      },
+      {
+        phase: "Storytelling Flow",
+        desc: "Merangkai narasi perjalanan air dari pegunungan hingga ke botol agar konsumen merasa terhubung dengan asal produk.",
+        image: null,
+      },
+      {
+        phase: "Development",
+        desc: "Membangun animasi mikro pada elemen air untuk menambah kesan hidup dan interaktif pada website tanpa mengorbankan kecepatan load.",
+        image: null,
+      },
+      {
+        phase: "Optimasi",
+        desc: "Optimalisasi gambar beresolusi tinggi agar website tetap ringan diakses dari jaringan mobile.",
+        image: null,
+      },
+    ],
+    userJourney: [
+      {
+        step: "Landing",
+        tag: "Tahap 1",
+        desc: "User disambut dengan visual pegunungan Aceh yang megah.",
+        callout: "Strong first impression",
+      },
+      {
+        step: "Edukasi Merek",
+        tag: "Tahap 2",
+        desc: "User membaca nilai gizi dan proses sterilisasi air.",
+        callout: "Building authority",
+      },
+      {
+        step: "Inkuiri Bisnis",
+        tag: "Tahap 3",
+        desc: "Distributor atau konsumen diarahkan untuk menghubungi sales.",
+        callout: "Clear conversion path",
+      },
+    ],
+    richContent: {
+      title: "Catatan dari tim Builders",
+      blocks: [
+        {
+          type: "text",
+          content: "Menjual air kemasan secara online adalah tentang menjual cerita. Kami menggunakan elemen visual alam yang kuat untuk membuktikan bahwa Rych Water bukan sekadar air biasa.",
+        },
+      ]
+    },
+    gallery: ["/showcase-rych.jpg", null, null],
+  },
+  {
+    name: "Safubot",
+    role: "Fun & Safe Circumcision",
+    place: "Klinik Sunat Anak Interactive",
+    team: "Web & App Design",
+    image: "/showcase-safubot.jpg",
+    overview:
+      "Website interaktif dan ramah anak untuk klinik sunat Safubot. Menggunakan karakter robot lucu untuk mengurangi rasa takut anak, dipadukan dengan flow pendaftaran yang informatif dan tepercaya bagi orang tua.",
+    stats: [
+      { label: "Durasi proyek", value: "5 minggu" },
+      { label: "Pendaftar online", value: "1.500+" },
+      { label: "User engagement", value: "+60%" },
+    ],
+    highlights: [
+      "Tema UI ramah anak dengan maskot 3D",
+      "Edukasi medis yang mudah dicerna orang tua",
+      "Integrasi sistem antrean dan FAQ cerdas",
+    ],
+    strategy: [
+      {
+        phase: "Riset Psikologi Orang Tua & Anak",
+        desc: "Memahami kecemasan utama orang tua saat mendaftarkan anaknya sunat, dan mengubahnya menjadi konten website yang menenangkan.",
+        image: null,
+      },
+      {
+        phase: "Desain Karakter Safubot",
+        desc: "Pembuatan aset visual maskot robot untuk mendistraksi anak dari ketakutan medis.",
+        image: null,
+      },
+      {
+        phase: "Sistem Informasi",
+        desc: "Memisahkan area informasi klinis yang serius untuk orang tua dengan elemen visual yang fun.",
+        image: null,
+      },
+      {
+        phase: "Testing & Launch",
+        desc: "Uji coba flow pendaftaran dengan beberapa orang tua pasien untuk memastikan tidak ada friksi saat booking jadwal.",
+        image: null,
+      },
+    ],
+    userJourney: [
+      {
+        step: "Menarik Perhatian",
+        tag: "Tahap 1",
+        desc: "Anak melihat maskot Safubot dan merasa nyaman.",
+        callout: "Mengubah rasa takut jadi penasaran",
+      },
+      {
+        step: "Membangun Kepercayaan",
+        tag: "Tahap 2",
+        desc: "Orang tua melihat testimonial video dan dokter bersertifikat.",
+        callout: "Peace of mind",
+      },
+      {
+        step: "Booking Cepat",
+        tag: "Tahap 3",
+        desc: "Memilih jadwal sunat dengan klik sederhana.",
+        callout: "Cepat dan responsif",
+      },
+    ],
+    richContent: {
+      title: "Catatan dari tim Builders",
+      blocks: [
+        {
+          type: "text",
+          content: "Tantangan terbesar desain klinik anak adalah melayani dua audiens sekaligus: anak yang butuh kenyamanan visual, dan orang tua yang butuh kepastian medis. Kami berhasil menyatukan keduanya.",
+        },
+      ]
+    },
+    gallery: ["/showcase-safubot.jpg", null, null],
+  },
 ];
 
 function CaretIcon() {
