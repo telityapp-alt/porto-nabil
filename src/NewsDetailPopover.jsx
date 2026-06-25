@@ -254,24 +254,23 @@ export default function NewsDetailPopover({ article, onClose }) {
                 ))}
               </div>
             )}
-          </div>
-
-          {/* 5. CTA footer */}
-          <div className="pop-cta-footer">
-            <button
-              type="button"
-              className="cta-button"
-              style={{ fontSize: 15, height: 44, padding: "0 28px" }}
-            >
-              Apply now
-            </button>
-            <button
-              type="button"
-              className="ghost-button"
-              style={{ fontSize: 15, height: 44, padding: "0 28px" }}
-            >
-              See all programs
-            </button>
+            {/* 5. CTA footer */}
+            <div className="pop-cta-footer">
+              <button
+                type="button"
+                className="cta-button"
+                style={{ fontSize: 15, height: 44, padding: "0 28px" }}
+              >
+                Apply now
+              </button>
+              <button
+                type="button"
+                className="ghost-button"
+                style={{ fontSize: 15, height: 44, padding: "0 28px" }}
+              >
+                See all programs
+              </button>
+            </div>
           </div>
         </div>
         {/* /pop-scroll */}
