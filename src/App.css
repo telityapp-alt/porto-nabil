@@ -720,9 +720,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top left;
+    object-position: center;
     display: block;
-    transform: rotate(-3.5deg) scale(1.06) translateY(38px);
+    transform: rotate(0deg) scale(1);
     transform-origin: center center;
     transition:
         transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -731,7 +731,7 @@
 }
 
 .library-card:hover .library-card-screenshot {
-    transform: rotate(0deg) scale(1.02) translateY(32px);
+    transform: rotate(-3.5deg) scale(1.06);
     filter: saturate(1.05);
 }
 
@@ -1038,10 +1038,10 @@
 .library-card-meta p {
     min-height: 42px;
     margin: 0 0 14px;
-    color: #1b2434;
+    color: #4a5666;
     font-size: 15px;
-    font-weight: 700;
-    line-height: 1.35;
+    font-weight: 500;
+    line-height: 1.48;
 }
 
 .library-card-chip {
