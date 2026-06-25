@@ -32,7 +32,7 @@ export default function FranchisePage() {
 
   return (
     <div className="news-gallery-page">
-      <section className="hero">
+      <section className="hero" style={{ paddingBottom: "80px", marginBottom: "40px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="hero-copy">
           <span className="perks-hero-eyebrow" style={{ display: "inline-block", marginBottom: "16px", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.85rem", opacity: 0.7 }}>Growww For Franchise</span>
           <h1>Bangun trust investor lewat psikologi & sistem Autopilot</h1>
