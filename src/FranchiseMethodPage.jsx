@@ -65,7 +65,8 @@ export default function FranchiseMethodPage() {
             {method.howToReach.map((step, idx) => (
               <div key={idx} style={{ marginBottom: "24px" }}>
                 <h3 style={{ fontSize: "1.2rem", fontWeight: 600, marginBottom: "8px", color: "var(--foreground, #ededed)" }}>
-                  {idx + 1}. {step.phase}
+                  <span style={{ color: method.accent, marginRight: "8px" }}>{idx + 1}.</span> 
+                  {step.phase}
                 </h3>
                 <p className="news-article-p">
                   {step.desc}
