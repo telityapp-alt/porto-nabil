@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PerksDetailPopover from "./PerksDetailPopover";
 
 const newsFaq = [
@@ -370,8 +371,15 @@ function SparkIcon() {
 }
 
 export default function PerksPage() {
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("promo");
   const [activeArticle, setActiveArticle] = useState(null);
+  const navigate = useNavigate();
+
+  const tabs = [
+    { id: "promo", label: "Promo" },
+    { id: "tools", label: "Tools" },
+    { id: "exclusive", label: "Exclusive" }
+  ];
 
   return (
     <section className="perks-page" aria-labelledby="perks-page-title">
@@ -393,132 +401,180 @@ export default function PerksPage() {
       <div className="perks-board">
         <aside className="perks-sidebar" aria-label="Program details">
           <div className="perks-sidebar-card">
-            <span className="perks-sidebar-kicker">Program details</span>
-            <div className="perks-accordion-list">
-              {newsFaq.map((section, index) => {
-                const isOpen = openFaqIndex === index;
-
-                return (
-                  <section
-                    key={section.title}
-                    className={`perks-accordion-item${isOpen ? " open" : ""}`}
-                  >
-                    <button
-                      type="button"
-                      className="perks-accordion-trigger"
-                      aria-expanded={isOpen}
-                      onClick={() => setOpenFaqIndex(isOpen ? -1 : index)}
-                    >
-                      <span>{section.title}</span>
-                      <ChevronIcon open={isOpen} />
-                    </button>
-
-                    {isOpen ? (
-                      <div className="perks-accordion-panel">
-                        <p>{section.body}</p>
-                        <ul className="feature-list perks-accordion-points">
-                          {section.bullets.map((item) => (
-                            <li key={item}>
-                              <SparkIcon />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-                  </section>
-                );
-              })}
+            <div className="perks-accordion-list" style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "16px" }}>
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "12px 16px",
+                    borderRadius: "8px",
+                    border: "none",
+                    background: activeTab === tab.id ? "#f3f0ea" : "transparent",
+                    color: activeTab === tab.id ? "#11222b" : "#6c7784",
+                    fontWeight: activeTab === tab.id ? 700 : 500,
+                    cursor: "pointer",
+                    textAlign: "left",
+                    transition: "all 0.2s ease"
+                  }}
+                >
+                  <span>{tab.label}</span>
+                  {activeTab === tab.id && (
+                    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M6 3l5 5-5 5"/>
+                    </svg>
+                  )}
+                </button>
+              ))}
             </div>
           </div>
         </aside>
 
         <div className="perks-main">
-          <section className="perks-hero-panel">
-            <div className="perks-hero-copy">
-              <span className="perks-hero-eyebrow">Startups program</span>
-              <h2>
-                Partner perks dan launch support untuk tim kecil yang pengen
-                ship seperti tim besar
-              </h2>
-              <p>
-                Formatnya terinspirasi dari editorial launch board, tapi seluruh
-                visualnya tetap pakai bahasa Builders: hangat, retro-clean,
-                tegas di border, dan playful di aksen.
-              </p>
+          {activeTab === "promo" && (
+            <>
+              <section className="perks-hero-panel">
+                <div className="perks-hero-copy">
+                  <span className="perks-hero-eyebrow">Startups program</span>
+                  <h2>
+                    Partner perks dan launch support untuk tim kecil yang pengen
+                    ship seperti tim besar
+                  </h2>
+                  <p>
+                    Formatnya terinspirasi dari editorial launch board, tapi seluruh
+                    visualnya tetap pakai bahasa Builders: hangat, retro-clean,
+                    tegas di border, dan playful di aksen.
+                  </p>
 
-              <div className="panel-chips" aria-label="Program benefits">
-                <span className="panel-chip">Product credits</span>
-                <span className="panel-chip">Partner offers</span>
-                <span className="panel-chip">Founder support</span>
-                <span className="panel-chip">Launch tooling</span>
-              </div>
+                  <div className="panel-chips" aria-label="Program benefits">
+                    <span className="panel-chip">Product credits</span>
+                    <span className="panel-chip">Partner offers</span>
+                    <span className="panel-chip">Founder support</span>
+                    <span className="panel-chip">Launch tooling</span>
+                  </div>
 
-              <div
-                className="trust-strip perks-trust-strip"
-                aria-label="Included perks"
-              >
-                <span className="trust-label">Included:</span>
-                <div className="trust-logos">
-                  <span>$50k credits</span>
-                  <span>$12k partner perks</span>
-                  <span>$1.5k merch</span>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="perks-benefit-grid" aria-label="Program perks">
-            {benefitCards.map((card) => (
-              <article
-                key={card.id}
-                className="library-card perks-benefit-card"
-                onClick={() => setActiveArticle(card)}
-                role="button"
-                tabIndex={0}
-                aria-label={`Read article: ${card.title}`}
-                onKeyDown={(e) => e.key === "Enter" && setActiveArticle(card)}
-              >
-                <div className="perks-card-media">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="perks-benefit-bg"
-                  />
-                  <div className="perks-card-read-cue">
-                    <span>Read</span>
-                    <svg
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      style={{ width: 12, height: 12 }}
-                    >
-                      <path d="M3 8h10M9 4l4 4-4 4" />
-                    </svg>
+                  <div
+                    className="trust-strip perks-trust-strip"
+                    aria-label="Included perks"
+                  >
+                    <span className="trust-label">Included:</span>
+                    <div className="trust-logos">
+                      <span>$50k credits</span>
+                      <span>$12k partner perks</span>
+                      <span>$1.5k merch</span>
+                    </div>
                   </div>
                 </div>
+              </section>
 
-                <div className="library-card-ribbon perks-card-ribbon">
-                  <strong>{card.title}</strong>
-                  <span>{card.eyebrow}</span>
+              <section className="perks-benefit-grid" aria-label="Program perks">
+                {benefitCards.map((card) => (
+                  <article
+                    key={card.id}
+                    className="library-card perks-benefit-card"
+                    onClick={() => setActiveArticle(card)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Read article: ${card.title}`}
+                    onKeyDown={(e) => e.key === "Enter" && setActiveArticle(card)}
+                  >
+                    <div className="perks-card-media">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="perks-benefit-bg"
+                      />
+                      <div className="perks-card-read-cue">
+                        <span>Read</span>
+                        <svg
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          style={{ width: 12, height: 12 }}
+                        >
+                          <path d="M3 8h10M9 4l4 4-4 4" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div className="library-card-ribbon perks-card-ribbon">
+                      <strong>{card.title}</strong>
+                      <span>{card.eyebrow}</span>
+                    </div>
+
+                    <div className="library-card-meta perks-card-meta">
+                      <p>{card.desc}</p>
+                      <div className="panel-chips">
+                        {card.chips.map((chip) => (
+                          <span key={chip} className="panel-chip">
+                            {chip}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </section>
+            </>
+          )}
+
+          {activeTab === "tools" && (
+            <section className="perks-hero-panel">
+              <div className="perks-hero-copy">
+                <span className="perks-hero-eyebrow">Internal Tools</span>
+                <h2>Kalkulator dan alat bantu untuk bisnis lu</h2>
+                <p>
+                  Koleksi internal tools yang biasa kita pakai buat ngitung metriks bisnis, sekarang kita buka untuk public.
+                </p>
+                <div className="panel-chips">
+                  <span className="panel-chip">Calculators</span>
+                  <span className="panel-chip">Templates</span>
                 </div>
-
-                <div className="library-card-meta perks-card-meta">
-                  <p>{card.desc}</p>
-                  <div className="panel-chips">
-                    {card.chips.map((chip) => (
-                      <span key={chip} className="panel-chip">
-                        {chip}
-                      </span>
-                    ))}
+              </div>
+              <section className="perks-benefit-grid" style={{ marginTop: '32px' }}>
+                <article
+                  className="library-card perks-benefit-card"
+                  onClick={() => navigate("/hpp-calculator")}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <div className="perks-card-media" style={{ background: '#f7f5f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <h3 style={{ margin: 0, color: '#c48a28', fontSize: '64px' }}>🔢</h3>
                   </div>
+                  <div className="library-card-ribbon perks-card-ribbon">
+                    <strong>HPP Calculator</strong>
+                    <span>Finance Tool</span>
+                  </div>
+                  <div className="library-card-meta perks-card-meta">
+                    <p>Hitung Harga Pokok Penjualan (HPP) dengan akurat dan cepat pakai tool kalkulator spesial kita ini.</p>
+                  </div>
+                </article>
+              </section>
+            </section>
+          )}
+
+          {activeTab === "exclusive" && (
+            <section className="perks-hero-panel">
+              <div className="perks-hero-copy">
+                <span className="perks-hero-eyebrow">Exclusive Access</span>
+                <h2>Akses duluan ke fitur dan program private</h2>
+                <p>
+                  Member program startup kita selalu dapat akses duluan buat nyobain fitur alpha/beta dari partner, plus dapet undangan event eksklusif.
+                </p>
+                <div className="panel-chips">
+                  <span className="panel-chip">Private Beta</span>
+                  <span className="panel-chip">Founder Mixers</span>
                 </div>
-              </article>
-            ))}
-          </section>
+              </div>
+            </section>
+          )}
         </div>
       </div>
 

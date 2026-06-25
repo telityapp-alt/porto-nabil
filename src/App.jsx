@@ -19,6 +19,7 @@ import PromoPopup from "./PromoPopup";
 import PricingPage from "./PricingPage";
 import DocsPage from "./DocsPage";
 import Footer from "./Footer";
+import HppCalculatorPage from "./HppCalculatorPage";
 
 const tabs = [
   {
@@ -1950,6 +1951,11 @@ function App() {
           {/* Pricing */}
           <Route path="/pricing" element={<MainShell wide={true} />}>
             <Route index element={<PricingPage />} />
+          </Route>
+
+          {/* Tools */}
+          <Route path="/hpp-calculator" element={<MainShell wide={true} />}>
+            <Route index element={<HppCalculatorPage />} />
           </Route>
 
           {/* Docs */}
