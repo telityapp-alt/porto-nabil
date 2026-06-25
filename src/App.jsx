@@ -213,6 +213,14 @@ const heroHighlights = [
   "Nggak sekadar cantik, tapi narik cuan",
 ];
 
+export const realShowcaseItems = [
+  { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
+  { img: "/showcase-rych.jpg", brand: "Rych Water" },
+  { img: "/showcase-safubot.jpg", brand: "Safubot" },
+  { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
+  { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
+];
+
 const libraryCards = [
   {
     name: "Signal board",
@@ -1471,30 +1479,7 @@ function HomePage() {
         <div className="hero-visual">
           <div className="hero-marquee-container">
             <div className="hero-marquee-track">
-              {[
-                { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
-                { img: "/showcase-rych.jpg", brand: "Rych Water" },
-                { img: "/showcase-safubot.jpg", brand: "Safubot" },
-                { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
-                { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
-                { img: "/lib-signal-board.png", brand: "Signal Board" },
-                { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
-                { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
-                { img: "/lib-issue-radar.png", brand: "Issue Radar" },
-                { img: "/lib-launch-deck.png", brand: "Launch Deck" },
-                { img: "/news-hero-art.png", brand: "Builders" },
-                { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
-                { img: "/showcase-rych.jpg", brand: "Rych Water" },
-                { img: "/showcase-safubot.jpg", brand: "Safubot" },
-                { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
-                { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
-                { img: "/lib-signal-board.png", brand: "Signal Board" },
-                { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
-                { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
-                { img: "/lib-issue-radar.png", brand: "Issue Radar" },
-                { img: "/lib-launch-deck.png", brand: "Launch Deck" },
-                { img: "/news-hero-art.png", brand: "Builders" },
-              ].map((item, idx) => (
+              {Array(4).fill(realShowcaseItems).flat().map((item, idx) => (
                 <div key={idx} className="hero-marquee-card">
                   <img
                     src={item.img}
@@ -1659,30 +1644,7 @@ function HomePage() {
       <section className="wide-marquee-section" aria-label="Large showcase gallery">
         <div className="wide-marquee-container">
           <div className="wide-marquee-track">
-            {[
-                { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
-                { img: "/showcase-rych.jpg", brand: "Rych Water" },
-                { img: "/showcase-safubot.jpg", brand: "Safubot" },
-              { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
-              { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
-              { img: "/lib-signal-board.png", brand: "Signal Board" },
-              { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
-              { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
-              { img: "/lib-issue-radar.png", brand: "Issue Radar" },
-              { img: "/lib-launch-deck.png", brand: "Launch Deck" },
-              { img: "/news-hero-art.png", brand: "Builders" },
-                { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
-                { img: "/showcase-rych.jpg", brand: "Rych Water" },
-                { img: "/showcase-safubot.jpg", brand: "Safubot" },
-              { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
-              { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
-              { img: "/lib-signal-board.png", brand: "Signal Board" },
-              { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
-              { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
-              { img: "/lib-issue-radar.png", brand: "Issue Radar" },
-              { img: "/lib-launch-deck.png", brand: "Launch Deck" },
-              { img: "/news-hero-art.png", brand: "Builders" },
-            ].map((item, idx) => (
+            {Array(5).fill(realShowcaseItems).flat().map((item, idx) => (
               <div key={idx} className="wide-marquee-card">
                 <img
                   src={item.img}

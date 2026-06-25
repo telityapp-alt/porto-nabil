@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { realShowcaseItems } from "./App";
 
 export default function PromoPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,31 +12,7 @@ export default function PromoPopup() {
   }, []);
 
   if (!isOpen) return null;
-
-  const loopedItems = [
-    { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
-    { img: "/showcase-rych.jpg", brand: "Rych Water" },
-    { img: "/showcase-safubot.jpg", brand: "Safubot" },
-    { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
-    { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
-    { img: "/lib-signal-board.png", brand: "Signal Board" },
-    { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
-    { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
-    { img: "/lib-issue-radar.png", brand: "Issue Radar" },
-    { img: "/lib-launch-deck.png", brand: "Launch Deck" },
-    { img: "/news-hero-art.png", brand: "Builders" },
-    { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
-    { img: "/showcase-rych.jpg", brand: "Rych Water" },
-    { img: "/showcase-safubot.jpg", brand: "Safubot" },
-    { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
-    { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
-    { img: "/lib-signal-board.png", brand: "Signal Board" },
-    { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
-    { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
-    { img: "/lib-issue-radar.png", brand: "Issue Radar" },
-    { img: "/lib-launch-deck.png", brand: "Launch Deck" },
-    { img: "/news-hero-art.png", brand: "Builders" },
-  ];
+  const loopedItems = Array(4).fill(realShowcaseItems).flat();
 
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => setIsOpen(false)}>
