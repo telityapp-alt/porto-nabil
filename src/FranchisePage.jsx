@@ -58,8 +58,8 @@ export default function FranchisePage() {
             </li>
           </ul>
         </div>
-        <div className="hero-visual" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <div className="perks-sidebar-card" style={{ background: "var(--accent-orange, #f76b15)", color: "#111", border: "none", maxWidth: "340px", width: "100%", padding: "40px 32px", textAlign: "center", transform: "rotate(2deg)" }}>
+        <div className="hero-visual" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
+          <div className="perks-sidebar-card" style={{ background: "var(--accent-orange, #f76b15)", color: "#111", border: "none", maxWidth: "340px", width: "100%", padding: "40px 32px", textAlign: "center", transform: "rotate(2deg)", margin: "auto" }}>
             <span className="perks-sidebar-kicker" style={{ color: "rgba(0,0,0,0.6)", marginBottom: "16px", display: "block" }}>Interactive Tool</span>
             <h3 style={{ fontSize: "1.6rem", fontWeight: 700, margin: "0 0 16px 0", lineHeight: 1.3 }}>Temukan Strategi yang Paling Tepat untuk Bisnismu</h3>
             <p style={{ margin: "0 0 32px 0", fontSize: "1rem", opacity: 0.8, lineHeight: 1.5 }}>
