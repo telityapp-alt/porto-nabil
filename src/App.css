@@ -4573,3 +4573,83 @@
     padding: 10px 0;
     margin: 20px 0;
 }
+
+/* ===================================================
+   MOBILE RESPONSIVE - NEW MARQUEE + POPUP COMPONENTS
+   =================================================== */
+
+/* -- Hero Marquee: hide on mobile, too big to make sense rotated -- */
+@media (max-width: 860px) {
+    .hero-marquee-container {
+        display: none;
+    }
+    /* Wide marquee: reduce card + image size */
+    .wide-marquee-section {
+        margin-top: 48px;
+        margin-bottom: 36px;
+    }
+    .wide-marquee-card {
+        width: 480px;
+        gap: 12px;
+    }
+    .wide-marquee-image {
+        height: 300px;
+    }
+    /* Promo popup: full-width on tablet */
+    .pop-window.promo-popup-window {
+        max-width: 96vw !important;
+        margin: 8px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Wide marquee compact */
+    .wide-marquee-section {
+        margin-top: 32px;
+        margin-bottom: 24px;
+    }
+    .wide-marquee-container {
+        padding: 16px 0;
+        -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    .wide-marquee-card {
+        width: 300px;
+        gap: 10px;
+    }
+    .wide-marquee-image {
+        height: 190px;
+        border-radius: 8px;
+    }
+    .wide-marquee-track {
+        gap: 16px;
+    }
+    /* Promo popup: full viewport on mobile */
+    .retro-popover-overlay {
+        padding: 8px;
+        align-items: flex-end;
+        padding-bottom: 16px;
+    }
+    .promo-popup-window {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .promo-marquee-wrap .hero-marquee-card {
+        width: 240px !important;
+    }
+    .promo-marquee-wrap .hero-marquee-image {
+        height: 150px !important;
+    }
+    .promo-popup-heading {
+        font-size: 22px !important;
+    }
+    .promo-popup-desc {
+        font-size: 14px !important;
+    }
+    .promo-popup-cta {
+        font-size: 15px !important;
+        height: 46px !important;
+        padding: 0 20px !important;
+    }
+}
