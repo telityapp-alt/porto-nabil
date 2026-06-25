@@ -6,7 +6,7 @@ export default function PromoPopup() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 800);
+    }, 10000);
     return () => clearTimeout(timer);
   }, []);
 

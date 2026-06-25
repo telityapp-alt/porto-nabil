@@ -16,6 +16,8 @@ import RetroPopover from "./RetroPopover";
 import OdooPage, { OdooPageWithPopover } from "./OdooPage";
 import SolutionsPage from "./SolutionsPage";
 import PromoPopup from "./PromoPopup";
+import PricingPage from "./PricingPage";
+import DocsPage from "./DocsPage";
 
 const tabs = [
   {
@@ -1769,6 +1771,14 @@ function App() {
               >
                 Odoo
               </NavLink>
+              <NavLink
+                to="/pricing"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+              >
+                Pricing
+              </NavLink>
               <div className="nav-dropdown-container">
                 <a href="/" onClick={(event) => event.preventDefault()}>
                   Solutions <CaretIcon />
@@ -1780,13 +1790,17 @@ function App() {
                   <NavLink to="/solutions/odoo-implementation" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Odoo Implementation</NavLink>
                 </div>
               </div>
-              <a
-                href="/"
-                onClick={(event) => event.preventDefault()}
-              >
-                Docs
-                <CaretIcon />
-              </a>
+              <div className="nav-dropdown-container">
+                <a href="/" onClick={(event) => event.preventDefault()}>
+                  Docs <CaretIcon />
+                </a>
+                <div className="dropdown-menu">
+                  <NavLink to="/docs/privacy-policy" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Privacy Policy</NavLink>
+                  <NavLink to="/docs/terms-of-service" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Terms of Service</NavLink>
+                  <NavLink to="/docs/cooperation-agreement" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Cooperation Agreement</NavLink>
+                  <NavLink to="/docs/refund-policy" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Refund Policy</NavLink>
+                </div>
+              </div>
             </nav>
           </div>
           <div className="topbar-right">
@@ -1890,15 +1904,22 @@ function App() {
               >
                 Odoo
               </NavLink>
-              <a
-                href="/"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setMenuOpen(false);
-                }}
+              <NavLink
+                to="/pricing"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+                onClick={() => setMenuOpen(false)}
               >
-                Docs
-              </a>
+                Pricing
+              </NavLink>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', borderTop: '1px solid #e1e4e8', paddingTop: '16px', marginTop: '8px' }}>
+                <span style={{ fontSize: '13px', fontWeight: 700, color: '#8a94a6', padding: '0 16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Docs</span>
+                <NavLink to="/docs/privacy-policy" className={({ isActive }) => isActive ? "active-nav" : undefined} onClick={() => setMenuOpen(false)}>Privacy Policy</NavLink>
+                <NavLink to="/docs/terms-of-service" className={({ isActive }) => isActive ? "active-nav" : undefined} onClick={() => setMenuOpen(false)}>Terms of Service</NavLink>
+                <NavLink to="/docs/cooperation-agreement" className={({ isActive }) => isActive ? "active-nav" : undefined} onClick={() => setMenuOpen(false)}>Cooperation Agreement</NavLink>
+                <NavLink to="/docs/refund-policy" className={({ isActive }) => isActive ? "active-nav" : undefined} onClick={() => setMenuOpen(false)}>Refund Policy</NavLink>
+              </div>
               <div className="mobile-nav-cta">
                 <button
                   type="button"
@@ -1960,6 +1981,17 @@ function App() {
             path="/news/:slug"
             element={<NewsArticlePage />}
           />
+
+          {/* Pricing */}
+          <Route path="/pricing" element={<MainShell wide={true} />}>
+            <Route index element={<PricingPage />} />
+          </Route>
+
+          {/* Docs */}
+          <Route path="/docs" element={<MainShell wide={true} />}>
+            <Route index element={<DocsPage />} />
+            <Route path=":docId" element={<DocsPage />} />
+          </Route>
         </Routes>
       </div>
     </div>
