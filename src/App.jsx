@@ -11,6 +11,7 @@ import "./App.css";
 import AppsList from "./AppsList";
 import NewsPage from "./NewsPage";
 import RetroPopover from "./RetroPopover";
+import OdooPage, { OdooPageWithPopover } from "./OdooPage";
 
 const tabs = [
   {
@@ -1675,6 +1676,14 @@ function App() {
               >
                 News
               </NavLink>
+              <NavLink
+                to="/odoo"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+              >
+                Odoo
+              </NavLink>
               {["Solutions", "Docs"].map((item) => (
                 <a
                   href="/"
@@ -1770,6 +1779,15 @@ function App() {
               >
                 News
               </NavLink>
+              <NavLink
+                to="/odoo"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                Odoo
+              </NavLink>
               <a
                 href="/"
                 onClick={(e) => {
@@ -1806,6 +1824,12 @@ function App() {
           <Route path="/" element={<MainShell wide={false} />}>
             <Route index element={<HomePage />} />
             <Route path="portfolio/:slug" element={<HomePageWithPopover />} />
+          </Route>
+
+          {/* Odoo */}
+          <Route path="/odoo" element={<MainShell wide={false} />}>
+            <Route index element={<OdooPage />} />
+            <Route path="portfolio/:slug" element={<OdooPageWithPopover />} />
           </Route>
 
           {/* Apps */}
