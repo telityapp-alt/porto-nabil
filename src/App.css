@@ -4341,7 +4341,7 @@
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     display: flex;
-    padding: 20px 0;
+    padding: 32px 0;
     transform: rotate(-2deg) translateY(48px);
     transition: transform 300ms ease;
 }
@@ -4402,7 +4402,7 @@
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     display: flex;
-    padding: 20px 0;
+    padding: 32px 0;
 }
 
 .wide-marquee-track {
@@ -4562,4 +4562,14 @@
 .global-footer {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
+}
+.promo-marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    display: flex;
+    padding: 10px 0;
+    margin: 20px 0;
 }

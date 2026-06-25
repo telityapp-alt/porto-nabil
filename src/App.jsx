@@ -15,6 +15,7 @@ import PerksPage from "./PerksPage";
 import RetroPopover from "./RetroPopover";
 import OdooPage, { OdooPageWithPopover } from "./OdooPage";
 import SolutionsPage from "./SolutionsPage";
+import PromoPopup from "./PromoPopup";
 
 const tabs = [
   {
@@ -1409,6 +1410,7 @@ function HomePage() {
 
   return (
     <>
+      <PromoPopup />
       <section className="hero">
         <div className="hero-copy">
           <Wordmark />
@@ -1476,12 +1478,16 @@ function HomePage() {
           <div className="hero-marquee-container">
             <div className="hero-marquee-track">
               {[
+                { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
+                { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
                 { img: "/lib-signal-board.png", brand: "Signal Board" },
                 { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
                 { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
                 { img: "/lib-issue-radar.png", brand: "Issue Radar" },
                 { img: "/lib-launch-deck.png", brand: "Launch Deck" },
                 { img: "/news-hero-art.png", brand: "Builders" },
+                { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
+                { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
                 { img: "/lib-signal-board.png", brand: "Signal Board" },
                 { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
                 { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
@@ -1654,12 +1660,16 @@ function HomePage() {
         <div className="wide-marquee-container">
           <div className="wide-marquee-track">
             {[
+              { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
+              { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
               { img: "/lib-signal-board.png", brand: "Signal Board" },
               { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
               { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
               { img: "/lib-issue-radar.png", brand: "Issue Radar" },
               { img: "/lib-launch-deck.png", brand: "Launch Deck" },
               { img: "/news-hero-art.png", brand: "Builders" },
+              { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
+              { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
               { img: "/lib-signal-board.png", brand: "Signal Board" },
               { img: "/lib-flow-pilot.png", brand: "Flow Pilot" },
               { img: "/lib-warehouse-one.png", brand: "Warehouse One" },
