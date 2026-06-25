@@ -1774,6 +1774,14 @@ function App() {
               >
                 Pricing
               </NavLink>
+              <NavLink
+                to="/news"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+              >
+                News
+              </NavLink>
             </nav>
           </div>
           <div className="topbar-right">
@@ -1885,6 +1893,15 @@ function App() {
                 onClick={() => setMenuOpen(false)}
               >
                 Pricing
+              </NavLink>
+              <NavLink
+                to="/news"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                News
               </NavLink>
               <div className="mobile-nav-cta">
                 <button
