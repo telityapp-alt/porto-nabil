@@ -13,6 +13,9 @@ export default function PromoPopup() {
   if (!isOpen) return null;
 
   const loopedItems = [
+    { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
+    { img: "/showcase-rych.jpg", brand: "Rych Water" },
+    { img: "/showcase-safubot.jpg", brand: "Safubot" },
     { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
     { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
     { img: "/lib-signal-board.png", brand: "Signal Board" },
@@ -21,6 +24,9 @@ export default function PromoPopup() {
     { img: "/lib-issue-radar.png", brand: "Issue Radar" },
     { img: "/lib-launch-deck.png", brand: "Launch Deck" },
     { img: "/news-hero-art.png", brand: "Builders" },
+    { img: "/showcase-coolio.jpg", brand: "Coolio Barbershop" },
+    { img: "/showcase-rych.jpg", brand: "Rych Water" },
+    { img: "/showcase-safubot.jpg", brand: "Safubot" },
     { img: "/showcase-milktea.jpg", brand: "Milk Tea Series" },
     { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
     { img: "/lib-signal-board.png", brand: "Signal Board" },
