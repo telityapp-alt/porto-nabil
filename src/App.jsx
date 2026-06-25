@@ -12,6 +12,7 @@ import AppsList from "./AppsList";
 import NewsPage from "./NewsPage";
 import RetroPopover from "./RetroPopover";
 import OdooPage, { OdooPageWithPopover } from "./OdooPage";
+import SolutionsPage from "./SolutionsPage";
 
 const tabs = [
   {
@@ -1684,16 +1685,24 @@ function App() {
               >
                 Odoo
               </NavLink>
-              {["Solutions", "Docs"].map((item) => (
-                <a
-                  href="/"
-                  key={item}
-                  onClick={(event) => event.preventDefault()}
-                >
-                  {item}
-                  <CaretIcon />
+              <div className="nav-dropdown-container">
+                <a href="/" onClick={(event) => event.preventDefault()}>
+                  Solutions <CaretIcon />
                 </a>
-              ))}
+                <div className="dropdown-menu">
+                  <NavLink to="/solutions/growth" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Growth</NavLink>
+                  <NavLink to="/solutions/research-website" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Research-based Website</NavLink>
+                  <NavLink to="/solutions/web-apps-growth" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Web Apps Growth</NavLink>
+                  <NavLink to="/solutions/odoo-implementation" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Odoo Implementation</NavLink>
+                </div>
+              </div>
+              <a
+                href="/"
+                onClick={(event) => event.preventDefault()}
+              >
+                Docs
+                <CaretIcon />
+              </a>
             </nav>
           </div>
           <div className="topbar-right">
@@ -1795,15 +1804,6 @@ function App() {
                   setMenuOpen(false);
                 }}
               >
-                Solutions
-              </a>
-              <a
-                href="/"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setMenuOpen(false);
-                }}
-              >
                 Docs
               </a>
               <div className="mobile-nav-cta">
@@ -1824,6 +1824,12 @@ function App() {
           <Route path="/" element={<MainShell wide={false} />}>
             <Route index element={<HomePage />} />
             <Route path="portfolio/:slug" element={<HomePageWithPopover />} />
+          </Route>
+
+          {/* Solutions */}
+          <Route path="/solutions" element={<MainShell wide={true} />}>
+            <Route index element={<SolutionsPage />} />
+            <Route path=":step" element={<SolutionsPage />} />
           </Route>
 
           {/* Odoo */}
