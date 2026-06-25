@@ -1497,8 +1497,9 @@
     display: block;
     padding: 24px;
     border: 10px solid #1b385f;
-    border-bottom-width: 18px;
-    border-radius: 8px 10px 10px 10px;
+    border-bottom-width: 10px;
+    border-radius: 16px;
+    box-shadow: 0 8px 0 color-mix(in srgb, #1b385f, black 25%);
     background:
         linear-gradient(
             90deg,
@@ -2226,7 +2227,7 @@
         min-height: 260px;
         padding: 16px;
         border-width: 6px;
-        border-bottom-width: 10px;
+        border-bottom-width: 6px;
     }
     .news-hero-copy h2 {
         font-size: 22px;
