@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const newsArticles = [
@@ -116,41 +117,175 @@ export const newsArticles = [
         text: "Enterprise customers can request a copy of our latest report through their account manager or our Trust Center.",
       }
     ]
+  },
+  {
+    id: "engineering-v2",
+    slug: "engineering-v2",
+    category: "Engineering",
+    title: "How we rebuilt our data ingestion pipeline",
+    excerpt: "A deep dive into our migration to Rust and Kafka, resulting in a 10x throughput increase and reduced latency.",
+    date: "May 28, 2026",
+    author: "Backend Team",
+    readTime: "8 min read",
+    image: "/news-card-docker-art.png",
+    content: [
+      {
+        type: "lead",
+        text: "Scaling data ingestion is hard. This post explains how we handled hypergrowth by rewriting our core pipeline.",
+      }
+    ]
+  },
+  {
+    id: "design-system",
+    slug: "design-system",
+    category: "Design",
+    title: "The making of our Retro-Clean design system",
+    excerpt: "Exploring the typography, colors, and shadow physics that power the Builders interface.",
+    date: "May 15, 2026",
+    author: "Design Team",
+    readTime: "6 min read",
+    image: "/news-card-sdk-art.png",
+    content: [
+      {
+        type: "lead",
+        text: "Why we chose a brutalist yet elegant aesthetic for a data product.",
+      }
+    ]
   }
 ];
 
-export default function NewsPage() {
+const categories = ["All", "Product", "Company", "Community", "Engineering", "Design"];
+
+function SearchIcon() {
   return (
-    <div className="news-gallery-page">
-      <section className="perks-hero-panel" style={{marginBottom: '40px'}}>
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="icon-inline">
+      <circle cx="10.5" cy="10.5" r="5.5" />
+      <path d="M15 15l4 4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export default function NewsPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredArticles = newsArticles.filter((article) => {
+    const matchesSearch =
+      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory =
+      activeCategory === "All" || article.category === activeCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  return (
+    <div className="news-gallery-page" style={{ maxWidth: '100%' }}>
+      <section className="perks-hero-panel" style={{ marginBottom: "60px" }}>
         <div className="perks-hero-copy">
           <span className="perks-hero-eyebrow">Latest News</span>
           <h2>
             Product updates, company announcements, and community highlights.
           </h2>
           <p>
-            Stay up to date with the latest from the Builders team and our global community of product makers.
+            Stay up to date with the latest from the Builders team and our global
+            community of product makers.
           </p>
         </div>
       </section>
 
-      <div className="news-gallery-grid">
-        {newsArticles.map((article) => (
-          <Link key={article.id} to={`/news/${article.slug}`} className="panel-card" style={{textDecoration: 'none', color: 'inherit'}}>
-            <div className="panel-card-media">
-              <img src={article.image} alt="" className="panel-generated-image" />
+      <section className="news-page-layout">
+        {/* Left Sidebar: Categories/Tags */}
+        <aside className="apps-left-sidebar">
+          <h3 className="left-sidebar-title">Categories</h3>
+          <div className="tags-list">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                className={`mini-tag-btn ${activeCategory === cat ? "active" : ""}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </aside>
+
+        {/* Main Feed: Search & Grid */}
+        <div className="apps-main-feed">
+          <div
+            className="mobile-category-bar"
+            role="navigation"
+            aria-label="Filter by category"
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                className={`mini-tag-btn ${activeCategory === cat ? "active" : ""}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="apps-toolbar">
+            <div className="search-bar-wrap">
+              <SearchIcon />
+              <input
+                type="text"
+                placeholder="Search articles..."
+                className="search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
             </div>
-            <div className="panel-card-body" style={{flex: 1, display: 'flex', flexDirection: 'column'}}>
-              <div className="news-gallery-card-meta" style={{marginBottom: '16px'}}>
-                <span className="pop-label-pill">{article.category}</span>
-                <span className="news-gallery-card-date">{article.date}</span>
+          </div>
+
+          <div className="news-gallery-grid">
+            {filteredArticles.length > 0 ? (
+              filteredArticles.map((article) => (
+                <Link
+                  key={article.id}
+                  to={`/news/${article.slug}`}
+                  className="library-card"
+                  style={{ textDecoration: "none", color: "inherit", cursor: "pointer", display: "flex", flexDirection: "column" }}
+                >
+                  <div className="library-card-hero">
+                    <div className="library-card-screenshot-wrap">
+                      <img
+                        src={article.image}
+                        alt={`${article.title} thumbnail`}
+                        className="library-card-screenshot"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                          e.currentTarget.nextElementSibling.style.display = "flex";
+                        }}
+                      />
+                      <div className="library-card-placeholder" aria-hidden="true">
+                        <span className="placeholder-label">{article.title}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="library-card-ribbon">
+                    <strong>{article.title}</strong>
+                    <span>{article.category}</span>
+                  </div>
+
+                  <div className="library-card-meta">
+                    <p>{article.excerpt}</p>
+                    <div className="library-card-chip">{article.date}</div>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <div className="empty-state">
+                <p>No articles found matching your search.</p>
               </div>
-              <h3 className="news-gallery-card-title">{article.title}</h3>
-              <p className="news-gallery-card-excerpt" style={{marginBottom: '16px'}}>{article.excerpt}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+            )}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
