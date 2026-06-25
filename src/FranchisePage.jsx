@@ -58,6 +58,22 @@ export default function FranchisePage() {
             </li>
           </ul>
         </div>
+        <div className="hero-visual" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div className="perks-sidebar-card" style={{ background: "var(--accent-orange, #f76b15)", color: "#111", border: "none", maxWidth: "340px", width: "100%", padding: "40px 32px", textAlign: "center", transform: "rotate(2deg)" }}>
+            <span className="perks-sidebar-kicker" style={{ color: "rgba(0,0,0,0.6)", marginBottom: "16px", display: "block" }}>Interactive Tool</span>
+            <h3 style={{ fontSize: "1.6rem", fontWeight: 700, margin: "0 0 16px 0", lineHeight: 1.3 }}>Temukan Strategi yang Paling Tepat untuk Bisnismu</h3>
+            <p style={{ margin: "0 0 32px 0", fontSize: "1rem", opacity: 0.8, lineHeight: 1.5 }}>
+              Gunakan generator AI kami untuk memetakan metode psikologi yang paling cocok dengan model bisnis franchise Anda.
+            </p>
+            <Link 
+              to="/franchise-strategy-generator" 
+              className="cta-button" 
+              style={{ background: "#111", color: "#fff", width: "100%", justifyContent: "center", border: "1px solid rgba(255,255,255,0.1)" }}
+            >
+              Coba Generator &rarr;
+            </Link>
+          </div>
+        </div>
       </section>
 
       <section className="news-page-layout">
