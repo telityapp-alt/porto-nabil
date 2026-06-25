@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamification Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fffdf8; padding: 32px; max-width: 100%; overflow-x: hidden; }
+        .flow-container { background: #fffdf8; border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 10px; padding: 40px; max-width: 100%; box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        .principle-card { background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 24px; margin-bottom: 16px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .principle-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 4px; letter-spacing: -0.01em; }
+        .principle-theory { font-size: 11px; color: #f6a61e; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .principle-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        .mechanics-box { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 12px; }
+        .mechanics-title { font-size: 12px; font-weight: 800; color: #11222b; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .mechanics-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .mechanics-list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .mechanics-list li::before { content: '✓'; position: absolute; left: 0; color: #f6a61e; font-weight: 800; }
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        .implementation-section { background: linear-gradient(180deg, #f9f7f2 0%, #f3f0ea 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 28px; margin-top: 24px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .section-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 20px; text-align: center; letter-spacing: -0.01em; }
+        .impl-card { background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #f6a61e; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .impl-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .impl-name { font-size: 14px; font-weight: 800; color: #11222b; letter-spacing: -0.01em; }
+        .impl-tag { padding: 4px 8px; background: #11222b; color: #f6eddc; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .impl-desc { font-size: 12px; line-height: 1.5; color: #32425b; margin-bottom: 10px; }
+        .impl-details { display: flex; flex-direction: column; gap: 6px; }
+        .impl-detail { font-size: 11px; line-height: 1.4; color: #32425b; }
+        .impl-detail strong { color: #11222b; font-weight: 800; }
+        .metrics-section { padding: 20px; background: #e8f4f8; border: 1px solid #b8d9e8; border-left-width: 3px; border-left-color: #377cf6; border-radius: 6px; margin-top: 24px; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .metrics-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 16px; text-align: center; letter-spacing: -0.01em; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .metric-card { background: white; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; text-align: center; }
+        .metric-value { font-size: 24px; font-weight: 800; color: #377cf6; margin-bottom: 4px; }
+        .metric-label { font-size: 11px; font-weight: 700; color: #55606d; text-transform: uppercase; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Gamification Design System</div>
+            <div class="flow-subtitle">6 Psychology Principles yang Drive Engagement & Retention</div>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-title">Loss Aversion & Streaks</div>
+            <div class="principle-theory">Kahneman & Tversky</div>
+            <div class="principle-desc">
+                User lebih takut losing streak mereka daripada value dari gaining XP. Daily engagement jadi habitual untuk avoid pain dari breaking progress.
+            </div>
+            <div class="mechanics-box">
+                <div class="mechanics-title">Implementasi</div>
+                <ul class="mechanics-list">
+                    <li>Visual streak counter di home screen</li>
+                    <li>Push notification jam 8 malam: "Jangan break 12-day streak lo!"</li>
+                    <li>Streak freeze power-up (1 miss allowed per minggu)</li>
+                    <li>Social leaderboard show streak leaders</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-title">Variable Rewards</div>
+            <div class="principle-theory">B.F. Skinner</div>
+            <div class="principle-desc">
+                Unpredictable reward timing trigger dopamine release. User stay engaged hoping untuk bonus berikutnya, even when none is guaranteed.
+            </div>
+            <div class="mechanics-box">
+                <div class="mechanics-title">Implementasi</div>
+                <ul class="mechanics-list">
+                    <li>Random XP multipliers (1.5x–3x) setelah questions</li>
+                    <li>Surprise achievement unlocks mid-session</li>
+                    <li>Mystery reward chests (10% spawn rate)</li>
+                    <li>Daily spin wheel dengan varying prizes</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-title">Social Proof & Competition</div>
+            <div class="principle-theory">Cialdini's Influence</div>
+            <div class="principle-desc">
+                Liat progress peers normalize struggle dan validate effort. Competition drive engagement through FOMO dan status pursuit.
+            </div>
+            <div class="mechanics-box">
+                <div class="mechanics-title">Implementasi</div>
+                <ul class="mechanics-list">
+                    <li>Weekly leaderboard (top 10 visible)</li>
+                    <li>Counter "127 users completed this today"</li>
+                    <li>Friend progress feed di home screen</li>
+                    <li>Public achievement badges on profile</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-title">Immediate Feedback Loop</div>
+            <div class="principle-theory">Csikszentmihalyi's Flow</div>
+            <div class="principle-desc">
+                Instant validation keep user di flow state. Waiting >2 detik untuk correctness feedback break immersion dan reduce completion rates.
+            </div>
+            <div class="mechanics-box">
+                <div class="mechanics-title">Implementasi</div>
+                <ul class="mechanics-list">
+                    <li>Answer validation dalam <200ms</li>
+                    <li>Animated checkmark/X on submit</li>
+                    <li>XP counter increments immediately</li>
+                    <li>Micro-celebrations setelah correct answers</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-title">Progressive Mastery</div>
+            <div class="principle-theory">Vygotsky's ZPD</div>
+            <div class="principle-desc">
+                Adaptive difficulty keep user di Zone of Proximal Development — challenging tapi achievable. Too hard = anxiety, too easy = boredom.
+            </div>
+            <div class="mechanics-box">
+                <div class="mechanics-title">Implementasi</div>
+                <ul class="mechanics-list">
+                    <li>Difficulty adjust based on last 10 answers</li>
+                    <li>Unlock harder content setelah 80% accuracy</li>
+                    <li>Spaced repetition untuk wrong answers</li>
+                    <li>Visual skill tree shows progression path</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-title">Endowed Progress Effect</div>
+            <div class="principle-theory">Nunes & Drèze (2006)</div>
+            <div class="principle-desc">
+                Pre-seeded progress bikin user feel invested sebelum mereka beneran mulai. "Already 20% done!" increase completion rate 25%.
+            </div>
+            <div class="mechanics-box">
+                <div class="mechanics-title">Implementasi</div>
+                <ul class="mechanics-list">
+                    <li>First lesson starts at 10% progress</li>
+                    <li>Achievement badges partially filled ("3/5 complete")</li>
+                    <li>Onboarding quiz gives starter XP</li>
+                    <li>Level 1 butuh cuma 50 XP (easy first win)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="implementation-section">
+            <div class="section-title">Technical Implementation Details</div>
+            
+            <div class="impl-card">
+                <div class="impl-header">
+                    <div class="impl-name">Streak System</div>
+                    <div class="impl-tag">Core Loop</div>
+                </div>
+                <div class="impl-desc">
+                    UTC-based streak tracking dengan streak-freeze mechanic dan push notification triggers.
+                </div>
+                <div class="impl-details">
+                    <div class="impl-detail"><strong>Storage:</strong> lastActiveDate, currentStreak, longestStreak, freezeCount</div>
+                    <div class="impl-detail"><strong>Logic:</strong> Reset at UTC midnight kalau gap >24h (unless freeze active)</div>
+                    <div class="impl-detail"><strong>Notification:</strong> Daily jam 8 malam local time kalau no activity yet</div>
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-header">
+                    <div class="impl-name">XP & Rewards Engine</div>
+                    <div class="impl-tag">Gamification</div>
+                </div>
+                <div class="impl-desc">
+                    Variable reward system dengan weighted randomness dan multiplier stacking.
+                </div>
+                <div class="impl-details">
+                    <div class="impl-detail"><strong>Base XP:</strong> 10 per correct answer, 0 untuk incorrect</div>
+                    <div class="impl-detail"><strong>Multiplier:</strong> 15% chance 1.5x, 8% chance 2x, 2% chance 3x</div>
+                    <div class="impl-detail"><strong>Bonus:</strong> Perfect streak (+50 XP), speed bonus (<5s = +20 XP)</div>
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-header">
+                    <div class="impl-name">Adaptive Difficulty</div>
+                    <div class="impl-tag">AI Engine</div>
+                </div>
+                <div class="impl-desc">
+                    Real-time difficulty adjustment based on rolling accuracy window.
+                </div>
+                <div class="impl-details">
+                    <div class="impl-detail"><strong>Window:</strong> Last 10 answers (sliding average)</div>
+                    <div class="impl-detail"><strong>Thresholds:</strong> <60% = easier, 60-80% = same, >80% = harder</div>
+                    <div class="impl-detail"><strong>Adjustment:</strong> Question difficulty ±1 level (5 levels total)</div>
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-header">
+                    <div class="impl-name">Social Features</div>
+                    <div class="impl-tag">Engagement</div>
+                </div>
+                <div class="impl-desc">
+                    Weekly leaderboard dengan privacy controls dan anti-cheat validation.
+                </div>
+                <div class="impl-details">
+                    <div class="impl-detail"><strong>Scope:</strong> Resets every Monday UTC 00:00</div>
+                    <div class="impl-detail"><strong>Ranking:</strong> Total XP earned minggu ini (not cumulative)</div>
+                    <div class="impl-detail"><strong>Privacy:</strong> Users bisa opt out (hidden from public board)</div>
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-header">
+                    <div class="impl-name">Achievement System</div>
+                    <div class="impl-tag">Progression</div>
+                </div>
+                <div class="impl-desc">
+                    Tiered badge system dengan rarity levels dan progress tracking.
+                </div>
+                <div class="impl-details">
+                    <div class="impl-detail"><strong>Tiers:</strong> Bronze (common), Silver (rare), Gold (epic)</div>
+                    <div class="impl-detail"><strong>Categories:</strong> Streaks, XP milestones, perfect scores, speed</div>
+                    <div class="impl-detail"><strong>Display:</strong> Progress bars ("850/1000 XP to Gold Scholar")</div>
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-header">
+                    <div class="impl-name">Notification Strategy</div>
+                    <div class="impl-tag">Retention</div>
+                </div>
+                <div class="impl-desc">
+                    Context-aware push notifications dengan frequency caps dan A/B tested copy.
+                </div>
+                <div class="impl-details">
+                    <div class="impl-detail"><strong>Triggers:</strong> Streak risk (8PM), achievement unlock, leaderboard rank</div>
+                    <div class="impl-detail"><strong>Rate Limit:</strong> Max 1 notification per 12 jam (avoid spam)</div>
+                    <div class="impl-detail"><strong>Copy A/B:</strong> Loss-framed ("Jangan lose") vs gain-framed ("Earn bonus")</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="metrics-section">
+            <div class="metrics-title">Validated Impact Metrics</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">61%</div>
+                    <div class="metric-label">D30 Retention</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">67%</div>
+                    <div class="metric-label">Daily Streakers</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3.2x</div>
+                    <div class="metric-label">Session Length</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">85%</div>
+                    <div class="metric-label">In Flow Zone</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

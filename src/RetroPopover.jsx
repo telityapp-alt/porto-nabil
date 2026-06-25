@@ -338,11 +338,20 @@ export default function RetroPopover({ app, onClose }) {
                     <p className="pop-phase-desc">{currentPhase.desc}</p>
                     <div className="pop-phase-img-slot">
                       {currentPhase.image ? (
-                        <img
-                          src={currentPhase.image}
-                          alt={currentPhase.phase}
-                          className="pop-phase-img"
-                        />
+                        currentPhase.image.endsWith('.html') ? (
+                          <iframe
+                            src={currentPhase.image}
+                            title={currentPhase.phase}
+                            className="pop-phase-iframe"
+                            frameBorder="0"
+                          />
+                        ) : (
+                          <img
+                            src={currentPhase.image}
+                            alt={currentPhase.phase}
+                            className="pop-phase-img"
+                          />
+                        )
                       ) : (
                         <div className="pop-phase-img-ph">
                           <span>Screenshot · {currentPhase.phase}</span>

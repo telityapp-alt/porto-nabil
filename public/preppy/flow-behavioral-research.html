@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behavioral Research Framework</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fffdf8; padding: 32px; max-width: 100%; overflow-x: hidden; }
+        .flow-container { background: #fffdf8; border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 10px; padding: 40px; max-width: 100%; box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        .stage-card { background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 24px; margin-bottom: 16px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); position: relative; }
+        .stage-number { position: absolute; top: -10px; left: 20px; background: #11222b; color: #f6eddc; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+        .stage-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 8px; margin-top: 8px; letter-spacing: -0.01em; }
+        .stage-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 12px; }
+        .stage-tag { display: inline-block; padding: 4px 10px; background: #11222b; color: #f6eddc; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stage-tag.secondary { background: #f6a61e; color: #11222b; }
+        .stage-tag.tertiary { background: #c48a28; color: #fffdf8; }
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        .frameworks-section { background: linear-gradient(180deg, #f9f7f2 0%, #f3f0ea 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 28px; margin-top: 24px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .section-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 20px; text-align: center; letter-spacing: -0.01em; }
+        .framework-card { background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #f6a61e; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .framework-name { font-size: 14px; font-weight: 800; color: #11222b; margin-bottom: 4px; letter-spacing: -0.01em; }
+        .framework-author { font-size: 11px; color: #f6a61e; font-weight: 700; margin-bottom: 8px; }
+        .framework-concept { font-size: 12px; line-height: 1.5; color: #32425b; }
+        .insights-section { padding: 20px; background: #fff3cd; border: 1px solid #e0c878; border-left-width: 3px; border-left-color: #f6a61e; border-radius: 6px; margin-top: 24px; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .insights-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 16px; letter-spacing: -0.01em; }
+        .insights-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .insights-list li { font-size: 12px; line-height: 1.5; color: #32425b; padding-left: 18px; position: relative; }
+        .insights-list li::before { content: '→'; position: absolute; left: 0; color: #f6a61e; font-weight: 800; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Behavioral Research Framework</div>
+            <div class="flow-subtitle">Membedah Psychology Duolingo untuk High-Stakes Learning</div>
+        </div>
+        
+        <div class="stage-card">
+            <div class="stage-number">1</div>
+            <div class="stage-title">Literature Review</div>
+            <div class="stage-desc">
+                Studi komprehensif tentang behavioral psychology framework yang dipakai produk habit-forming yang sukses.
+            </div>
+            <span class="stage-tag">Research</span>
+        </div>
+        
+        <div class="stage-card">
+            <div class="stage-number">2</div>
+            <div class="stage-title">Duolingo Deconstruction</div>
+            <div class="stage-desc">
+                Reverse-engineer semua engagement mechanic: streak system, XP rewards, leaderboards, push notifications, lesson structure.
+            </div>
+            <span class="stage-tag">Analysis</span>
+        </div>
+        
+        <div class="stage-card">
+            <div class="stage-number">3</div>
+            <div class="stage-title">Framework Mapping</div>
+            <div class="stage-desc">
+                Map setiap mechanic Duolingo ke underlying psychological principle dan research yang support.
+            </div>
+            <span class="stage-tag">Synthesis</span>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="stage-card">
+            <div class="stage-number">4</div>
+            <div class="stage-title">Context Analysis</div>
+            <div class="stage-desc">
+                Identifikasi perbedaan kunci: high-stakes testing punya anxiety lebih tinggi, konten lebih panjang, dan konsekuensi lebih serius dibanding language learning.
+            </div>
+            <span class="stage-tag secondary">Strategy</span>
+        </div>
+        
+        <div class="stage-card">
+            <div class="stage-number">5</div>
+            <div class="stage-title">Adaptation Rules</div>
+            <div class="stage-desc">
+                Define cara modifikasi tiap mechanic: reduce friction untuk user yang anxiety-prone, increase reward frequency untuk difficult content, add social proof untuk credibility.
+            </div>
+            <span class="stage-tag secondary">Design</span>
+        </div>
+        
+        <div class="stage-card">
+            <div class="stage-number">6</div>
+            <div class="stage-title">Prototype Mechanics</div>
+            <div class="stage-desc">
+                Build low-fidelity prototype dari core loops: daily streak recovery, XP calibration, achievement unlock timing, notification cadence.
+            </div>
+            <span class="stage-tag secondary">Prototype</span>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="stage-card">
+            <div class="stage-number">7</div>
+            <div class="stage-title">User Testing</div>
+            <div class="stage-desc">
+                Test dengan real user yang lagi prepare IELTS/CPNS. Measure engagement, completion rates, emotional response, dan perceived value.
+            </div>
+            <span class="stage-tag tertiary">Validation</span>
+        </div>
+        
+        <div class="stage-card">
+            <div class="stage-number">8</div>
+            <div class="stage-title">Behavioral Metrics</div>
+            <div class="stage-desc">
+                Track: session length, return rate, streak maintenance, feature discovery, progression velocity, social engagement.
+            </div>
+            <span class="stage-tag tertiary">Analytics</span>
+        </div>
+        
+        <div class="stage-card">
+            <div class="stage-number">9</div>
+            <div class="stage-title">Iteration Loop</div>
+            <div class="stage-desc">
+                Refine mechanics based on data. Adjust reward timing, difficulty curves, dan notification triggers sampai retention target tercapai.
+            </div>
+            <span class="stage-tag tertiary">Optimize</span>
+        </div>
+        
+        <div class="frameworks-section">
+            <div class="section-title">Core Psychology Frameworks</div>
+            
+            <div class="framework-card">
+                <div class="framework-name">BJ Fogg's Behavior Model</div>
+                <div class="framework-author">Dr. BJ Fogg, Stanford</div>
+                <div class="framework-concept">
+                    B = MAT (Behavior = Motivation × Ability × Trigger). Focus pada reduce ability barriers (bikin learning lebih mudah) dan increase trigger effectiveness.
+                </div>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-name">Hooked Model</div>
+                <div class="framework-author">Nir Eyal</div>
+                <div class="framework-concept">
+                    Trigger → Action → Variable Reward → Investment. User invest waktu/data, creating commitment yang bawa mereka balik lagi.
+                </div>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-name">Flow State Theory</div>
+                <div class="framework-author">Mihaly Csikszentmihalyi</div>
+                <div class="framework-concept">
+                    Optimal challenge-skill balance. Questions adapt difficulty buat keep user di flow zone — not too hard (anxiety), not too easy (boredom).
+                </div>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-name">Loss Aversion</div>
+                <div class="framework-author">Kahneman & Tversky</div>
+                <div class="framework-concept">
+                    Orang lebih takut losing daripada gaining. Streaks leverage ini: user ga mau break progress mereka, driving daily returns.
+                </div>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-name">Operant Conditioning</div>
+                <div class="framework-author">B.F. Skinner</div>
+                <div class="framework-concept">
+                    Variable ratio reinforcement schedules (unpredictable rewards) create strongest behavior patterns. XP bonuses trigger dopamine release.
+                </div>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-name">Self-Determination Theory</div>
+                <div class="framework-author">Deci & Ryan</div>
+                <div class="framework-concept">
+                    Intrinsic motivation butuh autonomy (user choose path), competence (clear progress), dan relatedness (social proof via leaderboards).
+                </div>
+            </div>
+        </div>
+        
+        <div class="insights-section">
+            <div class="insights-title">Key Insights dari Research</div>
+            <ul class="insights-list">
+                <li><strong>Streaks adalah retention driver terkuat</strong> — 67% daily active users punya streak >7 hari (data Duolingo)</li>
+                <li><strong>Variable rewards outperform fixed rewards 3:1</strong> — unpredictable XP bonuses increase engagement 40%</li>
+                <li><strong>Social proof reduce anxiety di high-stakes context</strong> — liat progress peers normalize struggle dan build credibility</li>
+                <li><strong>Immediate feedback loops itu critical</strong> — waiting >2 detik untuk answer validation break flow dan reduce completion</li>
+                <li><strong>Progressive mastery prevent drop-off</strong> — adaptive difficulty keep 85% user di optimal challenge zone vs 45% dengan fixed difficulty</li>
+                <li><strong>Endowed progress effect boost conversion</strong> — pre-seeded progress bars increase completion rate 25% (Nunes & Drèze, 2006)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

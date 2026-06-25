@@ -1,48 +1,6 @@
 import React from "react";
 import RetroPopover from "./RetroPopover";
-
-const mockApps = [
-  {
-    id: 1,
-    name: "Signal board",
-    tagline: "Realtime funnels and cohort health analytics cockpit",
-    image: "/lib-signal-board.png",
-    upvotes: 428,
-    category: "Analytics",
-  },
-  {
-    id: 2,
-    name: "Flow pilot",
-    tagline: "Onboarding command center for activation checkpoints",
-    image: "/lib-flow-pilot.png",
-    upvotes: 315,
-    category: "Analytics",
-  },
-  {
-    id: 3,
-    name: "Warehouse one",
-    tagline: "Data workspace for models, syncs, and QA",
-    image: "/lib-warehouse-one.png",
-    upvotes: 289,
-    category: "Productivity",
-  },
-  {
-    id: 4,
-    name: "Issue radar",
-    tagline: "Debug investigation hub for alerts and traces",
-    image: "/lib-issue-radar.png",
-    upvotes: 194,
-    category: "Developer Tools",
-  },
-  {
-    id: 5,
-    name: "Launch deck",
-    tagline: "Feature rollout control and segment impact reads",
-    image: "/lib-launch-deck.png",
-    upvotes: 156,
-    category: "Developer Tools",
-  },
-];
+import { libraryCards } from "./App";
 
 function SearchIcon() {
   return (
@@ -67,6 +25,8 @@ function CaretUpIcon() {
 
 const categories = [
   "All",
+  "Live",
+  "On Development",
   "Analytics",
   "Developer Tools",
   "Productivity",
@@ -113,12 +73,23 @@ export default function AppsList() {
   const [activeCategory, setActiveCategory] = React.useState("All");
   const [selectedApp, setSelectedApp] = React.useState(null);
 
-  const filteredApps = mockApps.filter((app) => {
+  const appsData = React.useMemo(() => {
+    return libraryCards.map((card, i) => ({
+      id: i + 1,
+      ...card,
+      tagline: card.role, // map role to tagline for the UI
+      category: card.team, // map team to category
+      upvotes: 150 + i * 23, // static mock upvotes
+      status: card.status || "On Development", // default status
+    }));
+  }, []);
+
+  const filteredApps = appsData.filter((app) => {
     const matchesSearch =
       app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       app.tagline.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory =
-      activeCategory === "All" || app.category === activeCategory;
+      activeCategory === "All" || app.category === activeCategory || app.status === activeCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -214,6 +185,9 @@ export default function AppsList() {
                     </span>
                     <span className="app-meta-tag">
                       {app.category || "Analytics"}
+                    </span>
+                    <span className="app-meta-tag">
+                      {app.status}
                     </span>
                   </div>
                 </div>

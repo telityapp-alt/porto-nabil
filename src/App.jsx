@@ -22,6 +22,7 @@ import Footer from "./Footer";
 import HppCalculatorPage from "./HppCalculatorPage";
 import FranchisePage from "./FranchisePage";
 import FranchiseMethodPage from "./FranchiseMethodPage";
+import PreppyPage from "./PreppyPage";
 
 const tabs = [
   {
@@ -223,12 +224,127 @@ export const realShowcaseItems = [
   { img: "/showcase-zhengda.jpg", brand: "Zhengda" },
 ];
 
-const libraryCards = [
+export const libraryCards = [
+  {
+    name: "Preppy",
+    role: "Gamified Learning Platform",
+    place: "Scholarship & High-Stakes Test Prep",
+    team: "EdTech Product",
+    status: "Live on Play Store",
+    image: "/preppy/hero-web.png",
+    overview:
+      "Preppy adalah platform belajar bergaya Duolingo untuk persiapan beasiswa, IELTS, dan CPNS. Kami mengubah materi berat dan membosankan menjadi pengalaman belajar yang engaging melalui gamification psychology, AI personalization, dan guerrilla marketing strategy.",
+    stats: [
+      { label: "30-Day Retention", value: "61%" },
+      { label: "Free-to-Paid CVR", value: "18%" },
+      { label: "Scholarship Database", value: "5000+" },
+    ],
+    highlights: [
+      "Duolingo-inspired gamification with psychology principles",
+      "Cross-platform: PWA + Native (React + Capacitor)",
+      "Freemium growth loop dengan guerrilla marketing",
+    ],
+    strategy: [
+      {
+        phase: "Behavioral Research",
+        desc: "Kami mempelajari psychology framework di balik Duolingo (BJ Fogg's Behavior Model, Hooked Model, Flow Theory) dan mengadaptasinya untuk konteks high-stakes learning.",
+        image: "/preppy/flow-behavioral-research.html",
+      },
+      {
+        phase: "Gamification Design",
+        desc: "Implementasi 6 core principles: Loss Aversion (streaks), Variable Rewards (XP bonuses), Social Proof (leaderboards), Immediate Feedback, Progressive Mastery, dan Endowed Progress Effect.",
+        image: "/preppy/flow-gamification-design.html",
+      },
+      {
+        phase: "Guerrilla Marketing Funnel",
+        desc: "Lead dengan 5000+ database beasiswa gratis (awareness), tease AI prediction (consideration), unlock premium strategy (conversion), retain via daily streaks (retention).",
+        image: "/preppy/flow-marketing-funnel.html",
+      },
+      {
+        phase: "Cross-Platform Architecture",
+        desc: "React + Capacitor + PWA: satu codebase untuk web, Android, iOS. Monorepo dengan pnpm workspaces, TanStack Query state management, JWT auth, hybrid real-time (polling + Socket.io).",
+        image: "/preppy/flow-architecture.html",
+      },
+    ],
+    userJourney: [
+      {
+        step: "Discovery via Free Database",
+        tag: "Day 1",
+        desc: "User menemukan Preppy melalui pencarian beasiswa. Database 5000+ entries gratis membangun trust dan reciprocity.",
+        callout:
+          "70% visitors explore database — first touch dengan brand",
+      },
+      {
+        step: "AI Prediction Hook",
+        tag: "Day 1-3",
+        desc: "User mencoba AI college prediction tool (free tier). Mereka experience personalized value dan lihat potensi platform.",
+        callout:
+          "42% yang explore database mencoba AI prediction",
+      },
+      {
+        step: "Premium Conversion",
+        tag: "Day 3-7",
+        desc: "User sudah invested time dan data. Premium unlock (full AI strategy, mock interview, adaptive testing) solve pain point mereka untuk competitive edge.",
+        callout:
+          "18% convert to paid within 7 days (3x industry average)",
+      },
+      {
+        step: "Habit Formation",
+        tag: "Day 7-30",
+        desc: "Daily streaks, push notifications, leaderboards, dan achievement unlocks create habit loop. Loss aversion membuat mereka tidak mau break progress.",
+        callout:
+          "61% retention at D30 (far exceeds EdTech average of 20-25%)",
+      },
+    ],
+    richContent: {
+      title: "Deep Dive: Psychology of Engagement",
+      blocks: [
+        {
+          type: "text",
+          content:
+            "High-stakes testing (IELTS, CPNS, scholarship essays) traditionally sucks. Expensive prep courses (Rp 2-5 million), boring materials, and 3-5% completion rates for self-study. Kami memecahkan ini dengan gamification psychology yang proven work di Duolingo, tapi untuk konteks yang jauh lebih serius.",
+        },
+        {
+          type: "callout",
+          content:
+            "Insight kunci: Motivation bukan masalah personal discipline. Ini masalah system design. Struktur yang tepat membuat engagement menjadi effortless.",
+        },
+        {
+          type: "list",
+          items: [
+            "Loss Aversion & Streaks — Kahneman's Prospect Theory",
+            "Variable Rewards — B.F. Skinner's Operant Conditioning",
+            "Social Proof & Competition — Cialdini's Influence",
+            "Immediate Feedback Loop — Flow State (Csikszentmihalyi)",
+            "Progressive Mastery — Zone of Proximal Development (Vygotsky)",
+            "Endowed Progress Effect — Nunes & Drèze Research",
+          ],
+        },
+        {
+          type: "kv",
+          rows: [
+            { label: "Tech Stack", value: "React + Vite + Capacitor + Tailwind" },
+            { label: "Platform", value: "Web (PWA) + iOS + Android" },
+            {
+              label: "Animation",
+              value: "Framer Motion for Duolingo-level polish",
+            },
+            {
+              label: "Status",
+              value: "Live on Google Play Store",
+            },
+          ],
+        },
+      ],
+    },
+    gallery: ["/preppy/hero-web.png", "/preppy/screen-1.webp", "/preppy/screen-2.webp"],
+  },
   {
     name: "Signal board",
     role: "Product analytics cockpit",
     place: "Realtime funnels and cohort health",
     team: "Growth systems",
+    status: "Live",
     image: "/lib-signal-board.png",
     overview:
       "Signal board adalah sistem analitik produk yang dirancang bersama tim growth bisnis Anda. Kami tidak sekadar pasang dashboard — kami rancang metrik yang relevan berdasarkan journey user nyata, lalu tampilkan dalam antarmuka yang bisa dibaca tim tanpa perlu jadi data analyst.",
@@ -347,6 +463,7 @@ const libraryCards = [
     role: "Onboarding command center",
     place: "Activation checkpoints and drop-offs",
     team: "Journey team",
+    status: "Live",
     image: "/lib-flow-pilot.png",
     overview:
       "Flow pilot menyelesaikan masalah klasik onboarding: user daftar, tapi tidak pernah sampai ke aha moment. Kami memetakan setiap titik drop-off, merancang ulang flow dengan pendekatan psikologi, dan memberi tim Anda visibilitas penuh atas perjalanan aktivasi pengguna.",
@@ -465,6 +582,7 @@ const libraryCards = [
     role: "Data workspace",
     place: "Models, syncs, dan warehouse QA",
     team: "Data tools",
+    status: "On Development",
     image: "/lib-warehouse-one.png",
     overview:
       "Warehouse one adalah ruang kerja data terpadu untuk tim yang sudah terlalu sering bekerja di antara banyak tools sekaligus. Kami konsolidasikan pipeline, buat model yang reusable, dan hadirkan satu antarmuka bersih untuk seluruh operasi data Anda.",
@@ -583,6 +701,7 @@ const libraryCards = [
     role: "Debug investigation hub",
     place: "Alerts, traces, dan replay context",
     team: "Reliability",
+    status: "On Development",
     image: "/lib-issue-radar.png",
     overview:
       "Issue radar memangkas waktu yang dihabiskan tim engineering untuk triaging bug dari jam menjadi menit. Kami rancang sistem yang menghubungkan error, log, session replay, dan deploy marker dalam satu timeline yang bisa langsung ditindaklanjuti.",
@@ -701,6 +820,7 @@ const libraryCards = [
     role: "Feature rollout control",
     place: "Flags, segments, dan impact reads",
     team: "Release team",
+    status: "On Development",
     image: "/lib-launch-deck.png",
     overview:
       "Launch deck memberi tim Anda kendali penuh atas setiap rilis fitur — dari rollout bertahap ke segmen tertentu, hingga kill switch yang bisa diaktifkan dalam hitungan detik jika ada yang tidak berjalan sesuai rencana.",
@@ -1960,6 +2080,16 @@ function App() {
             <Route index element={<DocsPage />} />
             <Route path=":docId" element={<DocsPage />} />
           </Route>
+
+          {/* Preppy Case Study */}
+          <Route
+            path="/preppy"
+            element={
+              <main className="content" style={{ padding: 0, maxWidth: "100%" }}>
+                <PreppyPage />
+              </main>
+            }
+          />
         </Routes>
         
         <Footer />

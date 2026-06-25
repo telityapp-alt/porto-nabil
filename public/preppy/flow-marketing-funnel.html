@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guerrilla Marketing Funnel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fffdf8; padding: 32px; max-width: 100%; overflow-x: hidden; }
+        .flow-container { background: #fffdf8; border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 10px; padding: 40px; max-width: 100%; box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        .funnel-stage { background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); position: relative; }
+        .stage-badge { position: absolute; top: -10px; left: 24px; padding: 6px 14px; border-radius: 16px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+        .stage-badge.awareness { background: #f6a61e; color: #11222b; }
+        .stage-badge.consideration { background: #c48a28; color: #fffdf8; }
+        .stage-badge.conversion { background: #377cf6; color: #fffdf8; }
+        .stage-badge.retention { background: #37d7c8; color: #11222b; }
+        .stage-header { margin-bottom: 16px; margin-top: 8px; }
+        .stage-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 4px; letter-spacing: -0.01em; }
+        .stage-tactic { font-size: 12px; color: #f6a61e; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .stage-metric { display: inline-block; background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 8px 16px; margin-bottom: 16px; }
+        .metric-value { font-size: 20px; font-weight: 800; color: #11222b; margin-right: 6px; }
+        .metric-label { font-size: 11px; color: #55606d; font-weight: 700; text-transform: uppercase; }
+        .content-block { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 16px; margin-bottom: 12px; }
+        .block-title { font-size: 13px; font-weight: 800; color: #11222b; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .block-desc { font-size: 12px; line-height: 1.6; color: #32425b; margin-bottom: 12px; }
+        .block-points { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .block-points li { font-size: 12px; line-height: 1.5; color: #32425b; padding-left: 18px; position: relative; }
+        .block-points li::before { content: '✓'; position: absolute; left: 0; color: #f6a61e; font-weight: 800; }
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        .strategy-section { background: linear-gradient(180deg, #f9f7f2 0%, #f3f0ea 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 28px; margin-top: 24px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .section-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 20px; text-align: center; letter-spacing: -0.01em; }
+        .strategy-card { background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #f6a61e; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .strategy-name { font-size: 14px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .strategy-desc { font-size: 12px; line-height: 1.5; color: #32425b; }
+        .psychology-section { padding: 20px; background: #fef3e2; border: 1px solid #f6d8a1; border-left-width: 3px; border-left-color: #f6a61e; border-radius: 6px; margin-top: 24px; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .psychology-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 16px; letter-spacing: -0.01em; }
+        .psychology-card { background: white; border: 1px solid #e6e0d4; border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+        .psych-principle { font-size: 13px; font-weight: 800; color: #11222b; margin-bottom: 6px; }
+        .psych-explanation { font-size: 11px; line-height: 1.5; color: #32425b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Guerrilla Marketing Funnel</div>
+            <div class="flow-subtitle">Freemium Growth Loop Powered by Psychology & Value-First Strategy</div>
+        </div>
+        
+        <div class="funnel-stage">
+            <div class="stage-badge awareness">Stage 1</div>
+            <div class="stage-header">
+                <div class="stage-title">Awareness: Hook dengan Free Value</div>
+                <div class="stage-tactic">5000+ Scholarship Database</div>
+            </div>
+            <div class="stage-metric">
+                <span class="metric-value">70%</span>
+                <span class="metric-label">Explore Database</span>
+            </div>
+            
+            <div class="content-block">
+                <div class="block-title">Tactic Breakdown</div>
+                <div class="block-desc">
+                    Lead dengan konten gratis yang beneran berguna. User yang searching beasiswa discover Preppy sebagai credible resource.
+                </div>
+                <ul class="block-points">
+                    <li>5000+ curated scholarship entries (Indonesia + global)</li>
+                    <li>Advanced filters: jurusan, negara, deadline, eligibility</li>
+                    <li>No paywall, no signup required untuk browse</li>
+                    <li>SEO-optimized pages rank untuk "beasiswa S2 luar negeri"</li>
+                </ul>
+            </div>
+            
+            <div class="content-block">
+                <div class="block-title">Psychology at Play</div>
+                <div class="block-desc">
+                    <strong>Reciprocity Principle (Cialdini):</strong> Waktu lu give first, orang feel compelled untuk give back. Free database build trust dan obligation.
+                </div>
+                <ul class="block-points">
+                    <li>User bookmark Preppy sebagai "the scholarship site"</li>
+                    <li>Brand association: Preppy = helpful, not salesy</li>
+                    <li>Lower resistance untuk future premium pitch</li>
+                    <li>Word-of-mouth: user share database dengan peers</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="funnel-stage">
+            <div class="stage-badge consideration">Stage 2</div>
+            <div class="stage-header">
+                <div class="stage-title">Consideration: Tease AI Power</div>
+                <div class="stage-tactic">Free AI College Prediction</div>
+            </div>
+            <div class="stage-metric">
+                <span class="metric-value">42%</span>
+                <span class="metric-label">Try Prediction</span>
+            </div>
+            
+            <div class="content-block">
+                <div class="block-title">Tactic Breakdown</div>
+                <div class="block-desc">
+                    Kasih user taste personalized AI. Mereka experience product value sebelum bayar sepeser pun.
+                </div>
+                <ul class="block-points">
+                    <li>Input GPA, test scores, extracurriculars (1 min form)</li>
+                    <li>AI predicts admission odds untuk 10 target universities</li>
+                    <li>Free tier show top 3 matches dengan probability %</li>
+                    <li>Premium unlock reveals full 10 + detailed strategy</li>
+                </ul>
+            </div>
+            
+            <div class="content-block">
+                <div class="block-title">Psychology at Play</div>
+                <div class="block-desc">
+                    <strong>Endowed Progress Effect (Nunes & Drèze):</strong> User udah invest waktu input data. Mereka 60% "done" — unlocking full results feels like completing, not starting.
+                </div>
+                <ul class="block-points">
+                    <li>Sunk cost fallacy: "Gua udah isi form-nya..."</li>
+                    <li>Curiosity gap: "7 matches gua yang lain apa?"</li>
+                    <li>Personalization creates ownership ("Prediction GUA")</li>
+                    <li>Social proof: "12,847 students udah pake tool ini"</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="funnel-stage">
+            <div class="stage-badge conversion">Stage 3</div>
+            <div class="stage-header">
+                <div class="stage-title">Conversion: Unlock Full Strategy</div>
+                <div class="stage-tactic">Premium Features at Decision Point</div>
+            </div>
+            <div class="stage-metric">
+                <span class="metric-value">18%</span>
+                <span class="metric-label">Convert to Paid</span>
+            </div>
+            
+            <div class="content-block">
+                <div class="block-title">Tactic Breakdown</div>
+                <div class="block-desc">
+                    User udah invested (search database, try prediction). Premium solve exact pain point mereka: competitive edge.
+                </div>
+                <ul class="block-points">
+                    <li>Unlock full 10 university predictions + acceptance odds</li>
+                    <li>AI-generated application strategy (personalized roadmap)</li>
+                    <li>Mock interview practice dengan AI feedback</li>
+                    <li>Access ke IELTS/CPNS gamified learning modules</li>
+                </ul>
+            </div>
+            
+            <div class="content-block">
+                <div class="block-title">Psychology at Play</div>
+                <div class="block-desc">
+                    <strong>Loss Aversion (Kahneman & Tversky):</strong> User takut losing partial progress lebih dari value uangnya. "Jangan lose prediction lu" > "Gain full access".
+                </div>
+                <ul class="block-points">
+                    <li>Scarcity: "Limited spots untuk mock interview minggu ini"</li>
+                    <li>Anchoring: Rp 299k/bulan feels cheap vs offline prep (Rp 2-5 juta)</li>
+                    <li>Social proof: "847 students upgrade minggu ini"</li>
+                    <li>Urgency: "Early bird discount ends dalam 48 jam"</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="funnel-stage">
+            <div class="stage-badge retention">Stage 4</div>
+            <div class="stage-header">
+                <div class="stage-title">Retention: Build Daily Habit</div>
+                <div class="stage-tactic">Gamification Loops + Push Notifications</div>
+            </div>
+            <div class="stage-metric">
+                <span class="metric-value">61%</span>
+                <span class="metric-label">D30 Retention</span>
+            </div>
+            
+            <div class="content-block">
+                <div class="block-title">Tactic Breakdown</div>
+                <div class="block-desc">
+                    Hook user dengan daily streaks dan variable rewards. Bikin returning jadi habitual, not optional.
+                </div>
+                <ul class="block-points">
+                    <li>Daily streak counter dengan freeze power-up (1 miss/minggu)</li>
+                    <li>Push notification jam 8 malam: "Jangan break 12-day streak lo!"</li>
+                    <li>XP system dengan random multipliers (1.5x–3x bonus)</li>
+                    <li>Weekly leaderboard resets (fresh competition tiap Senin)</li>
+                </ul>
+            </div>
+            
+            <div class="content-block">
+                <div class="block-title">Psychology at Play</div>
+                <div class="block-desc">
+                    <strong>Variable Ratio Reinforcement (Skinner):</strong> Unpredictable rewards create strongest habit loops. User balik hoping untuk next XP bonus, even waktu none guaranteed.
+                </div>
+                <ul class="block-points">
+                    <li>Loss aversion (streaks) > gain motivation (XP rewards)</li>
+                    <li>Social proof (leaderboards) drive competitive engagement</li>
+                    <li>Micro-celebrations setelah tiap win (dopamine hits)</li>
+                    <li>Progress bars create "just one more" pull (Zeigarnik effect)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="strategy-section">
+            <div class="section-title">Kenapa Funnel Ini Work: Research-Backed Principles</div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Value-First, Not Feature-First</div>
+                <div class="strategy-desc">
+                    Funnel SaaS tradisional lead dengan product demos. Kita lead dengan solved problems. Database jawab "Di mana gua bisa apply?" sebelum minta duit. User trust kita sebelum kita pitch.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Graduated Value Reveals</div>
+                <div class="strategy-desc">
+                    Tiap stage unlock more personalized value. Free database → free basic prediction → paid full strategy. User naik value ladder naturally, bukan through hard sales.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Investment Before Conversion</div>
+                <div class="strategy-desc">
+                    User invest waktu (search database, fill prediction form) sebelum liat price. Sunk cost + endowed progress bikin premium feels like completion, bukan new purchase.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Psychological Triggers at Each Gate</div>
+                <div class="strategy-desc">
+                    Stage 1: Reciprocity. Stage 2: Curiosity gap + endowed progress. Stage 3: Loss aversion + scarcity. Stage 4: Variable rewards + streak protection. Right principle, right moment.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Retention = Reverse-Engineered Addiction</div>
+                <div class="strategy-desc">
+                    Daily streaks + unpredictable rewards = variable ratio reinforcement, mechanic yang sama di balik slot machines. Ethical application: kita addict user ke learning, bukan gambling.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Metrics Over Opinions</div>
+                <div class="strategy-desc">
+                    Setiap tactic di-A/B test. "Jangan lose streak lu" (loss-framed) outperform "Earn bonus XP" (gain-framed) by 34%. Copy, timing, visuals — semua data-driven.
+                </div>
+            </div>
+        </div>
+        
+        <div class="psychology-section">
+            <div class="psychology-title">Core Psychology Principles Applied</div>
+            
+            <div class="psychology-card">
+                <div class="psych-principle">Reciprocity Principle (Cialdini)</div>
+                <div class="psych-explanation">
+                    Stage 1 kasih free value dulu (scholarship database). User feel obligation untuk reciprocate dengan try prediction, terus convert ke paid. Giving before asking build trust.
+                </div>
+            </div>
+            
+            <div class="psychology-card">
+                <div class="psych-principle">Endowed Progress Effect (Nunes & Drèze, 2006)</div>
+                <div class="psych-explanation">
+                    Stage 2 bikin user feel 60% done setelah fill prediction form. Unlocking full results feels like completing work yang udah mereka mulai, bukan beginning new purchase.
+                </div>
+            </div>
+            
+            <div class="psychology-card">
+                <div class="psych-principle">Loss Aversion (Kahneman & Tversky)</div>
+                <div class="psych-explanation">
+                    Stage 3 frame premium sebagai "Jangan lose prediction lu" vs "Gain full access". Orang takut losing partial progress 2.5x lebih dari value equivalent gain.
+                </div>
+            </div>
+            
+            <div class="psychology-card">
+                <div class="psych-principle">Variable Ratio Reinforcement (Skinner)</div>
+                <div class="psych-explanation">
+                    Stage 4 pake unpredictable XP bonuses (slot machine mechanic). Variable rewards create stronger habits daripada fixed rewards. User balik hoping untuk next bonus.
+                </div>
+            </div>
+            
+            <div class="psychology-card">
+                <div class="psych-principle">Social Proof (Cialdini)</div>
+                <div class="psych-explanation">
+                    "12,847 students udah pake ini" (Stage 2) + "847 upgrade minggu ini" (Stage 3) + leaderboards (Stage 4). Humans follow the herd — social validation reduce risk perception.
+                </div>
+            </div>
+            
+            <div class="psychology-card">
+                <div class="psych-principle">Zeigarnik Effect</div>
+                <div class="psych-explanation">
+                    Incomplete tasks (progress bars, partial predictions, unfinished lessons) create mental tension. User balik untuk "close the loop" dan relieve cognitive dissonance.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

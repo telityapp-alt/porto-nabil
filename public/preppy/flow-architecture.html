@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Platform Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fffdf8; padding: 32px; max-width: 100%; overflow-x: hidden; }
+        .flow-container { background: #fffdf8; border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 10px; padding: 40px; max-width: 100%; box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        .arch-layer { background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 24px; margin-bottom: 16px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); position: relative; }
+        .layer-badge { position: absolute; top: -10px; left: 20px; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+        .layer-badge.frontend { background: #377cf6; color: #fffdf8; }
+        .layer-badge.mobile { background: #f6a61e; color: #11222b; }
+        .layer-badge.backend { background: #c48a28; color: #fffdf8; }
+        .layer-badge.infra { background: #37d7c8; color: #11222b; }
+        .layer-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 16px; margin-top: 8px; letter-spacing: -0.01em; }
+        .layer-stack { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 14px; margin-bottom: 10px; }
+        .stack-label { font-size: 11px; font-weight: 800; color: #55606d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .stack-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .stack-list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .stack-list li::before { content: '•'; position: absolute; left: 0; color: #f6a61e; font-weight: 800; }
+        .layer-why { font-size: 11px; line-height: 1.5; color: #55606d; font-style: italic; padding: 10px; background: #fef3e2; border-left: 2px solid #f6a61e; border-radius: 4px; margin-top: 10px; }
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        .decisions-section { background: linear-gradient(180deg, #f9f7f2 0%, #f3f0ea 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 28px; margin-top: 24px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .section-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 20px; text-align: center; letter-spacing: -0.01em; }
+        .decision-card { background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #377cf6; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .decision-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .decision-name { font-size: 14px; font-weight: 800; color: #11222b; letter-spacing: -0.01em; }
+        .decision-tag { padding: 4px 8px; background: #11222b; color: #f6eddc; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .decision-problem { font-size: 12px; line-height: 1.5; color: #32425b; margin-bottom: 10px; }
+        .decision-solution { background: #e8f4f8; border-left: 2px solid #377cf6; padding: 10px; border-radius: 4px; }
+        .decision-solution strong { font-size: 11px; font-weight: 800; color: #11222b; display: block; margin-bottom: 6px; }
+        .decision-solution p { font-size: 11px; line-height: 1.5; color: #32425b; }
+        .tradeoffs-section { padding: 20px; background: #fff3cd; border: 1px solid #e0c878; border-left-width: 3px; border-left-color: #f6a61e; border-radius: 6px; margin-top: 24px; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .tradeoffs-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 16px; text-align: center; letter-spacing: -0.01em; }
+        .tradeoff-card { background: white; border: 1px solid #e6e0d4; border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+        .tradeoff-decision { font-size: 13px; font-weight: 800; color: #11222b; margin-bottom: 6px; }
+        .tradeoff-content { font-size: 11px; line-height: 1.5; color: #32425b; }
+        .tradeoff-content strong { color: #11222b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Cross-Platform Architecture</div>
+            <div class="flow-subtitle">React + Capacitor + PWA: One Codebase, Three Platforms</div>
+        </div>
+        
+        <div class="arch-layer">
+            <div class="layer-badge frontend">Web</div>
+            <div class="layer-title">Web Frontend</div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Framework</div>
+                <ul class="stack-list">
+                    <li>React 18 (Vite bundler)</li>
+                    <li>React Router 6 (SPA routing)</li>
+                    <li>TanStack Query (data fetching)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Styling</div>
+                <ul class="stack-list">
+                    <li>Tailwind CSS (utility-first)</li>
+                    <li>Framer Motion (animations)</li>
+                    <li>Lucide Icons</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Progressive Web App</div>
+                <ul class="stack-list">
+                    <li>Service Worker (offline)</li>
+                    <li>Web App Manifest</li>
+                    <li>IndexedDB (local cache)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-why">
+                <strong>Kenapa React + Vite:</strong> Fastest DX (HMR <200ms), largest ecosystem, gampang hire. Vite beat Webpack 10-20x pada cold start.
+            </div>
+        </div>
+        
+        <div class="arch-layer">
+            <div class="layer-badge mobile">Mobile</div>
+            <div class="layer-title">Native Mobile</div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Capacitor Bridge</div>
+                <ul class="stack-list">
+                    <li>React codebase yang sama</li>
+                    <li>Native APIs (camera, push, storage)</li>
+                    <li>Android + iOS builds</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Native Features</div>
+                <ul class="stack-list">
+                    <li>@capacitor/push-notifications</li>
+                    <li>@capacitor/storage (secure)</li>
+                    <li>@capacitor/haptics</li>
+                    <li>@capacitor/status-bar</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Deployment</div>
+                <ul class="stack-list">
+                    <li>Google Play Store (live)</li>
+                    <li>iOS App Store (pending)</li>
+                    <li>OTA updates via Appflow</li>
+                </ul>
+            </div>
+            
+            <div class="layer-why">
+                <strong>Kenapa Capacitor over React Native:</strong> Share 95% code dengan web. No native rewrites. PWA fallback kalau stores reject. Faster iteration.
+            </div>
+        </div>
+        
+        <div class="arch-layer">
+            <div class="layer-badge backend">Backend</div>
+            <div class="layer-title">Backend Services</div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">API Layer</div>
+                <ul class="stack-list">
+                    <li>Node.js + Express</li>
+                    <li>RESTful endpoints</li>
+                    <li>JWT authentication</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Database</div>
+                <ul class="stack-list">
+                    <li>PostgreSQL (relational)</li>
+                    <li>Redis (caching, sessions)</li>
+                    <li>S3 (file storage)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">AI Engine</div>
+                <ul class="stack-list">
+                    <li>Python microservice</li>
+                    <li>Scikit-learn (prediction model)</li>
+                    <li>OpenAI API (mock interview)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-why">
+                <strong>Kenapa Node.js:</strong> JavaScript everywhere (frontend devs bisa nulis backend). Best ecosystem untuk real-time (Socket.io untuk live leaderboards).
+            </div>
+        </div>
+        
+        <div class="arch-layer">
+            <div class="layer-badge infra">Infra</div>
+            <div class="layer-title">Infrastructure</div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Hosting</div>
+                <ul class="stack-list">
+                    <li>Vercel (web frontend)</li>
+                    <li>Railway (backend + DB)</li>
+                    <li>Cloudflare CDN</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">CI/CD</div>
+                <ul class="stack-list">
+                    <li>GitHub Actions</li>
+                    <li>Auto-deploy on main push</li>
+                    <li>Preview deploys per PR</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Monitoring</div>
+                <ul class="stack-list">
+                    <li>Sentry (error tracking)</li>
+                    <li>Mixpanel (analytics)</li>
+                    <li>Uptime Robot (health checks)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-why">
+                <strong>Kenapa Vercel + Railway:</strong> Zero-config deploys. Auto-scaling. Free tier cover MVP. No DevOps overhead untuk small team.
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="decisions-section">
+            <div class="section-title">Key Architecture Decisions & Rationale</div>
+            
+            <div class="decision-card">
+                <div class="decision-header">
+                    <div class="decision-name">Monorepo vs. Multi-Repo</div>
+                    <div class="decision-tag">Monorepo</div>
+                </div>
+                <div class="decision-problem">
+                    <strong>Problem:</strong> Web + mobile + backend di separate repos = dependency hell, slow iteration, susah refactor shared logic.
+                </div>
+                <div class="decision-solution">
+                    <strong>Solution:</strong>
+                    <p>Monorepo dengan pnpm workspaces. Shared packages (@preppy/ui, @preppy/api-client) symlinked. Satu PR change web + mobile + backend sekaligus. CI run all tests together.</p>
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-header">
+                    <div class="decision-name">Server-Side Rendering (SSR)</div>
+                    <div class="decision-tag">CSR Only</div>
+                </div>
+                <div class="decision-problem">
+                    <strong>Problem:</strong> SSR improve SEO dan perceived load time, tapi add complexity (Next.js, hydration bugs, higher server costs).
+                </div>
+                <div class="decision-solution">
+                    <strong>Solution:</strong>
+                    <p>Pure CSR (Vite SPA). SEO handled via prerendering (Prerender.io) untuk marketing pages. App di balik login anyway. Faster iteration > marginal SEO gains.</p>
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-header">
+                    <div class="decision-name">State Management</div>
+                    <div class="decision-tag">TanStack Query</div>
+                </div>
+                <div class="decision-problem">
+                    <strong>Problem:</strong> Redux = boilerplate hell. Zustand = manual cache invalidation. Context API = prop drilling.
+                </div>
+                <div class="decision-solution">
+                    <strong>Solution:</strong>
+                    <p>TanStack Query untuk server state (auto-caching, background refetch, optimistic updates). Zustand untuk minimal client state (theme, auth token). Best of both worlds.</p>
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-header">
+                    <div class="decision-name">Real-Time Updates</div>
+                    <div class="decision-tag">Polling + Socket.io</div>
+                </div>
+                <div class="decision-problem">
+                    <strong>Problem:</strong> Leaderboards butuh real-time updates. WebSockets = connection management headaches at scale.
+                </div>
+                <div class="decision-solution">
+                    <strong>Solution:</strong>
+                    <p>Hybrid: Polling (tiap 30s) untuk most data. Socket.io cuma untuk leaderboard page (high engagement). Avoid keeping 10k idle connections open 24/7.</p>
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-header">
+                    <div class="decision-name">Authentication Strategy</div>
+                    <div class="decision-tag">JWT + Refresh</div>
+                </div>
+                <div class="decision-problem">
+                    <strong>Problem:</strong> Sessions = sticky backend (no horizontal scaling). Pure JWT = can't revoke tokens (security risk).
+                </div>
+                <div class="decision-solution">
+                    <strong>Solution:</strong>
+                    <p>Short-lived JWT (15 min) + refresh token di httpOnly cookie. Redis stores refresh tokens (bisa revoke). Stateless + secure + scalable.</p>
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-header">
+                    <div class="decision-name">Offline-First Architecture</div>
+                    <div class="decision-tag">Partial</div>
+                </div>
+                <div class="decision-problem">
+                    <strong>Problem:</strong> Full offline-first (CRDTs, conflict resolution) = massive complexity. Tapi user belajar on shaky mobile connections.
+                </div>
+                <div class="decision-solution">
+                    <strong>Solution:</strong>
+                    <p>Cache read-only content (lessons, questions) di IndexedDB. Writes queue di local storage, retry on reconnect. Good enough untuk 95% use cases.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tradeoffs-section">
+            <div class="tradeoffs-title">Architecture Tradeoffs & Learnings</div>
+            
+            <div class="tradeoff-card">
+                <div class="tradeoff-decision">React vs. React Native</div>
+                <div class="tradeoff-content">
+                    <strong>Pilih:</strong> React + Capacitor<br/>
+                    <strong>Tradeoff:</strong> Slightly worse native performance, tapi 10x faster iteration. Untuk use case kita (forms, text, animations), perf difference negligible. Bisa always rewrite bottlenecks di native later.
+                </div>
+            </div>
+            
+            <div class="tradeoff-card">
+                <div class="tradeoff-decision">Tailwind vs. CSS-in-JS</div>
+                <div class="tradeoff-content">
+                    <strong>Pilih:</strong> Tailwind<br/>
+                    <strong>Tradeoff:</strong> HTML jadi verbose, tapi zero runtime cost. Styled-components add 16KB bundle + runtime parsing. Untuk mobile, tiap KB matters. Tailwind wins.
+                </div>
+            </div>
+            
+            <div class="tradeoff-card">
+                <div class="tradeoff-decision">Microservices vs. Monolith</div>
+                <div class="tradeoff-content">
+                    <strong>Pilih:</strong> Modular monolith<br/>
+                    <strong>Tradeoff:</strong> Less "cool", tapi way simpler. AI service separate (Python), rest satu Node app. No inter-service networking hell. Bisa extract microservices later kalau butuh.
+                </div>
+            </div>
+            
+            <div class="tradeoff-card">
+                <div class="tradeoff-decision">GraphQL vs. REST</div>
+                <div class="tradeoff-content">
+                    <strong>Pilih:</strong> REST<br/>
+                    <strong>Tradeoff:</strong> Over-fetching data, tapi way simpler untuk cache (Cloudflare CDN). GraphQL = N+1 queries, complex caching, overkill untuk simple CRUD kita. REST + TanStack Query = fast enough.
+                </div>
+            </div>
+            
+            <div class="tradeoff-card">
+                <div class="tradeoff-decision">TypeScript vs. JavaScript</div>
+                <div class="tradeoff-content">
+                    <strong>Pilih:</strong> TypeScript everywhere<br/>
+                    <strong>Tradeoff:</strong> Slower initial setup, tapi catch 30% bugs at compile time. Refactoring jadi fearless. Autocomplete save hours. Non-negotiable untuk team >1 orang.
+                </div>
+            </div>
+            
+            <div class="tradeoff-card">
+                <div class="tradeoff-decision">Self-Host vs. Cloud</div>
+                <div class="tradeoff-content">
+                    <strong>Pilih:</strong> Cloud (Vercel + Railway)<br/>
+                    <strong>Tradeoff:</strong> Vendor lock-in risk, tapi zero DevOps time. Self-hosting = managing Kubernetes, scaling, security patches. Sebagai 2-person team, cloud adalah 10x ROI.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
