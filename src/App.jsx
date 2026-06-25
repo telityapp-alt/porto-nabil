@@ -1724,6 +1724,14 @@ function App() {
                 Gratisan
               </NavLink>
               <NavLink
+                to="/franchise"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+              >
+                For Franchise
+              </NavLink>
+              <NavLink
                 to="/odoo"
                 className={({ isActive }) =>
                   isActive ? "active-nav" : undefined
@@ -1742,14 +1750,6 @@ function App() {
                   <NavLink to="/solutions/odoo-implementation" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Odoo Implementation</NavLink>
                 </div>
               </div>
-              <NavLink
-                to="/franchise"
-                className={({ isActive }) =>
-                  isActive ? "active-nav" : undefined
-                }
-              >
-                For Franchise
-              </NavLink>
               <NavLink
                 to="/pricing"
                 className={({ isActive }) =>
@@ -1852,6 +1852,15 @@ function App() {
                 Gratisan
               </NavLink>
               <NavLink
+                to="/franchise"
+                className={({ isActive }) =>
+                  isActive ? "mobile-nav-link active-nav" : "mobile-nav-link"
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                For Franchise
+              </NavLink>
+              <NavLink
                 to="/odoo"
                 className={({ isActive }) =>
                   isActive ? "active-nav" : undefined
@@ -1868,15 +1877,6 @@ function App() {
                 onClick={() => setMenuOpen(false)}
               >
                 Solutions
-              </NavLink>
-              <NavLink
-                to="/franchise"
-                className={({ isActive }) =>
-                  isActive ? "mobile-nav-link active-nav" : "mobile-nav-link"
-                }
-                onClick={() => setMenuOpen(false)}
-              >
-                For Franchise
               </NavLink>
               <NavLink
                 to="/pricing"
