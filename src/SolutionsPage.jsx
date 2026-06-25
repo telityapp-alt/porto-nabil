@@ -234,7 +234,6 @@ export default function SolutionsPage() {
               src={currentData.bannerImage}
               alt={currentData.bannerTitle}
               className="panel-generated-image"
-              style={{ borderRadius: "8px", objectFit: "cover" }}
             />
           </div>
         </div>
