@@ -20,6 +20,8 @@ import PricingPage from "./PricingPage";
 import DocsPage from "./DocsPage";
 import Footer from "./Footer";
 import HppCalculatorPage from "./HppCalculatorPage";
+import FranchisePage from "./FranchisePage";
+import FranchiseMethodPage from "./FranchiseMethodPage";
 
 const tabs = [
   {
@@ -1741,6 +1743,14 @@ function App() {
                 </div>
               </div>
               <NavLink
+                to="/franchise"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+              >
+                For Franchise
+              </NavLink>
+              <NavLink
                 to="/pricing"
                 className={({ isActive }) =>
                   isActive ? "active-nav" : undefined
@@ -1860,6 +1870,15 @@ function App() {
                 Solutions
               </NavLink>
               <NavLink
+                to="/franchise"
+                className={({ isActive }) =>
+                  isActive ? "mobile-nav-link active-nav" : "mobile-nav-link"
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                For Franchise
+              </NavLink>
+              <NavLink
                 to="/pricing"
                 className={({ isActive }) =>
                   isActive ? "active-nav" : undefined
@@ -1902,6 +1921,9 @@ function App() {
             <Route index element={<SolutionsPage />} />
             <Route path=":step" element={<SolutionsPage />} />
           </Route>
+
+          <Route path="franchise" element={<FranchisePage />} />
+          <Route path="franchise/:id" element={<FranchiseMethodPage />} />
 
           {/* Odoo */}
           <Route path="/odoo" element={<MainShell wide={false} />}>
