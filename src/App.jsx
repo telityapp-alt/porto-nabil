@@ -1731,14 +1731,6 @@ function App() {
               >
                 For Franchise
               </NavLink>
-              <NavLink
-                to="/odoo"
-                className={({ isActive }) =>
-                  isActive ? "active-nav" : undefined
-                }
-              >
-                Odoo
-              </NavLink>
               <div className="nav-dropdown-container">
                 <a href="/" onClick={(event) => event.preventDefault()}>
                   Solutions <CaretIcon />
@@ -1747,7 +1739,7 @@ function App() {
                   <NavLink to="/solutions/growth" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Growth</NavLink>
                   <NavLink to="/solutions/research-website" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Research-based Website</NavLink>
                   <NavLink to="/solutions/web-apps-growth" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Web Apps Growth</NavLink>
-                  <NavLink to="/solutions/odoo-implementation" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Odoo Implementation</NavLink>
+                  <NavLink to="/odoo" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Odoo</NavLink>
                 </div>
               </div>
               <NavLink
@@ -1860,15 +1852,7 @@ function App() {
               >
                 For Franchise
               </NavLink>
-              <NavLink
-                to="/odoo"
-                className={({ isActive }) =>
-                  isActive ? "active-nav" : undefined
-                }
-                onClick={() => setMenuOpen(false)}
-              >
-                Odoo
-              </NavLink>
+
               <NavLink
                 to="/solutions"
                 className={({ isActive }) =>

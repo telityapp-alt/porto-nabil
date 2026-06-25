@@ -19,6 +19,17 @@ function CheckIcon() {
   );
 }
 
+function MinimalArrow() {
+  return (
+    <div style={{ padding: "0 12px", color: "rgba(255,255,255,0.15)", display: "flex", alignItems: "center", flexShrink: 0 }}>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </div>
+  );
+}
+
 export default function FranchisePage() {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -76,6 +87,57 @@ export default function FranchisePage() {
         </div>
       </section>
 
+      <section className="franchise-gap-panel" style={{ padding: "0 20px 80px", maxWidth: "1060px", margin: "0 auto", marginBottom: "40px" }}>
+        <div>
+          <div style={{ textAlign: "center", marginBottom: "60px" }}>
+            <h2 style={{ fontSize: "2rem", marginBottom: "16px", letterSpacing: "-0.5px" }}>The Investor Disconnect</h2>
+            <p style={{ opacity: 0.7, maxWidth: "600px", margin: "0 auto", fontSize: "1rem", lineHeight: 1.6 }}>
+              Alasan kenapa ribuan dollar budget listing Anda hangus dengan bounce rate di atas 85%.
+            </p>
+          </div>
+
+          {/* Minimal Flow Container */}
+          {/* Minimal Flow Container */}
+          <div className="flowchart-container" style={{ display: "flex", alignItems: "stretch", justifyContent: "center", gap: "12px", flexWrap: "nowrap", paddingBottom: "20px" }}>
+            
+            {/* Step 1 */}
+            <div className="perks-sidebar-card" style={{ flex: "1", maxWidth: "240px", margin: 0 }}>
+              <span className="pop-label-pill" style={{ marginBottom: "16px" }}>Step 1: The Hook</span>
+              <h3 style={{ fontSize: "1.1rem", margin: "0 0 12px 0", fontWeight: 600 }}>Klik Portal Listing</h3>
+              <p style={{ margin: 0, fontSize: "0.9rem", opacity: 0.8, lineHeight: 1.5 }}>Investor melihat direktori franchise Anda dengan <em>High Intent</em>.</p>
+            </div>
+
+            <MinimalArrow />
+
+            {/* Step 2 */}
+            <div className="perks-sidebar-card" style={{ flex: "1", maxWidth: "240px", margin: 0 }}>
+              <span className="pop-label-pill" style={{ marginBottom: "16px" }}>Step 2: Disconnect</span>
+              <h3 style={{ fontSize: "1.1rem", margin: "0 0 12px 0", fontWeight: 600 }}>Web Konsumer (B2C)</h3>
+              <p style={{ margin: 0, fontSize: "0.9rem", opacity: 0.8, lineHeight: 1.5 }}>Di-suguhi promo produk B2C, tanpa data ROI atau kejelasan SOP.</p>
+            </div>
+
+            <MinimalArrow />
+
+            {/* Step 3 */}
+            <div className="perks-sidebar-card" style={{ flex: "1", maxWidth: "240px", margin: 0 }}>
+              <span className="pop-label-pill" style={{ marginBottom: "16px" }}>Step 3: The Drop</span>
+              <h3 style={{ fontSize: "1.1rem", margin: "0 0 12px 0", fontWeight: 600 }}>85% Bounce Rate</h3>
+              <p style={{ margin: 0, fontSize: "0.9rem", opacity: 0.8, lineHeight: 1.5 }}>Peluang investasi hilang krn investor merasa salah sasaran.</p>
+            </div>
+
+            <MinimalArrow />
+
+            {/* Step 4 */}
+            <div className="perks-sidebar-card" style={{ flex: "1", maxWidth: "240px", margin: 0 }}>
+              <span className="pop-label-pill" style={{ marginBottom: "16px" }}>The Growww Fix</span>
+              <h3 style={{ fontSize: "1.1rem", margin: "0 0 12px 0", fontWeight: 600 }}>Investor Funnel</h3>
+              <p style={{ margin: 0, fontSize: "0.9rem", opacity: 0.8, lineHeight: 1.5 }}>Landing page terpisah bicara angka, ROI, & autopilot sistem.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <section className="news-page-layout">
         {/* Left Sidebar: Info / Categories */}
         <aside className="apps-left-sidebar">
@@ -90,6 +152,12 @@ export default function FranchisePage() {
 
         {/* Main Feed: Search & Grid */}
         <div className="apps-main-feed">
+          
+          <div style={{ marginBottom: "32px", paddingBottom: "24px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+            <h2 style={{ fontSize: "1.5rem", marginBottom: "8px", fontWeight: 700 }}>Ini method yang akan kami terapkan di landing kamu.</h2>
+            <p style={{ opacity: 0.7, margin: 0 }}>Eksplorasi strategi psikologi yang spesifik dan terbukti mengonversi investor franchise.</p>
+          </div>
+
           <div
             className="mobile-category-bar"
             role="navigation"
