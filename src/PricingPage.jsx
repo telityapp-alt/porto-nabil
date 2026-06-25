@@ -22,14 +22,14 @@ export default function PricingPage() {
     {
       title: "Landing Page Only",
       desc: "Cocok untuk validasi ide bisnis atau campaign singkat.",
-      price: "Rp 3.500.000",
+      price: "Rp 7.000.000",
       features: ["1 Page High-converting", "Copywriting basic", "Responsive Design", "Setup Domain & Hosting"],
       cta: "Pilih Paket Ini"
     },
     {
       title: "Multi-feature + Dashboard",
       desc: "Web lengkap dengan dashboard admin untuk kelola data.",
-      price: "Rp 6.500.000",
+      price: "Rp 10.000.000",
       features: ["Multi-pages Website", "Custom Admin Dashboard", "CMS Integration", "SEO Basic Setup", "Analytics Integration"],
       cta: "Pilih Paket Ini",
       popular: true
@@ -37,7 +37,7 @@ export default function PricingPage() {
     {
       title: "Supermassive Platform",
       desc: "Production grade website dengan kapabilitas enterprise.",
-      price: "Rp 9.500.000",
+      price: "Rp 13.000.000",
       features: ["Custom Web Application", "Advanced UI/UX Animation", "Performance Optimization", "Scalable Architecture", "Advanced Security"],
       cta: "Pilih Paket Ini"
     }
@@ -47,7 +47,7 @@ export default function PricingPage() {
     {
       title: "Multi Features App",
       desc: "Aplikasi mobile/web dengan fitur lengkap dari awal.",
-      price: "Start dari Rp 7.000.000",
+      price: "Start dari Rp 10.500.000",
       features: ["Cross-platform App", "Custom Backend", "Authentication", "Push Notifications", "Publish to Stores"],
       cta: "Mulai Konsultasi",
       popular: true
@@ -76,14 +76,14 @@ export default function PricingPage() {
     {
       title: "Supermassive",
       desc: "Akses web production grade dengan langganan bulanan yang ringan.",
-      price: "Rp 400.000 / bln",
+      price: "Rp 700.000 / bln",
       features: ["Supermassive Platform Features", "Hosting Included", "Weekly Backups", "Basic Maintenance", "Email Support"],
       cta: "Mulai Berlangganan"
     },
     {
       title: "Supermassive + SEO",
       desc: "Semua fitur Supermassive ditambah optimasi SEO berkelanjutan.",
-      price: "Rp 1.500.000 / bln",
+      price: "Rp 1.800.000 / bln",
       features: ["Semua Fitur Supermassive", "On-page & Off-page SEO", "Keyword Research", "Monthly SEO Report", "Priority Support"],
       cta: "Mulai Berlangganan",
       popular: true
@@ -94,7 +94,7 @@ export default function PricingPage() {
     {
       title: "Apps Subscription",
       desc: "Kelola aplikasi Anda tanpa biaya setup awal yang besar.",
-      price: "Start dari Rp 300.000 / bln",
+      price: "Start dari Rp 600.000 / bln",
       features: ["Full App Access", "Cloud Server Included", "Regular Updates", "Bug Fixes", "Technical Support"],
       cta: "Mulai Berlangganan",
       popular: true

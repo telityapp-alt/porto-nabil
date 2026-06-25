@@ -509,14 +509,8 @@ function CheckIcon() {
 
 function Wordmark() {
   return (
-    <div className="wordmark" aria-label="Builders wordmark">
-      <span className="wordmark-mark" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <i />
-      </span>
-      <span className="wordmark-text">Builders Odoo</span>
+    <div className="wordmark" aria-label="growww erp wordmark">
+      <span className="wordmark-text" style={{ fontSize: "28px", fontWeight: 900, letterSpacing: "-0.05em", color: "#11222b", fontFamily: "inherit" }}>growww erp</span>
     </div>
   );
 }

@@ -18,6 +18,7 @@ import SolutionsPage from "./SolutionsPage";
 import PromoPopup from "./PromoPopup";
 import PricingPage from "./PricingPage";
 import DocsPage from "./DocsPage";
+import Footer from "./Footer";
 
 const tabs = [
   {
@@ -1261,26 +1262,16 @@ function CheckIcon() {
 
 function HeaderLogo() {
   return (
-    <div className="header-logo" aria-hidden="true">
-      <span />
-      <span />
-      <span />
-      <span />
-      <b />
+    <div style={{ fontSize: "24px", fontWeight: 900, color: "#11222b", letterSpacing: "-0.05em" }}>
+      growww
     </div>
   );
 }
 
 function Wordmark() {
   return (
-    <div className="wordmark" aria-label="Builders wordmark">
-      <span className="wordmark-mark" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <i />
-      </span>
-      <span className="wordmark-text">Builders</span>
+    <div className="wordmark" aria-label="growww wordmark">
+      <span className="wordmark-text" style={{ fontSize: "28px", fontWeight: 900, letterSpacing: "-0.05em", color: "#11222b", fontFamily: "inherit" }}>growww</span>
     </div>
   );
 }
@@ -1406,9 +1397,9 @@ function toSlug(name) {
 
 // Home page — renders hero + product panel + library
 function HomePage() {
-  const [activeTab, setActiveTab] = useState("data");
+  const [activeTab, setActiveTab] = useState("usage");
   const navigate = useNavigate();
-  const currentTab = tabs.find((tab) => tab.id === activeTab) ?? tabs[1];
+  const currentTab = tabs.find((tab) => tab.id === activeTab) ?? tabs[0];
 
   return (
     <>
@@ -1737,7 +1728,7 @@ function App() {
                   isActive ? "active-nav" : undefined
                 }
               >
-                Platform
+                Home
               </NavLink>
               <NavLink
                 to="/apps"
@@ -1753,15 +1744,7 @@ function App() {
                   isActive ? "active-nav" : undefined
                 }
               >
-                Perks
-              </NavLink>
-              <NavLink
-                to="/news"
-                className={({ isActive }) =>
-                  isActive ? "active-nav" : undefined
-                }
-              >
-                News
+                Gratisan
               </NavLink>
               <NavLink
                 to="/odoo"
@@ -1770,14 +1753,6 @@ function App() {
                 }
               >
                 Odoo
-              </NavLink>
-              <NavLink
-                to="/pricing"
-                className={({ isActive }) =>
-                  isActive ? "active-nav" : undefined
-                }
-              >
-                Pricing
               </NavLink>
               <div className="nav-dropdown-container">
                 <a href="/" onClick={(event) => event.preventDefault()}>
@@ -1790,17 +1765,14 @@ function App() {
                   <NavLink to="/solutions/odoo-implementation" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Odoo Implementation</NavLink>
                 </div>
               </div>
-              <div className="nav-dropdown-container">
-                <a href="/" onClick={(event) => event.preventDefault()}>
-                  Docs <CaretIcon />
-                </a>
-                <div className="dropdown-menu">
-                  <NavLink to="/docs/privacy-policy" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Privacy Policy</NavLink>
-                  <NavLink to="/docs/terms-of-service" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Terms of Service</NavLink>
-                  <NavLink to="/docs/cooperation-agreement" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Cooperation Agreement</NavLink>
-                  <NavLink to="/docs/refund-policy" className={({ isActive }) => isActive ? "active-dropdown" : undefined}>Refund Policy</NavLink>
-                </div>
-              </div>
+              <NavLink
+                to="/pricing"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+              >
+                Pricing
+              </NavLink>
             </nav>
           </div>
           <div className="topbar-right">
@@ -1866,7 +1838,7 @@ function App() {
                 }
                 onClick={() => setMenuOpen(false)}
               >
-                Platform
+                Home
               </NavLink>
               <NavLink
                 to="/apps"
@@ -1884,16 +1856,7 @@ function App() {
                 }
                 onClick={() => setMenuOpen(false)}
               >
-                Perks
-              </NavLink>
-              <NavLink
-                to="/news"
-                className={({ isActive }) =>
-                  isActive ? "active-nav" : undefined
-                }
-                onClick={() => setMenuOpen(false)}
-              >
-                News
+                Gratisan
               </NavLink>
               <NavLink
                 to="/odoo"
@@ -1905,6 +1868,15 @@ function App() {
                 Odoo
               </NavLink>
               <NavLink
+                to="/solutions"
+                className={({ isActive }) =>
+                  isActive ? "active-nav" : undefined
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                Solutions
+              </NavLink>
+              <NavLink
                 to="/pricing"
                 className={({ isActive }) =>
                   isActive ? "active-nav" : undefined
@@ -1913,13 +1885,6 @@ function App() {
               >
                 Pricing
               </NavLink>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', borderTop: '1px solid #e1e4e8', paddingTop: '16px', marginTop: '8px' }}>
-                <span style={{ fontSize: '13px', fontWeight: 700, color: '#8a94a6', padding: '0 16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Docs</span>
-                <NavLink to="/docs/privacy-policy" className={({ isActive }) => isActive ? "active-nav" : undefined} onClick={() => setMenuOpen(false)}>Privacy Policy</NavLink>
-                <NavLink to="/docs/terms-of-service" className={({ isActive }) => isActive ? "active-nav" : undefined} onClick={() => setMenuOpen(false)}>Terms of Service</NavLink>
-                <NavLink to="/docs/cooperation-agreement" className={({ isActive }) => isActive ? "active-nav" : undefined} onClick={() => setMenuOpen(false)}>Cooperation Agreement</NavLink>
-                <NavLink to="/docs/refund-policy" className={({ isActive }) => isActive ? "active-nav" : undefined} onClick={() => setMenuOpen(false)}>Refund Policy</NavLink>
-              </div>
               <div className="mobile-nav-cta">
                 <button
                   type="button"
@@ -1993,6 +1958,8 @@ function App() {
             <Route path=":docId" element={<DocsPage />} />
           </Route>
         </Routes>
+        
+        <Footer />
       </div>
     </div>
   );
