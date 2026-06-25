@@ -23,8 +23,8 @@ export default function FranchisePage() {
   });
 
   return (
-    <div className="news-gallery-page" style={{ maxWidth: '100%' }}>
-      <section className="perks-hero-panel" style={{ marginBottom: "60px" }}>
+    <div className="news-gallery-page">
+      <section className="perks-hero-panel">
         <div className="perks-hero-copy">
           <span className="perks-hero-eyebrow">For Franchise</span>
           <h2>
@@ -79,9 +79,8 @@ export default function FranchisePage() {
                   key={method.id}
                   to={`/franchise/${method.id}`}
                   className="library-card"
-                  style={{ textDecoration: 'none', color: 'inherit' }}
                 >
-                  <div className="library-card-hero" style={{ backgroundColor: method.accent }}>
+                  <div className="library-card-hero">
                     <div className="library-card-screenshot-wrap">
                       <img
                         src={method.image}
@@ -103,9 +102,9 @@ export default function FranchisePage() {
                     <span>{method.subtitle}</span>
                   </div>
 
-                  <div className="library-card-meta" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
-                    <p style={{ margin: 0 }}>{method.cardDesc}</p>
-                    <div className="library-card-chip" style={{ background: method.accent, color: '#fff', alignSelf: 'flex-start' }}>Read Strategy</div>
+                  <div className="library-card-meta">
+                    <p>{method.cardDesc}</p>
+                    <div className="library-card-chip">Strategy</div>
                   </div>
                 </Link>
               ))
