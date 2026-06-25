@@ -340,6 +340,120 @@ export const libraryCards = [
     gallery: ["/preppy/hero-web.png", "/preppy/screen-1.webp", "/preppy/screen-2.webp"],
   },
   {
+    name: "Aire",
+    role: "AI-Native Talent Intelligence",
+    place: "Assessment & HR Management Platform",
+    team: "HR Tech Product",
+    status: "Live - Free Forever Core",
+    image: "/aire/hero.png",
+    overview:
+      "Aire adalah platform talent intelligence pertama yang benar-benar AI-native. Kami bukan sekadar menambah AI ke proses hiring tradisional — kami membangun ulang dari nol dengan AI sebagai fondasi, grounded in 85 tahun I-O psychology research. Free forever untuk core features, pay-per-use ($8/assessment) untuk advanced.",
+    stats: [
+      { label: "Teams Using", value: "200+" },
+      { label: "Assessments Sent", value: "2,400+" },
+      { label: "Cost per Assessment", value: "$8" },
+    ],
+    highlights: [
+      "Free forever core (unlimited candidates, roles, scoring)",
+      "Research-backed templates (.42-.54 predictive validity)",
+      "Multi-agent orchestration system (24+ specialist agents)",
+    ],
+    strategy: [
+      {
+        phase: "Research Foundation",
+        desc: "Setiap assessment template di-ground in I-O psychology meta-analyses (Schmidt & Hunter, Sackett, Google hiring research). Kami cite methodology, bukan cuma claim 'expert-reviewed'.",
+        image: "/aire/flow-research-foundation.html",
+      },
+      {
+        phase: "AI-Native Architecture",
+        desc: "Built on Cloudflare Workers untuk edge computing. Multi-dimensional BARS scoring engine dengan research-grounded rubrics. Conversational AI assessments dengan adaptive follow-ups, bukan static forms.",
+        image: "/aire/flow-architecture.html",
+      },
+      {
+        phase: "Freemium Strategy",
+        desc: "Form-based screening (rule-based math) diberikan gratis karena zero marginal cost. AI features (CV parsing, deep-dive interviews, video scoring) dimonetize at $8/assessment. No annual lock-in.",
+        image: "/aire/flow-freemium-strategy.html",
+      },
+      {
+        phase: "Agentic Orchestration",
+        desc: "Aire Orchestrate: Slack-like workspace di mana 1 human + 24+ specialist agents bekerja parallel. Onboarding agent, compliance agent, rubric screening agent — semua auto-routed berdasarkan task context.",
+        image: "/aire/flow-orchestration.html",
+      },
+    ],
+    userJourney: [
+      {
+        step: "Discovery via Free Core",
+        tag: "Day 1",
+        desc: "Solo HR atau founder discover Aire lewat 'free forever assessment platform'. Mereka sign up tanpa credit card, langsung bisa build assessment dan invite candidates.",
+        callout:
+          "Zero friction onboarding — no trial expiry, no paywall surprise",
+      },
+      {
+        step: "Template Selection",
+        tag: "Day 1-2",
+        desc: "User browse 50+ role templates (Senior Engineer, PM, Data Scientist). Tiap template show cited research (.54 predictive validity) dan example questions. Pick one, inject, send.",
+        callout:
+          "Under 60 seconds from browse to first assessment sent",
+      },
+      {
+        step: "Free Tier Value Delivery",
+        tag: "Day 2-7",
+        desc: "Candidates complete assessments. User get instant ranked shortlist dengan per-dimension breakdown (System Design: 8/10, Collaboration: 6/10). Semua gratis, no hidden costs.",
+        callout:
+          "User experience full value before seeing premium pitch",
+      },
+      {
+        step: "Premium Upsell at Decision Point",
+        tag: "Day 7-14",
+        desc: "User sudah punya shortlist tapi butuh deeper signal. Aire offer: AI deep-dive interview ($8), CV parsing + scoring ($8), video interview dengan integrity monitoring ($8). Pay per completed assessment.",
+        callout:
+          "18% convert to paid within first hiring cycle",
+      },
+    ],
+    richContent: {
+      title: "Deep Dive: AI-Native vs AI-Bolted",
+      blocks: [
+        {
+          type: "text",
+          content:
+            "Kebanyakan HR tech add AI sebagai feature di atas legacy architecture. Hasilnya: keyword-matching CV screening dengan AI label, static MCQ dengan 'AI-powered' marketing, personality tests yang predictive validity-nya .10 (barely better than random). Aire different: kami build from scratch dengan AI sebagai core, grounded in 85 tahun I-O psychology research.",
+        },
+        {
+          type: "callout",
+          content:
+            "Core insight: Work samples (.33 validity) + structured interviews (.42) + cognitive tests (.31) = highest predictive validity untuk job performance. Kami tidak invent methodology baru — kami implement yang sudah proven dengan AI execution.",
+        },
+        {
+          type: "list",
+          items: [
+            "Multi-dimensional BARS rubrics — not keyword matching",
+            "Conversational adaptive assessments — not static forms",
+            "Research-cited templates — not vague expert claims",
+            "Work samples over personality tests — .33 vs .10 validity",
+            "Agentic orchestration — not monolithic AI chatbot",
+            "Edge computing (Cloudflare Workers) — sub-100ms latency",
+          ],
+        },
+        {
+          type: "kv",
+          rows: [
+            { label: "Tech Stack", value: "React + Vite + Cloudflare Workers" },
+            { label: "AI Backbone", value: "Multi-agent orchestration system" },
+            {
+              label: "Research Grounding",
+              value: "Schmidt & Hunter, Sackett, Google hiring research",
+            },
+            {
+              label: "Pricing Model",
+              value: "Free forever core + $8 per advanced assessment",
+            },
+          ],
+        },
+      ],
+    },
+    gallery: ["/aire/hero.png", "/aire/screen-1.png", "/aire/screen-2.png"],
+  },
+  {
     name: "Signal board",
     role: "Product analytics cockpit",
     place: "Realtime funnels and cohort health",

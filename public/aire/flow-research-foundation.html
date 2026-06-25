@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fffdf8; padding: 32px; max-width: 100%; overflow-x: hidden; }
+        .flow-container { background: #fffdf8; border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 10px; padding: 40px; max-width: 100%; box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        .research-card { background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 24px; margin-bottom: 16px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); position: relative; }
+        .validity-badge { position: absolute; top: -10px; right: 20px; padding: 6px 14px; border-radius: 16px; font-size: 11px; font-weight: 800; background: #377cf6; color: #fffdf8; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+        .method-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .method-citation { font-size: 11px; color: #f6a61e; font-weight: 700; margin-bottom: 12px; }
+        .method-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        .method-box { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 14px; margin-bottom: 10px; }
+        .box-label { font-size: 11px; font-weight: 800; color: #55606d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .box-content { font-size: 12px; line-height: 1.5; color: #32425b; }
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        .implementation-section { background: linear-gradient(180deg, #f9f7f2 0%, #f3f0ea 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 28px; margin-top: 24px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .section-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 20px; text-align: center; letter-spacing: -0.01em; }
+        .impl-card { background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #377cf6; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .impl-name { font-size: 14px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .impl-desc { font-size: 12px; line-height: 1.5; color: #32425b; }
+        .comparison-section { padding: 20px; background: #fff3cd; border: 1px solid #e0c878; border-left-width: 3px; border-left-color: #f6a61e; border-radius: 6px; margin-top: 24px; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .comparison-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 16px; text-align: center; letter-spacing: -0.01em; }
+        .comparison-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .comparison-card { background: white; border: 1px solid #e6e0d4; border-radius: 6px; padding: 12px; }
+        .comparison-method { font-size: 13px; font-weight: 800; color: #11222b; margin-bottom: 4px; }
+        .comparison-validity { font-size: 20px; font-weight: 800; color: #377cf6; margin-bottom: 4px; }
+        .comparison-label { font-size: 10px; color: #55606d; font-weight: 700; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Research Foundation</div>
+            <div class="flow-subtitle">85 Tahun I-O Psychology Research: What Actually Predicts Job Performance</div>
+        </div>
+        
+        <div class="research-card">
+            <div class="validity-badge">r = .42</div>
+            <div class="method-title">Structured Interviews</div>
+            <div class="method-citation">Sackett et al. (2022) · Meta-analysis of 100+ years employment testing</div>
+            <div class="method-desc">
+                Standardized questions dengan scoring rubric yang sama untuk semua candidates. Highest validity untuk predicting job performance dibanding unstructured interviews (r = .20).
+            </div>
+            <div class="method-box">
+                <div class="box-label">Implementasi di Aire</div>
+                <div class="box-content">
+                    AI-powered conversational interviews dengan pre-defined scoring dimensions. Setiap candidate ditanya same core questions, dengan adaptive follow-ups based on responses. BARS (Behaviorally Anchored Rating Scales) rubrics untuk consistency.
+                </div>
+            </div>
+        </div>
+        
+        <div class="research-card">
+            <div class="validity-badge">r = .33</div>
+            <div class="method-title">Work Sample Tests</div>
+            <div class="method-citation">Roth et al. (2005) · Validity and fairness of work sample assessments</div>
+            <div class="method-desc">
+                Candidates solve actual job-related problems. System design untuk engineers, case studies untuk PMs, data analysis untuk Data Scientists. Highest face validity dan lowest adverse impact.
+            </div>
+            <div class="method-box">
+                <div class="box-label">Implementasi di Aire</div>
+                <div class="box-content">
+                    Assessment templates built around real work scenarios, bukan abstract puzzles. AI scores nuanced responses (system design tradeoffs, case study reasoning) dengan rubrics grounded in role competencies, bukan keyword matching.
+                </div>
+            </div>
+        </div>
+        
+        <div class="research-card">
+            <div class="validity-badge">r = .34</div>
+            <div class="method-title">Situational Judgment Tests</div>
+            <div class="method-citation">Christian et al. (2010) · SJT validity meta-analysis</div>
+            <div class="method-desc">
+                Present hypothetical work situations dan minta candidate pilih best action. Measure judgment, problem-solving, dan interpersonal skills dalam context yang realistic.
+            </div>
+            <div class="method-box">
+                <div class="box-label">Implementasi di Aire</div>
+                <div class="box-content">
+                    SJT blocks untuk leadership roles (Engineering Manager, PM) dengan scenario derived dari Amazon LPs dan Google's Project Oxygen research. AI scores considering multiple valid approaches, bukan single correct answer.
+                </div>
+            </div>
+        </div>
+        
+        <div class="research-card">
+            <div class="validity-badge">r = .31</div>
+            <div class="method-title">General Cognitive Ability</div>
+            <div class="method-citation">Schmidt & Hunter (1998) · The validity and utility of selection methods</div>
+            <div class="method-desc">
+                Logical reasoning, problem-solving, learning ability. Most generalizable predictor across jobs. Combined dengan work samples untuk highest composite validity.
+            </div>
+            <div class="method-box">
+                <div class="box-label">Implementasi di Aire</div>
+                <div class="box-content">
+                    Cognitive reasoning blocks embedded dalam role templates (Data Scientist, Analyst). Bukan IQ tests, tapi job-relevant problem solving: pattern recognition, numerical reasoning, logical inference.
+                </div>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="implementation-section">
+            <div class="section-title">Kenapa Research-Backed Templates Matter</div>
+            
+            <div class="impl-card">
+                <div class="impl-name">Defensible Hiring Decisions</div>
+                <div class="impl-desc">
+                    Waktu leadership tanya "Why candidate A over B?", lu bisa point ke specific competency scores grounded in published research, bukan gut feeling atau vague 'cultural fit'.
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-name">Legal Compliance</div>
+                <div class="impl-desc">
+                    Structured assessments dengan job-relevant content dan consistent scoring rubrics lebih defensible secara legal dibanding unstructured interviews prone ke bias.
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-name">Lower Adverse Impact</div>
+                <div class="impl-desc">
+                    Work samples dan cognitive tests show lower adverse impact across demographics dibanding personality tests atau unstructured interviews (Roth et al., 2005).
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-name">Higher Candidate Experience</div>
+                <div class="impl-desc">
+                    Candidates prefer assessments yang job-relevant ("This actually tests what I'd do") vs abstract puzzles atau personality questions ("What does this have to do dengan the role?").
+                </div>
+            </div>
+            
+            <div class="impl-card">
+                <div class="impl-name">Composite Validity Boost</div>
+                <div class="impl-desc">
+                    Combining multiple methods (structured interview + work sample + cognitive test) increases overall validity. Schmidt & Hunter: composite validity bisa reach .60+ (vs .20-.40 untuk single method).
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-section">
+            <div class="comparison-title">Predictive Validity: What Works vs What Doesn't</div>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-method">Structured Interview</div>
+                    <div class="comparison-validity">.42</div>
+                    <div class="comparison-label">Strong Predictor</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-method">Work Samples</div>
+                    <div class="comparison-validity">.33</div>
+                    <div class="comparison-label">Strong Predictor</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-method">Cognitive Ability</div>
+                    <div class="comparison-validity">.31</div>
+                    <div class="comparison-label">Strong Predictor</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-method">Situational Judgment</div>
+                    <div class="comparison-validity">.34</div>
+                    <div class="comparison-label">Strong Predictor</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-method">Unstructured Interview</div>
+                    <div class="comparison-validity">.20</div>
+                    <div class="comparison-label">Weak Predictor</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-method">Personality Tests</div>
+                    <div class="comparison-validity">.10</div>
+                    <div class="comparison-label">Very Weak</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-method">Years of Experience</div>
+                    <div class="comparison-validity">.18</div>
+                    <div class="comparison-label">Weak Predictor</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-method">Reference Checks</div>
+                    <div class="comparison-validity">.26</div>
+                    <div class="comparison-label">Moderate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

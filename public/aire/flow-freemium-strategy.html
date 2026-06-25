@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freemium Strategy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fffdf8; padding: 32px; max-width: 100%; overflow-x: hidden; }
+        .flow-container { background: #fffdf8; border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 10px; padding: 40px; max-width: 100%; box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        .tier-card { background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); position: relative; }
+        .tier-badge { position: absolute; top: -10px; left: 24px; padding: 6px 14px; border-radius: 16px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+        .tier-badge.free { background: #37d7c8; color: #11222b; }
+        .tier-badge.paid { background: #377cf6; color: #fffdf8; }
+        .tier-header { margin-bottom: 16px; margin-top: 8px; }
+        .tier-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 4px; letter-spacing: -0.01em; }
+        .tier-price { font-size: 12px; color: #f6a61e; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .tier-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        .features-box { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 14px; margin-bottom: 10px; }
+        .features-label { font-size: 11px; font-weight: 800; color: #55606d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .features-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .features-list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .features-list li::before { content: '✓'; position: absolute; left: 0; color: #37d7c8; font-weight: 800; }
+        .economics-box { font-size: 11px; line-height: 1.5; color: #55606d; font-style: italic; padding: 10px; background: #fef3e2; border-left: 2px solid #f6a61e; border-radius: 4px; margin-top: 10px; }
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        .strategy-section { background: linear-gradient(180deg, #f9f7f2 0%, #f3f0ea 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 28px; margin-top: 24px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .section-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 20px; text-align: center; letter-spacing: -0.01em; }
+        .strategy-card { background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #377cf6; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .strategy-name { font-size: 14px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .strategy-desc { font-size: 12px; line-height: 1.5; color: #32425b; }
+        .comparison-section { padding: 20px; background: #e8f4f8; border: 1px solid #b8d9e8; border-left-width: 3px; border-left-color: #377cf6; border-radius: 6px; margin-top: 24px; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .comparison-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 16px; text-align: center; letter-spacing: -0.01em; }
+        .comparison-card { background: white; border: 1px solid #d9d1c2; border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+        .comparison-competitor { font-size: 13px; font-weight: 800; color: #11222b; margin-bottom: 6px; }
+        .comparison-content { font-size: 11px; line-height: 1.5; color: #32425b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Freemium Strategy</div>
+            <div class="flow-subtitle">Free Forever Core + Pay-Per-Use Premium: Zero Marginal Cost vs AI Execution</div>
+        </div>
+        
+        <div class="tier-card">
+            <div class="tier-badge free">Free Forever</div>
+            <div class="tier-header">
+                <div class="tier-title">Core Assessment Platform</div>
+                <div class="tier-price">$0 — No Credit Card, No Trial, No Expiry</div>
+            </div>
+            <div class="tier-desc">
+                Unlimited candidates, unlimited roles, full assessment builder, instant scoring, branded career page, Kanban pipeline. Everything you need untuk basic hiring workflow.
+            </div>
+            
+            <div class="features-box">
+                <div class="features-label">What's Included</div>
+                <ul class="features-list">
+                    <li>Assessment builder (10 block types: MCQ, case study, SJT, cognitive)</li>
+                    <li>50+ role templates dengan cited research</li>
+                    <li>Instant rule-based scoring (deterministic, no AI)</li>
+                    <li>Unlimited candidates & roles (no artificial caps)</li>
+                    <li>Branded career page (aire.hrasia.org/c/your-company)</li>
+                    <li>Full Kanban pipeline (applied → screening → interview → offer)</li>
+                    <li>Auto-decisions (set thresholds, candidates auto-sort)</li>
+                    <li>Professional delivery (one question per screen, timer, mobile)</li>
+                </ul>
+            </div>
+            
+            <div class="economics-box">
+                <strong>Why Free:</strong> Form-based screening adalah pure math — no AI calls, no API costs, just JavaScript running di edge. Marginal cost per assessment = $0.00001 (Workers execution). Kami bisa sustain free tier forever karena infrastructure cost negligible.
+            </div>
+        </div>
+        
+        <div class="tier-card">
+            <div class="tier-badge paid">Credible</div>
+            <div class="tier-header">
+                <div class="tier-title">AI-Powered Deep Signal</div>
+                <div class="tier-price">$8 per completed assessment</div>
+            </div>
+            <div class="tier-desc">
+                Upgrade when you need deeper signal beyond form-based screening. AI deep-dive interviews, CV parsing, video analysis, multi-dimensional scoring. Pay only when candidate completes assessment.
+            </div>
+            
+            <div class="features-box">
+                <div class="features-label">What's Added</div>
+                <ul class="features-list">
+                    <li>AI deep-dive interview (conversational, adaptive follow-ups)</li>
+                    <li>CV parsing + scoring (structured data extraction + competency match)</li>
+                    <li>Video interview dengan integrity monitoring</li>
+                    <li>Multi-dimensional BARS scoring (per-competency breakdown)</li>
+                    <li>Candidate intelligence chat (ask questions, grounded in dossier)</li>
+                    <li>Unified scorecard (CV + assessment + video, one heatmap)</li>
+                    <li>Bias audit dashboard (score drift by demographics, four-fifths rule)</li>
+                </ul>
+            </div>
+            
+            <div class="economics-box">
+                <strong>Why $8:</strong> AI features butuh actual execution cost. Deep-dive interview = 3-5 LLM calls @ $0.50 each, CV parsing = embeddings + extraction, video analysis = transcription + semantic scoring. Total COGS ~$3-4. Kami charge $8 untuk sustainable margin, still way cheaper than annual platforms ($1,700/year TestGorilla).
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="strategy-section">
+            <div class="section-title">Kenapa Freemium Work untuk Assessment Platform</div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Zero Friction Acquisition</div>
+                <div class="strategy-desc">
+                    No credit card, no trial expiry = zero friction signup. User experience full value before seeing price. Traditional SaaS lock behind 14-day trial — user stress tentang evaluation timeline. Free forever = no pressure, explore at your own pace.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Natural Upgrade Path</div>
+                <div class="strategy-desc">
+                    User mulai dengan free tier, build assessment, send ke candidates. Waktu mereka butuh deeper signal ("Is candidate A really better than B?"), Aire offer AI deep-dive. Upgrade terjadi at decision point, bukan arbitrary trial end.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Pay-Per-Use Alignment</div>
+                <div class="strategy-desc">
+                    Hiring is spiky. Company hire 5 people bulan ini, 0 people next 3 months. Annual subscription ($1,700/year) = paying untuk months tanpa hiring. Pay-per-use ($8/assessment) = pay only when actually hiring. Perfect alignment dengan customer need.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Viral Growth via Free Tier</div>
+                <div class="strategy-desc">
+                    Free tier dengan no limits = user bisa refer peers tanpa guilt. "Try Aire, it's actually free" vs "Try this tool (tapi lu cuma punya 14 days)". Word-of-mouth acquisition way easier dengan truly free product.
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-name">Competitive Moat</div>
+                <div class="strategy-desc">
+                    Competitors (TestGorilla, HackerRank) locked into annual subscription model karena infrastructure cost tinggi. Aire bisa offer free forever karena serverless edge architecture = near-zero marginal cost. Sustainable competitive advantage.
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-section">
+            <div class="comparison-title">Aire vs Traditional Assessment Platforms</div>
+            
+            <div class="comparison-card">
+                <div class="comparison-competitor">TestGorilla</div>
+                <div class="comparison-content">
+                    <strong>Pricing:</strong> $1,700/year (annual lock-in, expired credits)<br/>
+                    <strong>Assessment Quality:</strong> Static MCQ dengan AI label, keyword-matching CV screening<br/>
+                    <strong>Free Tier:</strong> 14-day trial, credit card required, artificial feature limits<br/>
+                    <strong>Value Delivery:</strong> Front-loaded friction (enter payment before value)<br/>
+                    <strong>Best For:</strong> Enterprise dengan predictable hiring volume year-round
+                </div>
+            </div>
+            
+            <div class="comparison-card">
+                <div class="comparison-competitor">HackerRank</div>
+                <div class="comparison-content">
+                    <strong>Pricing:</strong> $2,500+/year (enterprise sales, custom quotes)<br/>
+                    <strong>Assessment Quality:</strong> Strong technical tests, weak untuk non-engineering roles<br/>
+                    <strong>Free Tier:</strong> Limited to coding challenges, no full hiring pipeline<br/>
+                    <strong>Value Delivery:</strong> High upfront cost, long sales cycle<br/>
+                    <strong>Best For:</strong> Tech companies hiring volume engineers
+                </div>
+            </div>
+            
+            <div class="comparison-card">
+                <div class="comparison-competitor">Codility</div>
+                <div class="comparison-content">
+                    <strong>Pricing:</strong> $3,000+/year (enterprise-focused, no self-serve)<br/>
+                    <strong>Assessment Quality:</strong> Deep technical assessments, engineering-only<br/>
+                    <strong>Free Tier:</strong> None (must contact sales)<br/>
+                    <strong>Value Delivery:</strong> Requires demo calls, procurement process<br/>
+                    <strong>Best For:</strong> Large tech orgs dengan dedicated TA team
+                </div>
+            </div>
+            
+            <div class="comparison-card">
+                <div class="comparison-competitor">Aire</div>
+                <div class="comparison-content">
+                    <strong>Pricing:</strong> Free forever core + $8 per advanced assessment (no annual lock-in)<br/>
+                    <strong>Assessment Quality:</strong> Research-backed templates (.42-.54 validity), AI-native scoring, multi-dimensional BARS<br/>
+                    <strong>Free Tier:</strong> Actually free — unlimited candidates, roles, full pipeline, no trial expiry<br/>
+                    <strong>Value Delivery:</strong> Experience value first, pay only when need deeper signal<br/>
+                    <strong>Best For:</strong> Solo HR, founders, SMEs dengan spiky hiring (0-5 hires/month)
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Native Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fffdf8; padding: 32px; max-width: 100%; overflow-x: hidden; }
+        .flow-container { background: #fffdf8; border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 10px; padding: 40px; max-width: 100%; box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        .arch-layer { background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 24px; margin-bottom: 16px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); position: relative; }
+        .layer-badge { position: absolute; top: -10px; left: 20px; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+        .layer-badge.edge { background: #f6a61e; color: #11222b; }
+        .layer-badge.ai { background: #377cf6; color: #fffdf8; }
+        .layer-badge.db { background: #37d7c8; color: #11222b; }
+        .layer-badge.frontend { background: #c48a28; color: #fffdf8; }
+        .layer-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 16px; margin-top: 8px; letter-spacing: -0.01em; }
+        .layer-stack { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 14px; margin-bottom: 10px; }
+        .stack-label { font-size: 11px; font-weight: 800; color: #55606d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .stack-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .stack-list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .stack-list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        .layer-why { font-size: 11px; line-height: 1.5; color: #55606d; font-style: italic; padding: 10px; background: #e8f4f8; border-left: 2px solid #377cf6; border-radius: 4px; margin-top: 10px; }
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        .decisions-section { background: linear-gradient(180deg, #f9f7f2 0%, #f3f0ea 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 28px; margin-top: 24px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .section-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 20px; text-align: center; letter-spacing: -0.01em; }
+        .decision-card { background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #377cf6; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .decision-name { font-size: 14px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .decision-desc { font-size: 12px; line-height: 1.5; color: #32425b; }
+        .comparison-section { padding: 20px; background: #fff3cd; border: 1px solid #e0c878; border-left-width: 3px; border-left-color: #f6a61e; border-radius: 6px; margin-top: 24px; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .comparison-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 16px; text-align: center; letter-spacing: -0.01em; }
+        .comparison-card { background: white; border: 1px solid #e6e0d4; border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+        .comparison-method { font-size: 13px; font-weight: 800; color: #11222b; margin-bottom: 6px; }
+        .comparison-content { font-size: 11px; line-height: 1.5; color: #32425b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">AI-Native Architecture</div>
+            <div class="flow-subtitle">Built on Cloudflare Workers Edge Computing + Multi-Dimensional AI Scoring</div>
+        </div>
+        
+        <div class="arch-layer">
+            <div class="layer-badge edge">Edge</div>
+            <div class="layer-title">Cloudflare Workers</div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Serverless Edge Computing</div>
+                <ul class="stack-list">
+                    <li>Deploy ke 300+ cities worldwide (sub-100ms latency)</li>
+                    <li>Zero cold start (V8 isolates, bukan containers)</li>
+                    <li>Auto-scaling tanpa config (0 → 1M requests seamless)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Durable Objects</div>
+                <ul class="stack-list">
+                    <li>Stateful coordination untuk real-time features (live leaderboards)</li>
+                    <li>Strong consistency across edge locations</li>
+                    <li>WebSocket support untuk conversational AI assessments</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">KV Storage</div>
+                <ul class="stack-list">
+                    <li>Cache assessment templates globally (instant retrieval)</li>
+                    <li>Eventual consistency (perfect untuk read-heavy workloads)</li>
+                    <li>Unlimited reads, pay-per-write pricing model</li>
+                </ul>
+            </div>
+            
+            <div class="layer-why">
+                <strong>Kenapa Workers over traditional backends:</strong> Assessment scoring butuh instant response (<200ms). Traditional servers di single region = 500ms+ latency untuk global users. Edge computing distribute logic globally, scoring happens di location terdekat candidate.
+            </div>
+        </div>
+        
+        <div class="arch-layer">
+            <div class="layer-badge ai">AI Engine</div>
+            <div class="layer-title">Multi-Dimensional BARS Scoring</div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Research-Grounded Rubrics</div>
+                <ul class="stack-list">
+                    <li>BARS (Behaviorally Anchored Rating Scales) untuk tiap competency</li>
+                    <li>Rubrics derived dari I-O psychology meta-analyses</li>
+                    <li>Per-dimension scoring (System Design: 8/10, Collaboration: 6/10)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Conversational AI Assessments</div>
+                <ul class="stack-list">
+                    <li>Natural language interaction (chat-based, bukan static forms)</li>
+                    <li>Adaptive follow-ups based on candidate responses</li>
+                    <li>Context-aware probing (like talking to experienced interviewer)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Video Analysis Engine</div>
+                <ul class="stack-list">
+                    <li>Integrity monitoring (tab switching, multiple faces detection)</li>
+                    <li>Transcript generation + semantic scoring</li>
+                    <li>Unified scorecard across CV + assessment + video</li>
+                </ul>
+            </div>
+            
+            <div class="layer-why">
+                <strong>Kenapa multi-dimensional scoring:</strong> Single score ("Candidate A: 75/100") hide nuance. Multi-dimensional breakdown (System Design: 9, Leadership: 5, Collaboration: 7) reveal actual strengths/gaps. HR make better decisions dengan clearer signal.
+            </div>
+        </div>
+        
+        <div class="arch-layer">
+            <div class="layer-badge db">Database</div>
+            <div class="layer-title">D1 (SQLite at Edge) + R2 Storage</div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">D1 SQL Database</div>
+                <ul class="stack-list">
+                    <li>SQLite running di Workers edge (no separate DB server)</li>
+                    <li>ACID guarantees untuk critical writes (candidate submissions)</li>
+                    <li>Read replicas globally distributed untuk low-latency queries</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">R2 Object Storage</div>
+                <ul class="stack-list">
+                    <li>Video recordings, CV files, assessment artifacts</li>
+                    <li>S3-compatible API, zero egress fees</li>
+                    <li>Automatic CDN caching untuk frequently-accessed files</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Analytics Engine</div>
+                <ul class="stack-list">
+                    <li>Workers Analytics untuk real-time usage tracking</li>
+                    <li>Bias audit aggregations (score drift by demographics)</li>
+                    <li>Funnel analysis (invited → started → completed)</li>
+                </ul>
+            </div>
+            
+            <div class="layer-why">
+                <strong>Kenapa edge database:</strong> Traditional setup = frontend → API server → database (3 network hops, 200-500ms). D1 at edge = single hop dari user ke Workers yang punya database access locally (<50ms total latency).
+            </div>
+        </div>
+        
+        <div class="arch-layer">
+            <div class="layer-badge frontend">Frontend</div>
+            <div class="layer-title">React + Vite SPA</div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Framework</div>
+                <ul class="stack-list">
+                    <li>React 18 dengan Vite bundler (HMR <100ms)</li>
+                    <li>TanStack Query untuk server state management</li>
+                    <li>React Router 6 untuk SPA navigation</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Styling & UI</div>
+                <ul class="stack-list">
+                    <li>Tailwind CSS untuk rapid UI development</li>
+                    <li>Radix UI primitives (accessible components)</li>
+                    <li>Framer Motion untuk micro-interactions</li>
+                </ul>
+            </div>
+            
+            <div class="layer-stack">
+                <div class="stack-label">Real-Time Features</div>
+                <ul class="stack-list">
+                    <li>WebSocket connections via Durable Objects</li>
+                    <li>Optimistic updates untuk snappy UX</li>
+                    <li>Server-Sent Events untuk live leaderboard updates</li>
+                </ul>
+            </div>
+            
+            <div class="layer-why">
+                <strong>Kenapa SPA over SSR:</strong> Assessment platform adalah behind-login app, bukan marketing site. SEO not a concern. SPA give us instant navigation, optimistic updates, dan rich interactions tanpa full page reloads. Simpler architecture, better UX.
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="decisions-section">
+            <div class="section-title">Key Architecture Decisions</div>
+            
+            <div class="decision-card">
+                <div class="decision-name">Edge Computing over Traditional Backends</div>
+                <div class="decision-desc">
+                    Traditional setup (EC2, GCP Compute) = single-region deployment, 500ms+ latency untuk global users, manual scaling config, cold starts. Workers = global deployment otomatis, <100ms latency worldwide, zero cold starts, auto-scaling tanpa config. Trade-off: vendor lock-in, tapi performance gain massive.
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-name">Serverless over Containers</div>
+                <div class="decision-desc">
+                    Containers (Kubernetes, ECS) = operational complexity, manual scaling policies, resource provisioning. Serverless = write code + deploy, platform handle scaling/availability. Trade-off: cold starts (mitigated dengan Workers' V8 isolates), vendor limitations. For assessment platform dengan spiky traffic, serverless win.
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-name">Multi-Dimensional Scoring over Single Score</div>
+                <div class="decision-desc">
+                    Single composite score hide nuance ("Candidate A: 82/100" — strong at what?). Multi-dimensional breakdown (System Design: 9/10, Communication: 6/10, Leadership: 7/10) reveal actual profile. Trade-off: more complex untuk candidate, tapi way more actionable untuk hiring decisions.
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-name">Conversational AI over Static Forms</div>
+                <div class="decision-desc">
+                    Static forms = same questions untuk semua, no context, rigid. Conversational AI = adaptive follow-ups, natural interaction, context-aware probing. Trade-off: higher cost per assessment ($8 vs nearly-free static forms), tapi candidate experience jauh lebih engaging dan signal quality higher.
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-name">Research-Grounded Rubrics over Keyword Matching</div>
+                <div class="decision-desc">
+                    Keyword matching ("response contains 'microservices' → +5 points") = gameable, surface-level. BARS rubrics grounded in I-O psychology = nuanced scoring ("demonstrates understanding of CAP theorem tradeoffs" → Level 4/5). Trade-off: rubric development upfront effort, tapi scoring validity way higher.
+                </div>
+            </div>
+            
+            <div class="decision-card">
+                <div class="decision-name">Pay-Per-Use over SaaS Subscriptions</div>
+                <div class="decision-desc">
+                    Annual SaaS ($1,700/year TestGorilla) = upfront commitment, unused licenses, credit expiry. Pay-per-use ($8/completed assessment) = zero lock-in, pay only when hiring. Trade-off: less predictable revenue untuk us, tapi customer acquisition friction way lower (free to start, no credit card).
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-section">
+            <div class="comparison-title">AI-Native vs AI-Bolted Architecture</div>
+            
+            <div class="comparison-card">
+                <div class="comparison-method">AI-Bolted (Legacy Competitors)</div>
+                <div class="comparison-content">
+                    <strong>Pattern:</strong> Legacy CRUD app (Rails/Django) + AI feature bolted on top (OpenAI API call untuk CV screening).<br/>
+                    <strong>Result:</strong> AI feels tacked-on, keyword matching dengan AI label, no conversational flow, scoring inconsistent.<br/>
+                    <strong>Architecture:</strong> Monolithic backend, single-region, traditional SQL, batch processing.
+                </div>
+            </div>
+            
+            <div class="comparison-card">
+                <div class="comparison-method">AI-Native (Aire)</div>
+                <div class="comparison-content">
+                    <strong>Pattern:</strong> Built from scratch dengan AI as core. Conversational assessments, multi-dimensional scoring, adaptive follow-ups default.<br/>
+                    <strong>Result:</strong> Natural interaction, nuanced scoring, research-grounded rubrics bukan keyword matching.<br/>
+                    <strong>Architecture:</strong> Edge computing (Workers), distributed globally, real-time scoring, WebSocket-native.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

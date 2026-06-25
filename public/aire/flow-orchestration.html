@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Orchestration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fffdf8; padding: 32px; max-width: 100%; overflow-x: hidden; }
+        .flow-container { background: #fffdf8; border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 10px; padding: 40px; max-width: 100%; box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        .orchestration-card { background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 24px; margin-bottom: 16px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); position: relative; }
+        .agent-badge { position: absolute; top: -10px; left: 20px; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+        .agent-badge.orchestrator { background: #f6a61e; color: #11222b; }
+        .agent-badge.specialist { background: #377cf6; color: #fffdf8; }
+        .agent-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 8px; margin-top: 8px; letter-spacing: -0.01em; }
+        .agent-role { font-size: 11px; color: #f6a61e; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .agent-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        .capabilities-box { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 14px; }
+        .capabilities-label { font-size: 11px; font-weight: 800; color: #55606d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .capabilities-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .capabilities-list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .capabilities-list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        .workflow-section { background: linear-gradient(180deg, #f9f7f2 0%, #f3f0ea 100%); border: 1px solid #d9d1c2; border-bottom-width: 2px; border-radius: 8px; padding: 28px; margin-top: 24px; box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .section-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 20px; text-align: center; letter-spacing: -0.01em; }
+        .workflow-step { background: #fffdf8; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #377cf6; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .step-number { display: inline-block; width: 24px; height: 24px; background: #11222b; color: #f6eddc; border-radius: 50%; text-align: center; line-height: 24px; font-size: 12px; font-weight: 800; margin-right: 8px; }
+        .step-title { font-size: 14px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .step-desc { font-size: 12px; line-height: 1.5; color: #32425b; }
+        .example-section { padding: 20px; background: #e8f4f8; border: 1px solid #b8d9e8; border-left-width: 3px; border-left-color: #377cf6; border-radius: 6px; margin-top: 24px; box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); }
+        .example-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 16px; letter-spacing: -0.01em; }
+        .example-chat { background: white; border: 1px solid #d9d1c2; border-radius: 6px; padding: 16px; }
+        .chat-message { margin-bottom: 12px; }
+        .chat-user { font-size: 11px; font-weight: 800; color: #f6a61e; margin-bottom: 4px; }
+        .chat-content { font-size: 12px; line-height: 1.5; color: #32425b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Agentic Orchestration</div>
+            <div class="flow-subtitle">1 Human + 24+ Specialist Agents: Slack-like Workspace untuk HR Work</div>
+        </div>
+        
+        <div class="orchestration-card">
+            <div class="agent-badge orchestrator">Orchestrator</div>
+            <div class="agent-title">Aire (Main Agent)</div>
+            <div class="agent-role">Router & Coordinator</div>
+            <div class="agent-desc">
+                Central orchestrator yang receive user goals, decompose jadi subtasks, route ke specialist agents, dan merge results. Bukan monolithic chatbot — ini adalah traffic controller untuk 24+ specialist agents.
+            </div>
+            <div class="capabilities-box">
+                <div class="capabilities-label">Core Capabilities</div>
+                <ul class="capabilities-list">
+                    <li>Intent detection (hiring task, onboarding, compliance, review)</li>
+                    <li>Task decomposition ("12 new joiners" → contracts + onboarding + comms)</li>
+                    <li>Agent routing (assign subtasks ke specialist agents)</li>
+                    <li>Result merging (compile specialist outputs jadi actionable plan)</li>
+                    <li>Context maintenance (track state across multi-turn conversations)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="orchestration-card">
+            <div class="agent-badge specialist">Specialist</div>
+            <div class="agent-title">Onboarding Agent</div>
+            <div class="agent-role">New Hire Setup</div>
+            <div class="agent-desc">
+                Generate onboarding plans, checklist items, day-1 comms, day-7 check-ins. Grounded in role requirements dan company policies.
+            </div>
+            <div class="capabilities-box">
+                <div class="capabilities-label">Tools Available</div>
+                <ul class="capabilities-list">
+                    <li>Role template library (onboarding plan per role type)</li>
+                    <li>Calendar integration (schedule orientation sessions)</li>
+                    <li>Email automation (welcome emails, checklist reminders)</li>
+                    <li>Document generation (onboarding packet, access request forms)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="orchestration-card">
+            <div class="agent-badge specialist">Specialist</div>
+            <div class="agent-title">Rubric Screening Agent</div>
+            <div class="agent-role">CV Analysis & Ranking</div>
+            <div class="agent-desc">
+                Extract structured data dari CVs, score terhadap role criteria, rank candidates. Two-layer analysis: instant lean match + deep dive on demand.
+            </div>
+            <div class="capabilities-box">
+                <div class="capabilities-label">Tools Available</div>
+                <ul class="capabilities-list">
+                    <li>PDF/DOCX parsing (structured data extraction)</li>
+                    <li>Embedding search (semantic match terhadap job description)</li>
+                    <li>Scoring rubrics (competency-based criteria dari role template)</li>
+                    <li>Ranking algorithm (multi-criteria weighted scoring)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="orchestration-card">
+            <div class="agent-badge specialist">Specialist</div>
+            <div class="agent-title">Compliance Agent</div>
+            <div class="agent-role">Policy & Legal Documents</div>
+            <div class="agent-desc">
+                Generate compliant HR documents: employment contracts, NDAs, termination letters, policy handbooks. Grounded in jurisdiction-specific templates.
+            </div>
+            <div class="capabilities-box">
+                <div class="capabilities-label">Tools Available</div>
+                <ul class="capabilities-list">
+                    <li>Legal template library (contracts, policies, letters)</li>
+                    <li>Jurisdiction detection (Indonesia labor law, US employment law)</li>
+                    <li>Variable interpolation (inject company/employee specifics)</li>
+                    <li>Review checklist (ensure all required clauses present)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="orchestration-card">
+            <div class="agent-badge specialist">Specialist</div>
+            <div class="agent-title">Brand Voice Agent</div>
+            <div class="agent-role">Communication Consistency</div>
+            <div class="agent-desc">
+                Ensure semua candidate-facing comms (rejection emails, interview invites, offer letters) match company tone. Formal/casual, friendly/professional — consistent across all touchpoints.
+            </div>
+            <div class="capabilities-box">
+                <div class="capabilities-label">Tools Available</div>
+                <ul class="capabilities-list">
+                    <li>Company brand guidelines (tone, voice, forbidden phrases)</li>
+                    <li>Template adaptation (rewrite standard templates match voice)</li>
+                    <li>Candidate context (personalize based on role/interaction history)</li>
+                    <li>Multi-language support (maintain tone across languages)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="workflow-section">
+            <div class="section-title">How Orchestration Works: User Goal → Multi-Agent Execution</div>
+            
+            <div class="workflow-step">
+                <span class="step-number">1</span>
+                <div class="step-title">User Input: Natural Language Goal</div>
+                <div class="step-desc">
+                    User type satu line di Aire workspace: "@aire we have 12 new joiners next Monday. Stand up onboarding, contracts, comms, and a day-7 check." No structured forms, no dropdown menus.
+                </div>
+            </div>
+            
+            <div class="workflow-step">
+                <span class="step-number">2</span>
+                <div class="step-title">Aire (Orchestrator): Intent Detection</div>
+                <div class="step-desc">
+                    Aire parse intent: onboarding task, 12 employees, 4 subtasks (onboarding plan + contracts + comms + check-in). Identify which specialist agents needed.
+                </div>
+            </div>
+            
+            <div class="workflow-step">
+                <span class="step-number">3</span>
+                <div class="step-title">Task Routing: Parallel Agent Dispatch</div>
+                <div class="step-desc">
+                    Aire route ke 4 specialist agents in parallel: Onboarding Agent (build plan), Compliance Agent (generate contracts), Brand Voice Agent (draft comms), Onboarding Agent lagi (schedule day-7 check). Semua bekerja simultaneously.
+                </div>
+            </div>
+            
+            <div class="workflow-step">
+                <span class="step-number">4</span>
+                <div class="step-title">Specialist Execution: Context-Aware Work</div>
+                <div class="step-desc">
+                    Each agent access relevant context (role templates, company policies, employee data) dan execute subtask. Onboarding Agent pull role-specific checklist, Compliance Agent inject employee names into contract template, etc.
+                </div>
+            </div>
+            
+            <div class="workflow-step">
+                <span class="step-number">5</span>
+                <div class="step-title">Result Merging: Unified Deliverable</div>
+                <div class="step-desc">
+                    Aire collect outputs dari 4 agents, merge jadi satu cohesive plan: onboarding checklist (12 employees), contract PDFs (ready untuk esign), welcome emails (drafted), day-7 calendar invites (scheduled). User review one unified deliverable, not 4 separate outputs.
+                </div>
+            </div>
+            
+            <div class="workflow-step">
+                <span class="step-number">6</span>
+                <div class="step-title">Human Review & Approval</div>
+                <div class="step-desc">
+                    User review merged output di morning. Approve, edit, atau reject specific pieces. Human always in the loop — agents propose, human decides.
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-section">
+            <div class="example-title">Real Workflow Example: Hiring 12 New Joiners</div>
+            <div class="example-chat">
+                <div class="chat-message">
+                    <div class="chat-user">You (Solo HR)</div>
+                    <div class="chat-content">@aire we have 12 new joiners next Monday. Stand up onboarding, contracts, comms, and a day-7 check.</div>
+                </div>
+                <div class="chat-message">
+                    <div class="chat-user">Aire (Orchestrator)</div>
+                    <div class="chat-content">On it. Routing to four agents in parallel. I'll merge their output into one rollout you can review in the morning.</div>
+                </div>
+                <div class="chat-message">
+                    <div class="chat-user">Onboarding Agent</div>
+                    <div class="chat-content">[Working] Building role-specific onboarding plans untuk 12 joiners (3 engineers, 5 sales, 2 support, 2 ops). Checklist items, timeline, dan resource links.</div>
+                </div>
+                <div class="chat-message">
+                    <div class="chat-user">Compliance Agent</div>
+                    <div class="chat-content">[Working] Generating 12 employment contracts dengan correct jurisdiction (Indonesia labor law). Variable interpolation complete, ready untuk esign.</div>
+                </div>
+                <div class="chat-message">
+                    <div class="chat-user">Brand Voice Agent</div>
+                    <div class="chat-content">[Working] Drafting welcome emails untuk 12 joiners. Tone: friendly professional, consistent dengan company brand guidelines. Personalized per role.</div>
+                </div>
+                <div class="chat-message">
+                    <div class="chat-user">Onboarding Agent</div>
+                    <div class="chat-content">[Working] Scheduling day-7 check-ins untuk 12 joiners. Calendar invites sent, reminder emails queued.</div>
+                </div>
+                <div class="chat-message">
+                    <div class="chat-user">Aire (Orchestrator)</div>
+                    <div class="chat-content">All agents complete. Merged output ready:
+                    • 12 onboarding plans (role-specific)
+                    • 12 contracts (ready untuk DocuSign)
+                    • 12 welcome emails (drafted, awaiting your approval)
+                    • 12 day-7 check-ins (scheduled)
+                    
+Review di #onboarding channel. Approve untuk execute atau edit specific pieces.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
