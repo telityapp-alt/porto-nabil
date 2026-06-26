@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Entity Operations Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #fffdf8; 
+            padding: 32px; 
+            max-width: 100%; 
+            overflow-x: hidden; 
+        }
+        .flow-container { 
+            background: #fffdf8; 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 10px; 
+            padding: 40px; 
+            max-width: 100%; 
+            box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); 
+        }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        
+        .card { 
+            background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 8px; 
+            padding: 24px; 
+            margin-bottom: 16px; 
+            box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); 
+            position: relative; 
+        }
+        
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        }
+        
+        .badge-orange { background: #f6a61e; color: #11222b; }
+        .badge-blue { background: #377cf6; color: #fffdf8; }
+        .badge-teal { background: #37d7c8; color: #11222b; }
+        .badge-brown { background: #c48a28; color: #fffdf8; }
+        
+        .card-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .card-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        
+        .content-box { 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            padding: 14px; 
+            margin-bottom: 10px; 
+        }
+        .content-box:last-child { margin-bottom: 0; }
+        
+        .box-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #55606d; margin-bottom: 8px; }
+        
+        .list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        
+        .highlight-section { 
+            padding: 20px; 
+            background: #e8f4f8; 
+            border: 1px solid #b8d9e8; 
+            border-left-width: 3px; 
+            border-left-color: #377cf6; 
+            border-radius: 6px; 
+            margin-top: 24px; 
+            box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); 
+        }
+        .section-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 12px; }
+        .section-desc { font-size: 13px; line-height: 1.6; color: #32425b; }
+        
+        .entity-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .entity-card { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 12px; }
+        .entity-name { font-size: 13px; font-weight: 800; color: #11222b; margin-bottom: 6px; }
+        .entity-detail { font-size: 11px; line-height: 1.4; color: #55606d; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Multi-Entity Operations Challenge</div>
+            <div class="flow-subtitle">Running businesses across Asia means juggling 5+ legal entities, each with different compliance rules</div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-orange">Problem</div>
+            <div class="card-title">Operational Fragmentation at Scale</div>
+            <div class="card-desc">Companies expanding in Asia quickly hit operational complexity wall. Each jurisdiction requires separate legal entity, compliance calendar, tax filing, banking relationship, and hiring process. No unified playbook exists. Operators cobble together consultant advice, government PDFs, and Reddit threads.</div>
+            <div class="content-box">
+                <div class="box-label">Typical Multi-Entity Setup</div>
+                <ul class="list">
+                    <li>Singapore HQ (Pte Ltd) for regional base and banking hub</li>
+                    <li>Indonesia PT PMA (foreign investment company) for local operations</li>
+                    <li>Philippines ROHQ (regional operating headquarters) for shared services</li>
+                    <li>India Private Limited for tech and product development</li>
+                    <li>Japan KK (kabushiki kaisha) for enterprise sales and partnerships</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Compliance Burden Per Entity</div>
+                <ul class="list">
+                    <li><strong>Annual filings:</strong> AGM resolutions, financial statements, director declarations (deadlines vary by jurisdiction)</li>
+                    <li><strong>Tax obligations:</strong> Corporate tax, withholding tax, GST/VAT, transfer pricing documentation</li>
+                    <li><strong>Statutory audits:</strong> Mandatory for certain entity types and revenue thresholds</li>
+                    <li><strong>Beneficial ownership:</strong> UBO (ultimate beneficial owner) disclosure with periodic updates</li>
+                    <li><strong>Employment compliance:</strong> Payroll tax, social security, labor law updates</li>
+                    <li><strong>Banking KYC:</strong> Annual review, source of funds documentation, regulatory reporting</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Cost</div>
+            <div class="card-title">Hidden Operational Drag</div>
+            <div class="card-desc">Compliance is not just financial cost. It is operational drag on finance and legal teams. Every deadline missed risks penalties. Every regulation change requires context translation (what does this mean for us?). Every new hire in a new jurisdiction requires local employment law research.</div>
+            <div class="content-box">
+                <div class="box-label">Annual Spend Breakdown (5-entity setup)</div>
+                <ul class="list">
+                    <li><strong>Legal & compliance:</strong> $40K-80K/year (corporate secretary, annual filings, audit fees)</li>
+                    <li><strong>Accounting & tax:</strong> $30K-60K/year (bookkeeping, tax prep, transfer pricing reports)</li>
+                    <li><strong>Banking fees:</strong> $10K-25K/year (account maintenance, FX spread, wire fees)</li>
+                    <li><strong>Consultants on-demand:</strong> $20K-50K/year (ad-hoc questions, structure reviews, M&A prep)</li>
+                    <li><strong>Internal time cost:</strong> 20-40% of finance/legal headcount on compliance busywork</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-teal">Failure Modes</div>
+            <div class="card-title">What Goes Wrong</div>
+            <div class="card-desc">Operators learn the hard way. Missed AGM filing → penalty + rush fee to file late. Wrong employment classification → back taxes + interest. Beneficial ownership not updated → bank freeze account pending compliance. Transfer pricing documentation missing → tax authority audit. These are not edge cases — they are routine when scaling multi-entity operations.</div>
+            <div class="entity-grid">
+                <div class="entity-card">
+                    <div class="entity-name">Indonesia</div>
+                    <div class="entity-detail">PT PMA beneficial ownership disclosure now mandatory — miss it and face frozen bank accounts until compliance</div>
+                </div>
+                <div class="entity-card">
+                    <div class="entity-name">Singapore</div>
+                    <div class="entity-detail">AGM within 6 months of FYE, AR within 7 months — late filing compounds daily</div>
+                </div>
+                <div class="entity-card">
+                    <div class="entity-name">Philippines</div>
+                    <div class="entity-detail">BIR tax filing extensions require pre-approval — miss deadline and pay 25% surcharge + 20% interest</div>
+                </div>
+                <div class="entity-card">
+                    <div class="entity-name">India</div>
+                    <div class="entity-detail">Transfer pricing documentation for related-party transactions — tax authority presumes non-compliance without it</div>
+                </div>
+                <div class="entity-card">
+                    <div class="entity-name">Malaysia</div>
+                    <div class="entity-detail">SSM (company registry) annual return + financial statements — RM5K penalty + possible striking off for persistent default</div>
+                </div>
+                <div class="entity-card">
+                    <div class="entity-name">Japan</div>
+                    <div class="entity-detail">Residence tax pre-payment even at zero profit — no exemption, file or face compounding penalties</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-brown">Information Gap</div>
+            <div class="card-title">No Single Source of Truth</div>
+            <div class="card-desc">Existing resources fall short. Government websites list rules but not context (what triggers this? when does it apply?). Big 4 consultants charge $500/hour for questions you could answer yourself with the right playbook. Reddit and founder forums have anecdotes but no structure. No platform consolidates operator-tested tactics for multi-entity compliance, hiring, banking, and tax across Asia.</div>
+            <div class="content-box">
+                <div class="box-label">What Operators Actually Need</div>
+                <ul class="list">
+                    <li><strong>Compliance calendars:</strong> Entity-specific deadlines with lead time and document checklists</li>
+                    <li><strong>Regulatory updates:</strong> New rules translated to action items (file X by Y, update Z in entity docs)</li>
+                    <li><strong>Operator playbooks:</strong> Real tactics from teams running the same setup (how we handle transfer pricing, how we structure equity across entities)</li>
+                    <li><strong>Decision trees:</strong> Should we use ROHQ or branch in Philippines? PT vs KPPA in Indonesia? Context-sensitive guidance</li>
+                    <li><strong>Vendor benchmarks:</strong> Corporate secretary pricing, audit firm recommendations, banking partner comparisons</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="highlight-section">
+            <div class="section-title">Why This Problem Persists</div>
+            <div class="section-desc">Consultants have no incentive to productize knowledge — billable hours model rewards complexity. SaaS tools focus on single-jurisdiction workflows (US payroll, UK incorporation) and ignore multi-entity Asia operations. Government portals are compliance-first, not operator-friendly. The gap is not tooling — it is curated, operator-tested intelligence structured for teams already running multi-entity businesses in Asia.</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -454,6 +454,120 @@ export const libraryCards = [
     gallery: ["/hr-asia/hero.png"],
   },
   {
+    name: "ScaleAsia",
+    role: "Multi-Entity Operations Platform",
+    place: "Compliance & Operations Intelligence for Asia",
+    team: "B2B SaaS Product",
+    status: "Early Stage",
+    image: "/scaleasia/hero.png",
+    overview:
+      "ScaleAsia is an operator-driven platform for companies running multi-entity businesses across Asia. We consolidate compliance playbooks, regulatory updates, and tactical guides for entity setup, tax, banking, hiring, and legal operations. Built for corporate teams expanding in Asia, delivering operator-tested intelligence that consultants charge $500/hour for.",
+    stats: [
+      { label: "Operating Areas", value: "7" },
+      { label: "Jurisdictions", value: "6+" },
+      { label: "Content Type", value: "3" },
+    ],
+    highlights: [
+      "Operator playbooks from teams running 5+ entities in Asia",
+      "Weekly regulatory updates with action items and deadlines",
+      "Search and filter by operating area, jurisdiction, and author",
+    ],
+    strategy: [
+      {
+        phase: "Multi-Entity Operations Challenge",
+        desc: "Companies scaling in Asia hit operational complexity wall. Each jurisdiction requires separate legal entity, compliance calendar, tax filing, banking relationship, and hiring process. Operators juggle consultant advice, government PDFs, and Reddit threads. No unified playbook exists for multi-entity compliance, banking, tax, and hiring across Asia.",
+        image: "/scaleasia/flow-multi-entity-challenge.html",
+      },
+      {
+        phase: "Operating Area Taxonomy",
+        desc: "7 core operating areas: Entity (incorporation, governance, AGM), Compliance (audits, UBO disclosure), Hiring (employment contracts, payroll, EOR), Tax (withholding, transfer pricing, VAT/GST), Banking (account opening, treasury, KYC), Legal (IP, contracts, equity structures), Operations (procurement, insurance, tool stack). Jurisdiction-specific playbooks for each.",
+        image: "/scaleasia/flow-operating-areas.html",
+      },
+      {
+        phase: "Operator Content Strategy",
+        desc: "Three content types: (1) Operator playbooks (step-by-step guides with timelines, costs, pitfalls), (2) Regulatory updates (new rules translated to action items), (3) Workshops & programs (live sessions with operator Q&A). Quality bar: operator credibility verified, content structured for replication, editorial review before publish.",
+        image: "/scaleasia/flow-content-strategy.html",
+      },
+      {
+        phase: "Platform Architecture",
+        desc: "Static-first architecture (Next.js SSG) with client-side search (Pagefind or Algolia). Git-based CMS for operator contributions (markdown + PR workflow). Minimal backend (Cloudflare Workers + D1) for workshop registration and email subscriptions. Operator profiles show verified experience and contribution history.",
+        image: "/scaleasia/flow-architecture.html",
+      },
+    ],
+    userJourney: [
+      {
+        step: "Discovery via Organic Search",
+        tag: "Week 1",
+        desc: "Corporate finance or legal lead searches 'Indonesia PT PMA beneficial ownership disclosure' and lands on ScaleAsia playbook. First impression: operator-tested tactics with cost breakdowns and timelines, not consultant jargon.",
+        callout:
+          "SEO-driven discovery — long-tail compliance queries lead to playbooks",
+      },
+      {
+        step: "Playbook Consumption",
+        tag: "Week 1-2",
+        desc: "User reads playbook, finds decision tree and execution steps actionable. Checks operator credentials (profile shows 5 entities across SEA). Downloads checklist or template. Returns for related playbooks (transfer pricing, tax filing, AGM compliance).",
+        callout:
+          "Operator credibility builds trust — profile shows verified multi-entity experience",
+      },
+      {
+        step: "Workshop Registration",
+        tag: "Week 2-4",
+        desc: "User sees workshop announcement (e.g., 'Transfer pricing for non-finance operators'). Registers for live session. Attends workshop, applies framework to their multi-entity setup with operator guidance. Gets recording and slide deck post-workshop.",
+        callout:
+          "Live workshops create tight feedback loop — operators refine playbooks based on participant questions",
+      },
+      {
+        step: "Newsletter Subscription",
+        tag: "Month 1+",
+        desc: "User subscribes to weekly regulatory updates (Market Signal). Every Monday: 3-5 new rules across Asia with 'who is affected' filter and 'action required' deadlines. Keeps compliance top-of-mind without manual government portal monitoring.",
+        callout:
+          "Regulatory updates = recurring engagement — weekly touchpoint with corporate leads",
+      },
+    ],
+    richContent: {
+      title: "Deep Dive: Operator-Driven vs Consultant-Authored",
+      blocks: [
+        {
+          type: "text",
+          content:
+            "Traditional business advisory content comes from consultants who bill $500/hour. Their incentive is complexity — the more questions you have, the more hours they bill. ScaleAsia content comes from operators who already solved the problem you are facing. Their incentive is clarity — they share tactics that worked so you do not waste time repeating their mistakes. No billable hours, no consultant obfuscation. Just operator-tested playbooks.",
+        },
+        {
+          type: "callout",
+          content:
+            "Core insight: Multi-entity operations in Asia is not an unsolved problem. Hundreds of companies run 5+ entities across SEA successfully. The problem is information asymmetry — their playbooks are locked in Notion, Confluence, or consultant decks. ScaleAsia productizes operator knowledge into searchable, reusable playbooks.",
+        },
+        {
+          type: "list",
+          items: [
+            "Operator Credibility — Verified multi-entity experience (jurisdictions, entity types, years active)",
+            "Cost Transparency — Corporate secretary: $2K-4K/year in Singapore, audit: $5K-15K depending on complexity",
+            "Trade-offs Acknowledged — PT PMA gives flexibility but adds 3 months to setup vs KPPA (faster but limited scope)",
+            "Failure Modes Shared — Missed AGM deadline = $500 penalty + late filing surcharge (real operator experience)",
+            "Context-Sensitive Guidance — For 10-person team use EOR, for 50+ set up entity (decision tree with criteria)",
+            "Editorial Quality Bar — Structure completeness, uniqueness check, operator verification before publish",
+          ],
+        },
+        {
+          type: "kv",
+          rows: [
+            { label: "Tech Stack", value: "Next.js 14 + Tailwind + Cloudflare Workers" },
+            { label: "Content", value: "MDX (markdown) + Git-based CMS (PR workflow)" },
+            {
+              label: "Search",
+              value: "Pagefind (static index) or Algolia DocSearch",
+            },
+            {
+              label: "Stage",
+              value: "Early stage — content-first, pre-scale",
+            },
+          ],
+        },
+      ],
+    },
+    gallery: ["/scaleasia/hero.png"],
+  },
+  {
     name: "Aire",
     role: "AI-Native Talent Intelligence",
     place: "Assessment & HR Management Platform",

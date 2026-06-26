@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Content Strategy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemCloud, 'Segoe UI', sans-serif; 
+            background: #fffdf8; 
+            padding: 32px; 
+            max-width: 100%; 
+            overflow-x: hidden; 
+        }
+        .flow-container { 
+            background: #fffdf8; 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 10px; 
+            padding: 40px; 
+            max-width: 100%; 
+            box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); 
+        }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        
+        .card { 
+            background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 8px; 
+            padding: 24px; 
+            margin-bottom: 16px; 
+            box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); 
+            position: relative; 
+        }
+        
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        }
+        
+        .badge-orange { background: #f6a61e; color: #11222b; }
+        .badge-blue { background: #377cf6; color: #fffdf8; }
+        .badge-teal { background: #37d7c8; color: #11222b; }
+        .badge-brown { background: #c48a28; color: #fffdf8; }
+        
+        .card-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .card-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        
+        .content-box { 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            padding: 14px; 
+            margin-bottom: 10px; 
+        }
+        .content-box:last-child { margin-bottom: 0; }
+        
+        .box-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #55606d; margin-bottom: 8px; }
+        
+        .list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        
+        .highlight-section { 
+            padding: 20px; 
+            background: #e8f4f8; 
+            border: 1px solid #b8d9e8; 
+            border-left-width: 3px; 
+            border-left-color: #377cf6; 
+            border-radius: 6px; 
+            margin-top: 24px; 
+            box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); 
+        }
+        .section-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 12px; }
+        .section-desc { font-size: 13px; line-height: 1.6; color: #32425b; }
+        
+        .content-type { 
+            display: grid; 
+            grid-template-columns: 120px 1fr; 
+            gap: 12px; 
+            align-items: start; 
+            padding: 12px; 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            margin-bottom: 8px;
+        }
+        .content-type:last-child { margin-bottom: 0; }
+        .type-label { font-size: 12px; font-weight: 800; color: #377cf6; }
+        .type-desc { font-size: 12px; line-height: 1.4; color: #32425b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Operator Content Strategy</div>
+            <div class="flow-subtitle">Playbooks, regulatory updates, and workshops — all from operators running businesses in Asia</div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-orange">Philosophy</div>
+            <div class="card-title">Operator-Driven, Not Consultant-Authored</div>
+            <div class="card-desc">Traditional business advisory content comes from consultants who bill by the hour. Their incentive is complexity. ScaleAsia content comes from operators who run the same multi-entity setup you do. Their incentive is clarity — they want to share what worked so the next operator does not waste time on the same problem.</div>
+            <div class="content-box">
+                <div class="box-label">What Makes Operator Content Different</div>
+                <ul class="list">
+                    <li><strong>Real tactics, not theory:</strong> "We structure transfer pricing this way" vs "transfer pricing should follow arm's length principle"</li>
+                    <li><strong>Trade-offs acknowledged:</strong> "PT PMA gives you more flexibility but adds 3 months to setup" vs "PT PMA is the best option"</li>
+                    <li><strong>Cost transparency:</strong> "Corporate secretary in Singapore: $2K-4K/year" vs "consult your service provider"</li>
+                    <li><strong>Failure modes shared:</strong> "We missed AGM deadline and paid $500 penalty" vs silence on mistakes</li>
+                    <li><strong>Context-sensitive:</strong> "For 10-person team use EOR, for 50+ set up entity" vs one-size prescription</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Content Type 1</div>
+            <div class="card-title">Operator Playbooks</div>
+            <div class="card-desc">Long-form tactical guides written by operators. Each playbook covers one specific decision or workflow: setting up PT PMA in Indonesia, structuring equity across entities, managing transfer pricing documentation, opening bank accounts in 5 jurisdictions. Not theory — step-by-step execution with timelines, cost breakdowns, and pitfall warnings.</div>
+            <div class="content-box">
+                <div class="box-label">Playbook Structure</div>
+                <div class="content-type">
+                    <div class="type-label">Context</div>
+                    <div class="type-desc">When does this decision arise? What triggers it? (e.g., "You are expanding to Indonesia and need to decide: PT PMA, representative office, or KPPA?")</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Decision Tree</div>
+                    <div class="type-desc">If X, choose Y. If Z, choose W. Context-sensitive guidance with criteria (team size, revenue, industry, permanence).</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Execution Steps</div>
+                    <div class="type-desc">Step-by-step: document prep (2 weeks), notarization (1 week), BKPM submission (4-6 weeks), bank account (3-4 weeks). Timeline and owner per step.</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Cost Breakdown</div>
+                    <div class="type-desc">Government fees + notary + corporate secretary + lawyer = total cost with range. No hidden fees.</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Pitfalls</div>
+                    <div class="type-desc">Common mistakes: "Director passport must be notarized in home country, not Indonesia" or "Bank account requires physical presence, plan 1 week trip."</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Operator Notes</div>
+                    <div class="type-desc">First-hand experience: "We used ServiceProvider X and they took 8 weeks vs promised 6. Budget extra time."</div>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Example Playbook Titles</div>
+                <ul class="list">
+                    <li>Set up entities in five jurisdictions in three years (Marilyn Nika, 18-month execution timeline)</li>
+                    <li>Navigate PT PMA beneficial ownership disclosure without freezing your bank account</li>
+                    <li>Structure equity across multi-entity setup for future M&A liquidity</li>
+                    <li>Open corporate bank accounts in Singapore, Indonesia, Philippines in under 90 days</li>
+                    <li>Manage transfer pricing documentation for 5-entity structure without Big 4 retainer</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-teal">Content Type 2</div>
+            <div class="card-title">Regulatory Updates (Market Signal)</div>
+            <div class="card-desc">Weekly feed of regulatory changes across Asia. Not just "Indonesia tightens UBO disclosure" but "What this means for you: if you have PT PMA, file updated UBO by June 30 or risk bank account freeze. Here is the form, here is the process." Action-oriented, not news-for-news-sake.</div>
+            <div class="content-box">
+                <div class="box-label">Update Structure</div>
+                <div class="content-type">
+                    <div class="type-label">Headline</div>
+                    <div class="type-desc">What changed? (e.g., "Indonesia OJK clarifies licensing path for cross-border fintech operators")</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Who is affected</div>
+                    <div class="type-desc">Entity type + industry filter (e.g., "If you operate PT PMA in fintech sector and handle cross-border payments")</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Action required</div>
+                    <div class="type-desc">What to do by when (e.g., "Submit licensing application by Q3 2026 or cease cross-border operations")</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Implication</div>
+                    <div class="type-desc">Practical impact (e.g., "This opens path for foreign fintechs to operate legally without Indonesian partner requirement")</div>
+                </div>
+                <div class="content-type">
+                    <div class="type-label">Resources</div>
+                    <div class="type-desc">Links to official circular, English translation if available, relevant playbook for deeper context</div>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Example Updates</div>
+                <ul class="list">
+                    <li>Indonesia tightens beneficial ownership disclosure for PT PMA (action: file by June 30, form attached)</li>
+                    <li>Airwallex launches multi-entity treasury for SEA businesses (context: reduces FX spread for intra-company transfers)</li>
+                    <li>Philippines BIR ends automatic tax filing extensions (action: pre-approval now required, submit 15 days before deadline)</li>
+                    <li>Singapore MAS updates corporate banking KYC requirements (action: annual review now mandatory, prepare source of funds docs)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-brown">Content Type 3</div>
+            <div class="card-title">Workshops & Programs</div>
+            <div class="card-desc">Live workshops and cohort-based programs where operators learn together. Not generic webinars — applied sessions with homework, peer review, and operator feedback. Workshops run 90-120 minutes with 15-20 participants max. Programs run 4-8 weeks with weekly sessions and async work.</div>
+            <div class="content-box">
+                <div class="box-label">Workshop Format</div>
+                <ul class="list">
+                    <li><strong>Session 1 (30 min):</strong> Operator teaches framework or tactic (e.g., "How we structured transfer pricing for 5 entities")</li>
+                    <li><strong>Session 2 (45 min):</strong> Participants apply to their own setup with operator guidance (breakout rooms, real Q&A)</li>
+                    <li><strong>Session 3 (30 min):</strong> Group shares approaches, operator gives feedback, common pitfalls highlighted</li>
+                    <li><strong>Post-workshop:</strong> Recording + slide deck + template shared. Follow-up async Q&A in community Slack.</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Example Workshop Topics</div>
+                <ul class="list">
+                    <li>Multi-entity accounting: consolidation, FX translation, and inter-company reconciliation</li>
+                    <li>Transfer pricing for non-finance operators: arm's length principle without Big 4 retainer</li>
+                    <li>Entity restructuring: holding company setup, cross-border mergers, tax-efficient exits</li>
+                    <li>Banking relationships: negotiating multi-entity treasury, FX hedging, KYC compliance</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-orange">Content Curation</div>
+            <div class="card-title">Quality Bar & Operator Vetting</div>
+            <div class="card-desc">Not every operator contribution is published. Content goes through editorial review: (1) Is this actionable or just opinion? (2) Is the operator credible (verifiable multi-entity experience)? (3) Does this add unique value vs existing playbooks? (4) Is it structured for replication (steps, timelines, costs)? Only high-signal, operator-tested content makes it to the feed.</div>
+            <div class="content-box">
+                <div class="box-label">Operator Credentials</div>
+                <ul class="list">
+                    <li><strong>Verified experience:</strong> Operator profile shows entities operated, jurisdictions, years running (e.g., "Marilyn Nika: 5 entities across SG, ID, PH, IN, MY over 3 years")</li>
+                    <li><strong>Public track record:</strong> LinkedIn, company website, or verifiable business presence in stated jurisdictions</li>
+                    <li><strong>Contribution history:</strong> Operators build reputation via quality contributions (playbooks, workshop facilitation, peer reviews)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Contribution Incentives</div>
+            <div class="card-title">Why Operators Share</div>
+            <div class="card-desc">Operators contribute playbooks and facilitate workshops for: (1) Reputation building (operator profile showcased, LinkedIn credibility), (2) Network access (connect with other operators solving similar problems), (3) Learning by teaching (articulating your approach clarifies your thinking), (4) Paying it forward (you benefited from operator content, now you contribute back). No monetary compensation — incentive is community status and network.</div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="highlight-section">
+            <div class="section-title">Content Flywheel</div>
+            <div class="section-desc">More operators join → more playbooks published → better SEO and organic discovery → more operators join. Quality bar maintains signal-to-noise. Workshops create tight feedback loop (operator teaches, participants apply, operator refines playbook based on questions). Regulatory updates keep operators engaged weekly. Community Slack enables async peer-to-peer help between playbook releases. The flywheel is content quality, not content volume.</div>
+        </div>
+    </div>
+</body>
+</html>

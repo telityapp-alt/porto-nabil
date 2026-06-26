@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #fffdf8; 
+            padding: 32px; 
+            max-width: 100%; 
+            overflow-x: hidden; 
+        }
+        .flow-container { 
+            background: #fffdf8; 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 10px; 
+            padding: 40px; 
+            max-width: 100%; 
+            box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); 
+        }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        
+        .card { 
+            background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 8px; 
+            padding: 24px; 
+            margin-bottom: 16px; 
+            box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); 
+            position: relative; 
+        }
+        
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        }
+        
+        .badge-orange { background: #f6a61e; color: #11222b; }
+        .badge-blue { background: #377cf6; color: #fffdf8; }
+        .badge-teal { background: #37d7c8; color: #11222b; }
+        .badge-brown { background: #c48a28; color: #fffdf8; }
+        
+        .card-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .card-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        
+        .content-box { 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            padding: 14px; 
+            margin-bottom: 10px; 
+        }
+        .content-box:last-child { margin-bottom: 0; }
+        
+        .box-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #55606d; margin-bottom: 8px; }
+        
+        .list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        
+        .highlight-section { 
+            padding: 20px; 
+            background: #fef3e2; 
+            border: 1px solid #f6d9a8; 
+            border-left-width: 3px; 
+            border-left-color: #f6a61e; 
+            border-radius: 6px; 
+            margin-top: 24px; 
+            box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); 
+        }
+        .section-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 12px; }
+        .section-desc { font-size: 13px; line-height: 1.6; color: #32425b; }
+        
+        .tech-stack { 
+            display: grid; 
+            grid-template-columns: 120px 1fr; 
+            gap: 8px; 
+            align-items: start; 
+            padding: 8px; 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            margin-bottom: 6px;
+        }
+        .tech-stack:last-child { margin-bottom: 0; }
+        .tech-label { font-size: 11px; font-weight: 800; color: #55606d; }
+        .tech-value { font-size: 12px; line-height: 1.4; color: #32425b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Platform Architecture</div>
+            <div class="flow-subtitle">Content-first design with search, filtering, and operator profiles</div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-orange">Design Philosophy</div>
+            <div class="card-title">Discoverability Over Engagement Loops</div>
+            <div class="card-desc">ScaleAsia is not a social feed. It is a knowledge base optimized for search and filtering. Operators arrive with specific questions ("How do I handle transfer pricing for Indonesia PT PMA?") and need fast path to relevant playbook. Architecture prioritizes SEO, taxonomy clarity, and filter precision over infinite scroll and recommendation algorithms.</div>
+            <div class="content-box">
+                <div class="box-label">Core Principles</div>
+                <ul class="list">
+                    <li><strong>Search-first:</strong> Every page indexed for organic discovery. Long-tail keywords ("Indonesia PT PMA beneficial ownership disclosure") map to specific playbooks.</li>
+                    <li><strong>Taxonomy-driven navigation:</strong> Browse by operating area (Entity, Compliance, Hiring, Tax, Banking, Legal, Operations) or by jurisdiction.</li>
+                    <li><strong>Progressive disclosure:</strong> Playbook previews show context and decision tree. Full content behind single click, no multi-page pagination.</li>
+                    <li><strong>Static content, dynamic filtering:</strong> Playbooks are static markdown, filters applied client-side for instant results.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Frontend Stack</div>
+            <div class="card-title">Static Site with Client-Side Search</div>
+            <div class="card-desc">Same architecture as HR Asia: Next.js static export for content pages, React islands for interactive features (search, filtering, workshop registration). Majority of traffic lands on playbook pages from Google — those pages ship zero client-side JS for instant load. Search and filtering hydrate on-demand.</div>
+            <div class="content-box">
+                <div class="box-label">Technology Choices</div>
+                <div class="tech-stack">
+                    <div class="tech-label">Framework</div>
+                    <div class="tech-value">Next.js 14 (App Router) with static export. RSC for operator profiles and workshop booking.</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Content</div>
+                    <div class="tech-value">MDX for playbooks with frontmatter (operating_area, jurisdictions, author, publish_date, tags).</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Search</div>
+                    <div class="tech-value">Pagefind (static search index) or Algolia DocSearch for instant client-side search across playbooks.</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Styling</div>
+                    <div class="tech-value">Tailwind CSS with custom design system (same retro palette as HR Asia for brand consistency).</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Typography</div>
+                    <div class="tech-value">Source Sans 3 (body) + Lora (headings) for professional, readable long-form content.</div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-teal">Backend & Data</div>
+            <div class="card-title">Minimal Backend, Git-Based CMS</div>
+            <div class="card-desc">Backend operations limited to: workshop registration, operator profile management, and weekly regulatory update emails. Content authoring happens in Git (operators submit playbooks via PR, editorial review before merge). No database for content — markdown files are source of truth. Database only for user accounts, workshop registrations, and email subscriptions.</div>
+            <div class="content-box">
+                <div class="box-label">Backend Architecture</div>
+                <div class="tech-stack">
+                    <div class="tech-label">Functions</div>
+                    <div class="tech-value">Cloudflare Workers for workshop booking, email subscriptions, operator profile CRUD.</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Database</div>
+                    <div class="tech-value">Cloudflare D1 (SQLite at edge) for user accounts, workshop enrollments, email list.</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">CMS</div>
+                    <div class="tech-value">Git-based (GitHub repo). Operators submit playbooks via PR (markdown + frontmatter). Editorial review, then merge to main triggers deploy.</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Email</div>
+                    <div class="tech-value">Resend API for weekly regulatory update newsletter and workshop confirmation emails.</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Auth</div>
+                    <div class="tech-value">Clerk or Auth.js for operator accounts (GitHub OAuth preferred for operator identity verification).</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-brown">Content Pipeline</div>
+            <div class="card-title">Operator Contribution → Editorial Review → Deploy</div>
+            <div class="card-desc">Operators draft playbooks in markdown (local editor or GitHub web UI). Submit PR with frontmatter (operating area, jurisdictions, tags). Editorial team reviews for: (1) Structure completeness (context, decision tree, execution steps, costs, pitfalls), (2) Operator credibility (profile verification), (3) Uniqueness (does this add value vs existing playbooks?). Approved PRs merge to main, trigger static build and deploy to edge within 5 minutes.</div>
+            <div class="content-box">
+                <div class="box-label">Contribution Workflow</div>
+                <ul class="list">
+                    <li><strong>Step 1 — Draft:</strong> Operator writes playbook in markdown following template (frontmatter + sections: context, decision tree, steps, costs, pitfalls).</li>
+                    <li><strong>Step 2 — Submit:</strong> Open GitHub PR. Automated checks validate frontmatter schema and markdown linting.</li>
+                    <li><strong>Step 3 — Review:</strong> Editorial team reviews structure, verifies operator credentials, checks for duplication with existing content.</li>
+                    <li><strong>Step 4 — Publish:</strong> PR approved and merged. CI/CD builds static site, deploys to Cloudflare Pages, playbook live within 5 minutes.</li>
+                    <li><strong>Step 5 — Promote:</strong> New playbook featured in weekly regulatory update email. Operator profile updated with contribution credit.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-orange">Search & Filtering</div>
+            <div class="card-title">Multi-Dimensional Playbook Discovery</div>
+            <div class="card-desc">Operators filter playbooks by: (1) Operating area (Entity, Compliance, Hiring, Tax, Banking, Legal, Operations), (2) Jurisdiction (Singapore, Indonesia, Philippines, India, Malaysia, Japan), (3) Author (find all playbooks by specific operator), (4) Tags (transfer pricing, EOR, AGM, bank account, beneficial ownership). Filters combine with AND logic (show me Compliance playbooks for Indonesia about beneficial ownership). Search works across playbook title, summary, and body text.</div>
+            <div class="content-box">
+                <div class="box-label">Implementation</div>
+                <ul class="list">
+                    <li><strong>Static index:</strong> Playbook metadata extracted at build time into JSON index file (title, summary, frontmatter, URL).</li>
+                    <li><strong>Client-side filtering:</strong> React component loads index, applies filters instantly without server round-trip.</li>
+                    <li><strong>Full-text search:</strong> Pagefind generates static search index at build time. Client-side JS hydrates search UI on-demand.</li>
+                    <li><strong>SEO optimization:</strong> Each playbook is standalone HTML page with semantic structure (h1, h2, h3 hierarchy, schema.org HowTo markup).</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Operator Profiles</div>
+            <div class="card-title">Credibility & Contribution History</div>
+            <div class="card-desc">Every operator has public profile showing: (1) Entities operated (jurisdictions, entity types, years active), (2) Contribution history (playbooks authored, workshops facilitated), (3) Verified credentials (LinkedIn, company website, GitHub verified). Profile builds operator reputation and helps users assess playbook credibility ("This operator ran 5 entities across SEA for 3 years — their transfer pricing playbook is field-tested").</div>
+            <div class="content-box">
+                <div class="box-label">Profile Data Model</div>
+                <div class="tech-stack">
+                    <div class="tech-label">Identity</div>
+                    <div class="tech-value">Name, photo, bio, LinkedIn URL, company website (verified via OAuth or manual review).</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Experience</div>
+                    <div class="tech-value">List of entities operated (jurisdiction, entity type, start year, end year or "present").</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Contributions</div>
+                    <div class="tech-value">Playbooks authored (with publish date and view count), workshops facilitated (with participant count).</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Verification</div>
+                    <div class="tech-value">Badge for verified operators (manual review confirms multi-entity experience is real).</div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-teal">Workshop Platform</div>
+            <div class="card-title">Live Sessions with Registration & Recording</div>
+            <div class="card-desc">Workshops run live via Zoom (or similar). Registration handled via ScaleAsia platform (workshop detail page → register button → collect email + entity info). Post-workshop, recording and slide deck uploaded to platform and linked from workshop page. Attendees get email with recording link. Non-attendees can expense workshop (corporate reimbursement flow) to access recording and materials.</div>
+            <div class="content-box">
+                <div class="box-label">Workshop Workflow</div>
+                <ul class="list">
+                    <li><strong>Pre-workshop:</strong> Operator submits workshop proposal (topic, outline, date/time). Editorial approval. Workshop page created with registration form.</li>
+                    <li><strong>Registration:</strong> User fills form (name, email, entities operated, specific questions for operator). Email confirmation sent with Zoom link.</li>
+                    <li><strong>Live session:</strong> Operator facilitates 90-120 min workshop. Recording captured automatically.</li>
+                    <li><strong>Post-workshop:</strong> Recording uploaded to Cloudflare Stream (or YouTube unlisted). Slide deck attached as PDF. Workshop page updated with recording embed.</li>
+                    <li><strong>Access control:</strong> Attendees get free access. Non-attendees can expense ("Expense a program" flow submits receipt to employer for reimbursement).</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="highlight-section">
+            <div class="section-title">Architecture Trade-offs</div>
+            <div class="section-desc"><strong>Why static-first:</strong> Playbooks are evergreen content that changes infrequently (quarterly updates to reflect regulatory changes). Pre-rendering ensures instant load for SEO-driven traffic. Trade-off: real-time features limited (no live chat, no instant notifications). We accept this — async community (Slack) handles real-time operator discussions. <strong>Why Git-based CMS:</strong> Operators are technical (CFOs, finance leads, legal ops). They are comfortable with markdown and PR workflows. Git provides version control, attribution, and editorial review built-in. Trade-off: non-technical operators face steeper contribution barrier. We accept this — target audience is operator who can navigate GitHub, not general public. <strong>Why minimal backend:</strong> Focus engineering effort on content quality and search UX, not building CMS features. Trade-off: no rich text editor, no in-app collaboration. We accept this — markdown simplicity keeps content portable and future-proof.</div>
+        </div>
+    </div>
+</body>
+</html>

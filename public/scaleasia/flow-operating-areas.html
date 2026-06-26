@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating Area Taxonomy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #fffdf8; 
+            padding: 32px; 
+            max-width: 100%; 
+            overflow-x: hidden; 
+        }
+        .flow-container { 
+            background: #fffdf8; 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 10px; 
+            padding: 40px; 
+            max-width: 100%; 
+            box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); 
+        }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        
+        .card { 
+            background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 8px; 
+            padding: 24px; 
+            margin-bottom: 16px; 
+            box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); 
+            position: relative; 
+        }
+        
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        }
+        
+        .badge-orange { background: #f6a61e; color: #11222b; }
+        .badge-blue { background: #377cf6; color: #fffdf8; }
+        .badge-teal { background: #37d7c8; color: #11222b; }
+        .badge-brown { background: #c48a28; color: #fffdf8; }
+        .badge-purple { background: #6B5290; color: #fffdf8; }
+        .badge-green { background: #2E4A3C; color: #fffdf8; }
+        .badge-pink { background: #E8C4B8; color: #11222b; }
+        
+        .card-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .card-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        
+        .content-box { 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            padding: 14px; 
+            margin-bottom: 10px; 
+        }
+        .content-box:last-child { margin-bottom: 0; }
+        
+        .box-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #55606d; margin-bottom: 8px; }
+        
+        .list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        
+        .highlight-section { 
+            padding: 20px; 
+            background: #fef3e2; 
+            border: 1px solid #f6d9a8; 
+            border-left-width: 3px; 
+            border-left-color: #f6a61e; 
+            border-radius: 6px; 
+            margin-top: 24px; 
+            box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); 
+        }
+        .section-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 12px; }
+        .section-desc { font-size: 13px; line-height: 1.6; color: #32425b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Operating Area Taxonomy</div>
+            <div class="flow-subtitle">7 core operating areas — each with jurisdiction-specific playbooks and regulatory updates</div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-orange">Entity</div>
+            <div class="card-title">Entity Formation & Governance</div>
+            <div class="card-desc">Setting up legal entities, maintaining corporate governance, managing director appointments, handling annual filings, and navigating entity restructuring. Covers incorporation, registered address, company secretary, AGM compliance, and striking off procedures.</div>
+            <div class="content-box">
+                <div class="box-label">Playbook Topics</div>
+                <ul class="list">
+                    <li><strong>Entity selection:</strong> PT vs KPPA in Indonesia, Pte Ltd vs Branch in Singapore, ROHQ vs PEZO in Philippines</li>
+                    <li><strong>Incorporation timeline:</strong> Document requirements, notarization, registration process, expected timelines per jurisdiction</li>
+                    <li><strong>Director duties:</strong> Statutory responsibilities, personal liability, fiduciary obligations, resignation process</li>
+                    <li><strong>AGM compliance:</strong> Notice period, quorum rules, resolution types, minute documentation</li>
+                    <li><strong>Annual returns:</strong> Filing deadlines, financial statement requirements, late filing penalties</li>
+                    <li><strong>Entity restructuring:</strong> Merger, acquisition, holding company setup, cross-border transfers</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Regulatory Watch</div>
+                <ul class="list">
+                    <li>Indonesia: PT PMA beneficial ownership disclosure (new BKPM regulation)</li>
+                    <li>Singapore: Nominee director arrangements (MAS guidelines update)</li>
+                    <li>India: FEMA compliance for foreign-owned entities (RBI circular changes)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Compliance</div>
+            <div class="card-title">Regulatory Compliance & Reporting</div>
+            <div class="card-desc">Staying compliant with evolving regulations across multiple jurisdictions. Annual filings, statutory audits, beneficial ownership disclosure, FATCA/CRS reporting, and industry-specific licenses. Proactive tracking prevents penalties and operational disruptions.</div>
+            <div class="content-box">
+                <div class="box-label">Playbook Topics</div>
+                <ul class="list">
+                    <li><strong>Compliance calendar:</strong> Entity-specific deadline tracker with lead time and document prep checklists</li>
+                    <li><strong>Statutory audits:</strong> When mandatory, auditor selection criteria, audit prep timeline, filing requirements</li>
+                    <li><strong>UBO disclosure:</strong> Beneficial ownership thresholds, update triggers, submission process per jurisdiction</li>
+                    <li><strong>Financial reporting:</strong> IFRS vs local GAAP, consolidation requirements, FX translation rules</li>
+                    <li><strong>Industry licenses:</strong> Fintech, crypto, healthcare, education — jurisdiction-specific licensing paths</li>
+                    <li><strong>Data protection:</strong> GDPR equivalents in Asia (PDPA Singapore, PDP Bill India), cross-border transfer rules</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Regulatory Watch</div>
+                <ul class="list">
+                    <li>Indonesia: OJK licensing for cross-border fintech (clarified pathways for payment processors)</li>
+                    <li>Philippines: SEC compliance for foreign corporations (updated reporting requirements)</li>
+                    <li>Japan: Residence tax pre-payment obligations (no exemption even at zero profit)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-teal">Hiring</div>
+            <div class="card-title">Employment & Workforce Management</div>
+            <div class="card-desc">Hiring across Asia jurisdictions, managing payroll and benefits, navigating labor law, handling terminations, and setting up EOR (employer of record) arrangements. Every country has different employment classification, leave entitlements, and severance rules.</div>
+            <div class="content-box">
+                <div class="box-label">Playbook Topics</div>
+                <ul class="list">
+                    <li><strong>Employment contracts:</strong> Must-have clauses per jurisdiction, probation rules, IP assignment, non-compete enforceability</li>
+                    <li><strong>Payroll setup:</strong> Statutory contributions (CPF, EPF, BPJS), tax withholding, payment cycle requirements</li>
+                    <li><strong>Leave entitlements:</strong> Annual leave accrual, sick leave, parental leave, public holiday calendars</li>
+                    <li><strong>Termination process:</strong> Notice periods, severance calculation, retrenchment benefit, wrongful dismissal risk</li>
+                    <li><strong>EOR vs direct entity:</strong> When to use EOR, cost comparison, compliance handoff, transition planning</li>
+                    <li><strong>Foreign worker permits:</strong> Work visa requirements, quota systems, sponsorship obligations, renewal process</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Regulatory Watch</div>
+                <ul class="list">
+                    <li>Malaysia: EPF contribution rate changes (age-based tiers updated)</li>
+                    <li>Singapore: Employment Act Part IV coverage expansion (salary threshold raised)</li>
+                    <li>Indonesia: Omnibus Law severance matrix (new calculation formula in effect)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-brown">Tax</div>
+            <div class="card-title">Tax Planning & Compliance</div>
+            <div class="card-desc">Corporate tax filing, withholding tax on cross-border payments, transfer pricing documentation, VAT/GST compliance, and tax treaty navigation. Multi-entity structures require careful planning to avoid double taxation and minimize global effective tax rate.</div>
+            <div class="content-box">
+                <div class="box-label">Playbook Topics</div>
+                <ul class="list">
+                    <li><strong>Corporate tax rates:</strong> Headline rates, SME reliefs, tax holidays, innovation incentives per jurisdiction</li>
+                    <li><strong>Withholding tax:</strong> Dividend, interest, royalty, service fee — treaty rates and documentation requirements</li>
+                    <li><strong>Transfer pricing:</strong> Related-party transaction documentation, arm's length principle, advance pricing agreements</li>
+                    <li><strong>VAT/GST:</strong> Registration thresholds, input tax credit, cross-border supply rules, reverse charge mechanism</li>
+                    <li><strong>Tax residency:</strong> PE (permanent establishment) risk, dual residency conflicts, POEM (place of effective management) rules</li>
+                    <li><strong>Tax treaties:</strong> DTA (double taxation avoidance) navigation, certificate of residence, treaty relief claims</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Regulatory Watch</div>
+                <ul class="list">
+                    <li>Philippines: BIR tax filing extensions (pre-approval now mandatory, no automatic extension)</li>
+                    <li>India: Transfer pricing documentation thresholds (updated transaction limits)</li>
+                    <li>Singapore: GST on imported digital services (registration requirement for foreign suppliers)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-purple">Banking</div>
+            <div class="card-title">Banking & Treasury Management</div>
+            <div class="card-desc">Opening corporate bank accounts, managing multi-currency treasury, navigating KYC requirements, handling cross-border payments, and selecting banking partners. Banking relationships in Asia require ongoing compliance and strategic planning for FX exposure.</div>
+            <div class="content-box">
+                <div class="box-label">Playbook Topics</div>
+                <ul class="list">
+                    <li><strong>Account opening:</strong> Document requirements, notarization, in-person visits, timeline expectations per bank</li>
+                    <li><strong>KYC compliance:</strong> Annual review process, source of funds documentation, UBO verification, relationship manager touchpoints</li>
+                    <li><strong>Multi-currency treasury:</strong> FX risk management, hedging strategies, netting arrangements, cash pooling structures</li>
+                    <li><strong>Payment rails:</strong> SWIFT vs local rails, payment speed, FX spread comparison, failure recovery process</li>
+                    <li><strong>Banking partner selection:</strong> Local vs international banks, fee structures, digital banking vs relationship banking</li>
+                    <li><strong>Regulatory reporting:</strong> Large transaction reporting, foreign exchange reporting, suspicious activity monitoring</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Regulatory Watch</div>
+                <ul class="list">
+                    <li>Indonesia: Bank account freezes for UBO non-disclosure (enforcement increasing)</li>
+                    <li>Singapore: MAS guidelines on multi-entity treasury (updated approval requirements)</li>
+                    <li>India: FEMA compliance for foreign inward remittance (updated reporting thresholds)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-green">Legal</div>
+            <div class="card-title">Legal Structures & Contracts</div>
+            <div class="card-desc">Drafting and negotiating commercial contracts, managing IP across jurisdictions, handling disputes, and structuring equity for multi-entity operations. Legal complexity scales non-linearly with entity count — proactive structuring prevents expensive unwinds later.</div>
+            <div class="content-box">
+                <div class="box-label">Playbook Topics</div>
+                <ul class="list">
+                    <li><strong>Contract templates:</strong> Master service agreement, SaaS terms, NDA, employment agreement — jurisdiction-specific clauses</li>
+                    <li><strong>IP ownership:</strong> Which entity holds IP, licensing arrangements, royalty structures, assignment vs license</li>
+                    <li><strong>Equity structuring:</strong> Holding company vs flat structure, ESOP across entities, vesting schedules, exit liquidity</li>
+                    <li><strong>Dispute resolution:</strong> Arbitration vs litigation, jurisdiction selection, enforceability of foreign judgments</li>
+                    <li><strong>Data localization:</strong> Server location requirements, data residency laws, cross-border transfer compliance</li>
+                    <li><strong>M&A readiness:</strong> Clean cap table, documented IP trail, contract assignment clauses, warranty preparedness</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Regulatory Watch</div>
+                <ul class="list">
+                    <li>India: Data localization requirements for payment processors (expanded scope)</li>
+                    <li>Singapore: PDPA enforcement actions (increased penalties for data breaches)</li>
+                    <li>Philippines: Foreign ownership restrictions (updated negative list)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-pink">Operations</div>
+            <div class="card-title">Day-to-Day Operations & Tools</div>
+            <div class="card-desc">Operational efficiency across multi-entity setup. Procurement, vendor management, expense policy, travel policy, insurance coverage, and tool stack decisions. Small operational choices compound across 5+ entities — standardization saves time and reduces risk.</div>
+            <div class="content-box">
+                <div class="box-label">Playbook Topics</div>
+                <ul class="list">
+                    <li><strong>Procurement:</strong> Vendor onboarding, PO approval workflows, multi-entity invoice handling, payment terms</li>
+                    <li><strong>Expense policy:</strong> Per diem rates, travel class rules, reimbursement timelines, receipt requirements</li>
+                    <li><strong>Insurance:</strong> D&O insurance, professional indemnity, cyber insurance, employee benefits insurance</li>
+                    <li><strong>Tool stack:</strong> Accounting software (Xero, QuickBooks multi-entity), HRIS, expense management, contract lifecycle</li>
+                    <li><strong>Vendor benchmarks:</strong> Corporate secretary pricing, audit firm recommendations, legal counsel hourly rates</li>
+                    <li><strong>Process automation:</strong> Contract renewal alerts, compliance deadline notifications, payment approval flows</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="highlight-section">
+            <div class="section-title">Content Structure Across Areas</div>
+            <div class="section-desc">Every operating area follows the same structure: (1) Operator playbooks — real tactics from teams running multi-entity operations, (2) Regulatory updates — new rules translated to action items with deadlines, (3) Decision trees — context-sensitive guidance for structure choices, (4) Vendor benchmarks — pricing and quality comparisons for service providers. This taxonomy ensures comprehensive coverage without gaps or redundancy.</div>
+        </div>
+    </div>
+</body>
+</html>
