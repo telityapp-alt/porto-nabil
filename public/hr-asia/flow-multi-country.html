@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Country Coverage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemCloud, 'Segoe UI', sans-serif; 
+            background: #fffdf8; 
+            padding: 32px; 
+            max-width: 100%; 
+            overflow-x: hidden; 
+        }
+        .flow-container { 
+            background: #fffdf8; 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 10px; 
+            padding: 40px; 
+            max-width: 100%; 
+            box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); 
+        }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        
+        .card { 
+            background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 8px; 
+            padding: 24px; 
+            margin-bottom: 16px; 
+            box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); 
+            position: relative; 
+        }
+        
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        }
+        
+        .badge-orange { background: #f6a61e; color: #11222b; }
+        .badge-blue { background: #377cf6; color: #fffdf8; }
+        .badge-teal { background: #37d7c8; color: #11222b; }
+        .badge-brown { background: #c48a28; color: #fffdf8; }
+        .badge-purple { background: #6B5290; color: #fffdf8; }
+        .badge-green { background: #2E4A3C; color: #fffdf8; }
+        
+        .card-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .card-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        
+        .content-box { 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            padding: 14px; 
+            margin-bottom: 10px; 
+        }
+        .content-box:last-child { margin-bottom: 0; }
+        
+        .box-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #55606d; margin-bottom: 8px; }
+        
+        .list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        
+        .highlight-section { 
+            padding: 20px; 
+            background: #e8f4f8; 
+            border: 1px solid #b8d9e8; 
+            border-left-width: 3px; 
+            border-left-color: #377cf6; 
+            border-radius: 6px; 
+            margin-top: 24px; 
+            box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); 
+        }
+        .section-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 12px; }
+        .section-desc { font-size: 13px; line-height: 1.6; color: #32425b; }
+        
+        .country-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .country-card { background: #fffdf8; border: 1px solid #e6e0d4; border-radius: 6px; padding: 12px; }
+        .country-name { font-size: 14px; font-weight: 800; color: #11222b; margin-bottom: 6px; }
+        .country-detail { font-size: 11px; line-height: 1.4; color: #55606d; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Multi-Country Coverage Strategy</div>
+            <div class="flow-subtitle">6 countries, 6 legal systems, 1 unified platform</div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-orange">Challenge</div>
+            <div class="card-title">Asia HR Fragmentation Problem</div>
+            <div class="card-desc">Asia bukan monolith. Every country punya labor law berbeda, compliance requirements berbeda, cultural context berbeda. HR professional yang manage teams across region harus juggle 6+ government websites, translate legal text, dan understand local nuance. No existing platform consolidate this intelligence.</div>
+            <div class="content-box">
+                <div class="box-label">Region-Specific Pain Points</div>
+                <ul class="list">
+                    <li><strong>Indonesia:</strong> Omnibus Law complexity, severance calculation rules, BPJS compliance</li>
+                    <li><strong>Singapore:</strong> Employment Act tiers, foreign worker levies, CPF contribution rates</li>
+                    <li><strong>Malaysia:</strong> EPF/SOCSO requirements, retrenchment benefit calculation, Employment Act 1955</li>
+                    <li><strong>Philippines:</strong> 13th month pay, DOLE compliance, security of tenure regulations</li>
+                    <li><strong>India:</strong> PF/ESI thresholds, state-level labor laws (29 states), gratuity rules</li>
+                    <li><strong>Japan:</strong> Labor Standards Act, shakai hoken (social insurance), annual leave carryover</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Solution</div>
+            <div class="card-title">Unified Regulation Vault</div>
+            <div class="card-desc">Kami build Regulation Vault yang consolidate labor law untuk 6 countries dalam single interface. Bukan cuma cite law text — kami provide practical context, calculation examples, compliance checklists, dan recent updates. Content structure consistent across countries untuk easy navigation.</div>
+            <div class="content-box">
+                <div class="box-label">Per-Country Content Structure</div>
+                <ul class="list">
+                    <li><strong>Overview:</strong> Key employment law snapshot (working hours, leave entitlements, termination rules)</li>
+                    <li><strong>Statutory Benefits:</strong> Mandatory contributions (pension, health, unemployment insurance) dengan calculation examples</li>
+                    <li><strong>Hiring & Termination:</strong> Employment contract requirements, probation periods, severance calculation</li>
+                    <li><strong>Leave Policies:</strong> Annual leave, sick leave, maternity/paternity, public holidays</li>
+                    <li><strong>Recent Updates:</strong> Law changes dalam last 12 months dengan effective dates</li>
+                    <li><strong>Compliance Checklist:</strong> Actionable checklist untuk HR audit</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-teal">Coverage Depth</div>
+            <div class="card-title">Country-by-Country Breakdown</div>
+            <div class="card-desc">Setiap country coverage bukan surface-level summaries. Kami go deep: cite specific law sections, provide calculation worksheets, link to official government portals, dan explain practical implication dengan real examples. Content written untuk solo HR atau founders yang tidak punya dedicated legal team.</div>
+            <div class="country-grid">
+                <div class="country-card">
+                    <div class="country-name">Indonesia</div>
+                    <div class="country-detail">Focus: Omnibus Law (UU Cipta Kerja), severance matrices, BPJS Ketenagakerjaan & Kesehatan compliance</div>
+                </div>
+                <div class="country-card">
+                    <div class="country-name">Singapore</div>
+                    <div class="country-detail">Focus: Employment Act tiers (Part IV coverage), MOM guidelines, CPF contribution tables by age</div>
+                </div>
+                <div class="country-card">
+                    <div class="country-name">Malaysia</div>
+                    <div class="country-detail">Focus: EPF/SOCSO rates, Employment Act 1955 amendments, retrenchment benefit calculation</div>
+                </div>
+                <div class="country-card">
+                    <div class="country-name">Philippines</div>
+                    <div class="country-detail">Focus: 13th month pay computation, DOLE Department Orders, security of tenure vs project-based</div>
+                </div>
+                <div class="country-card">
+                    <div class="country-name">India</div>
+                    <div class="country-detail">Focus: PF/ESI applicability thresholds, state labor law variations, gratuity calculation (5+ years)</div>
+                </div>
+                <div class="country-card">
+                    <div class="country-name">Japan</div>
+                    <div class="country-detail">Focus: Labor Standards Act, shakai hoken enrollment, annual leave accrual & carryover rules</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-brown">Content Localization</div>
+            <div class="card-title">Language & Context Strategy</div>
+            <div class="card-desc">Platform interface dalam English untuk cross-country accessibility, tapi content include local language terms (with English translation) where relevant. Example: "shakai hoken (social insurance)" untuk Japan, "BPJS Ketenagakerjaan (employment social security)" untuk Indonesia. Membantu user yang collaborate dengan local teams atau government agencies.</div>
+            <div class="content-box">
+                <div class="box-label">Practical Context Layer</div>
+                <ul class="list">
+                    <li><strong>Calculation examples:</strong> "For a Rp 10,000,000 monthly salary in Indonesia, severance after 3 years = ..."</li>
+                    <li><strong>Compliance timelines:</strong> "EPF contributions in Malaysia due by 15th of following month"</li>
+                    <li><strong>Penalty warnings:</strong> "Late CPF payment in Singapore: 17% per annum interest + possible prosecution"</li>
+                    <li><strong>Common mistakes:</strong> "Many companies misclassify Part IV vs non-Part IV employees in Singapore"</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-purple">Update Cadence</div>
+            <div class="card-title">Keeping Content Current</div>
+            <div class="card-desc">Labor law berubah frequently — new minimum wage, contribution rate adjustments, law amendments. Kami monitor official government portals dan legal updates untuk 6 countries. Changes flagged di newsletter (Asia HR Pulse) dengan effective date dan action required. Regulation Vault content updated within 7 days of official announcement.</div>
+            <div class="content-box">
+                <div class="box-label">Update Sources</div>
+                <ul class="list">
+                    <li><strong>Indonesia:</strong> Kemnaker (Ministry of Manpower) announcements, BPJS circulars</li>
+                    <li><strong>Singapore:</strong> MOM (Ministry of Manpower) press releases, IRAS updates</li>
+                    <li><strong>Malaysia:</strong> KWSP (EPF), PERKESO (SOCSO) notices, Labour Department</li>
+                    <li><strong>Philippines:</strong> DOLE Department Orders, SSS/PhilHealth/Pag-IBIG advisories</li>
+                    <li><strong>India:</strong> EPFO notifications, central & state labor department updates</li>
+                    <li><strong>Japan:</strong> MHLW (Ministry of Health, Labour and Welfare) publications</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-green">Expansion Roadmap</div>
+            <div class="card-title">Future Country Coverage</div>
+            <div class="card-desc">Current focus: solidify 6-country foundation dengan comprehensive content depth. Next expansion targets (based on user demand): Thailand, Vietnam, Australia. Prioritization criteria: (1) Aire customer concentration, (2) English proficiency (platform language), (3) digital HR maturity, (4) regulatory complexity (high complexity = high value content opportunity).</div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="highlight-section">
+            <div class="section-title">Why Multi-Country Matters</div>
+            <div class="section-desc">Regional companies (e.g., Singaporean startup expanding to Indonesia & Philippines, atau Japanese company dengan APAC operations) need HR intelligence across borders. Single-country HR platforms force them ke juggle multiple subscriptions. HR Asia positioning: the only platform yang provide unified, practitioner-focused labor law intelligence across Asia's major markets. Content breadth = competitive moat.</div>
+        </div>
+    </div>
+</body>
+</html>

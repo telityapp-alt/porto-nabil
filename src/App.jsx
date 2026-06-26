@@ -340,6 +340,120 @@ export const libraryCards = [
     gallery: ["/preppy/hero-web.png", "/preppy/screen-1.webp", "/preppy/screen-2.webp"],
   },
   {
+    name: "HR Asia",
+    role: "HR Intelligence Playground",
+    place: "Content Platform for Asia-Pacific HR",
+    team: "HR Tech Product",
+    status: "Live - Free Forever",
+    image: "/hr-asia/hero.png",
+    overview:
+      "HR Asia adalah content playground untuk HR professionals di Asia-Pacific. Kami consolidate labor law untuk 6 countries, 18 ready-to-use templates, weekly news briefs dengan practitioner context, dan 4 free tools yang deliver value dalam seconds. Built sebagai guerrilla marketing engine untuk Aire dengan 15% hard lead conversion rate.",
+    stats: [
+      { label: "Lead Conversion", value: "15%" },
+      { label: "Countries Covered", value: "6" },
+      { label: "Free Templates", value: "18" },
+    ],
+    highlights: [
+      "One-stop hub untuk HR intelligence across Asia",
+      "Static-first architecture dengan sub-2s page loads",
+      "15% hard lead conversion to Aire (3x industry average)",
+    ],
+    strategy: [
+      {
+        phase: "Content Playground Strategy",
+        desc: "Kami build multi-layer value stack: quick-win tools (30s-2min), practical resources (5-15min), deep references (30min+). User engage di level mana pun sesuai need, explore organically tanpa pressure. Playground psychology = low-friction, high-value browsing.",
+        image: "/hr-asia/flow-content-playground.html",
+      },
+      {
+        phase: "Lead Generation Funnel",
+        desc: "Free tools → newsletter subscription → Aire introduction. User experience value first (templates, regulation vault) sebelum melihat pitch. Newsletter subscribers adalah warm leads dengan 15% conversion ke qualified Aire leads. Focus: product display excellence, bukan lead volume.",
+        image: "/hr-asia/flow-lead-generation.html",
+      },
+      {
+        phase: "Multi-Country Coverage",
+        desc: "Regulation vault consolidate labor law untuk Indonesia, Singapore, Malaysia, Philippines, India, Japan. Per-country content structure consistent: overview, statutory benefits, hiring/termination rules, leave policies, recent updates, compliance checklists. Updated within 7 days of official announcements.",
+        image: "/hr-asia/flow-multi-country.html",
+      },
+      {
+        phase: "Platform Architecture",
+        desc: "Static-first publishing (Next.js SSG) dengan dynamic tools layered on top. Zero JS untuk core content pages, React islands untuk interactive tools. Cloudflare Workers edge functions untuk sub-50ms tool execution. Git-based CMS untuk markdown publishing workflow.",
+        image: "/hr-asia/flow-architecture.html",
+      },
+    ],
+    userJourney: [
+      {
+        step: "Discovery via Organic Search",
+        tag: "Day 1",
+        desc: "User cari 'labor law Indonesia' atau 'HR templates Malaysia' dan land di HR Asia. First impression: comprehensive, practitioner-focused content tanpa gatekeeping. No signup required untuk access tools atau download templates.",
+        callout:
+          "SEO-driven discovery — majority traffic dari long-tail labor law searches",
+      },
+      {
+        step: "Tool Engagement",
+        tag: "Day 1-3",
+        desc: "User explore free tools (Job Description Grader, Salary Competitiveness Check, Red Flag Detector, HR Maturity Score). Tools deliver value dalam 30-120 seconds, demonstrate platform quality tanpa friction.",
+        callout:
+          "4 free tools live — instant utility builds trust dan reciprocity",
+      },
+      {
+        step: "Newsletter Subscription",
+        tag: "Day 3-7",
+        desc: "After experiencing value, user subscribe ke Asia HR Pulse newsletter. Positioning: curated intelligence briefing (3 news + 1 resource + 1 regulation update weekly), bukan promo email. Subscribers = qualified leads actively interested in HR intelligence.",
+        callout:
+          "Newsletter subscribers convert to Aire leads at 15% rate",
+      },
+      {
+        step: "Aire Introduction",
+        tag: "Week 1-4",
+        desc: "Newsletter footer include contextual CTAs ke Aire: 'When you're ready to automate [manual HR task], Aire runs this workflow for you.' Warm introduction dari trusted content source, bukan cold pitch.",
+        callout:
+          "Hard leads with demonstrated intent — not just anonymous traffic",
+      },
+    ],
+    richContent: {
+      title: "Deep Dive: Guerrilla Marketing Engine",
+      blocks: [
+        {
+          type: "text",
+          content:
+            "HR Asia bukan cuma content blog. Ini adalah strategic lead generation engine designed untuk collect qualified leads untuk Aire. Traditional B2B SaaS lead gen: cold outreach, paid ads, gated whitepapers. Conversion rates typically 2-5%. HR Asia approach: provide genuine value first (regulation vault, templates, tools), build trust organically, convert warm leads at 15% rate — 3x industry average.",
+        },
+        {
+          type: "callout",
+          content:
+            "Core insight: Solo HR dan startup founders struggle dengan fragmented HR intelligence across Asia. No single platform consolidate labor law, templates, news, dan practical tools untuk region. We solve this pain point first, monetize downstream via Aire.",
+        },
+        {
+          type: "list",
+          items: [
+            "Content Breadth as Moat — 6 countries × multiple content types = unique positioning",
+            "Quality Signals — Cited research, practical examples, no sponsored content",
+            "No Dark Patterns — Zero gatekeeping, no fake trials, honest value delivery",
+            "Static-First Performance — Sub-2s page loads globally via edge CDN",
+            "Git-Based Publishing — Markdown workflow, PR review, auto-deploy on merge",
+            "Privacy-First Analytics — Self-hosted tracking, 90-day data retention",
+          ],
+        },
+        {
+          type: "kv",
+          rows: [
+            { label: "Tech Stack", value: "Next.js 14 + Tailwind + Cloudflare Workers" },
+            { label: "Content", value: "MDX (markdown) + Git-based CMS" },
+            {
+              label: "Deployment",
+              value: "Cloudflare Pages (edge delivery)",
+            },
+            {
+              label: "Status",
+              value: "Live at hrasia.org",
+            },
+          ],
+        },
+      ],
+    },
+    gallery: ["/hr-asia/hero.png"],
+  },
+  {
     name: "Aire",
     role: "AI-Native Talent Intelligence",
     place: "Assessment & HR Management Platform",

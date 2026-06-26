@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #fffdf8; 
+            padding: 32px; 
+            max-width: 100%; 
+            overflow-x: hidden; 
+        }
+        .flow-container { 
+            background: #fffdf8; 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 10px; 
+            padding: 40px; 
+            max-width: 100%; 
+            box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); 
+        }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        
+        .card { 
+            background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 8px; 
+            padding: 24px; 
+            margin-bottom: 16px; 
+            box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); 
+            position: relative; 
+        }
+        
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        }
+        
+        .badge-orange { background: #f6a61e; color: #11222b; }
+        .badge-blue { background: #377cf6; color: #fffdf8; }
+        .badge-teal { background: #37d7c8; color: #11222b; }
+        .badge-brown { background: #c48a28; color: #fffdf8; }
+        
+        .card-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .card-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        
+        .content-box { 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            padding: 14px; 
+            margin-bottom: 10px; 
+        }
+        .content-box:last-child { margin-bottom: 0; }
+        
+        .box-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #55606d; margin-bottom: 8px; }
+        
+        .list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        
+        .highlight-section { 
+            padding: 20px; 
+            background: #fef3e2; 
+            border: 1px solid #f6d9a8; 
+            border-left-width: 3px; 
+            border-left-color: #f6a61e; 
+            border-radius: 6px; 
+            margin-top: 24px; 
+            box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); 
+        }
+        .section-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 12px; }
+        .section-desc { font-size: 13px; line-height: 1.6; color: #32425b; }
+        
+        .tech-stack { 
+            display: grid; 
+            grid-template-columns: 100px 1fr; 
+            gap: 8px; 
+            align-items: start; 
+            padding: 8px; 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            margin-bottom: 6px;
+        }
+        .tech-stack:last-child { margin-bottom: 0; }
+        .tech-label { font-size: 11px; font-weight: 800; color: #55606d; }
+        .tech-value { font-size: 12px; line-height: 1.4; color: #32425b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Platform Architecture</div>
+            <div class="flow-subtitle">Static-first publishing dengan dynamic personalization layer</div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-orange">Design Philosophy</div>
+            <div class="card-title">Content-First, Performance-Obsessed</div>
+            <div class="card-desc">HR Asia adalah content platform, bukan app platform. Architecture priorities: fast page load (under 2s), zero JS untuk core content, SEO-optimized structure, dan easy content authoring workflow. Dynamic features (tools, personalization) layer on top tanpa slow down content delivery.</div>
+            <div class="content-box">
+                <div class="box-label">Core Principles</div>
+                <ul class="list">
+                    <li><strong>Static by default:</strong> News articles, regulation vault, templates = pre-rendered HTML (Next.js SSG atau Astro)</li>
+                    <li><strong>Progressive enhancement:</strong> Interactive tools (graders, calculators) load JS only when needed</li>
+                    <li><strong>Edge-first delivery:</strong> Static assets served dari CDN edge locations (sub-100ms TTFB di Asia)</li>
+                    <li><strong>Markdown-driven content:</strong> Writers author dalam markdown, Git-based version control, auto-deploy on merge</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Frontend Stack</div>
+            <div class="card-title">Static Site Generation + React Islands</div>
+            <div class="card-desc">Kami pake Next.js (App Router) dengan static export untuk content pages, dan React Server Components untuk interactive sections. Majority of pages ship zero client-side JS. Tools (Job Description Grader, Salary Check, etc.) hydrate as React islands — JS bundle lazy loaded only when user interact.</div>
+            <div class="content-box">
+                <div class="box-label">Technology Choices</div>
+                <div class="tech-stack">
+                    <div class="tech-label">Framework</div>
+                    <div class="tech-value">Next.js 14 (App Router) — Static export mode untuk content, RSC untuk tools</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Styling</div>
+                    <div class="tech-value">Tailwind CSS — Aire brand colors sebagai custom theme (Ink, Cream, Olive, Mustard, dll)</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Typography</div>
+                    <div class="tech-value">Lora (display headings) + Inter (body copy) — self-hosted via next/font untuk performance</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Content</div>
+                    <div class="tech-value">MDX untuk articles — frontmatter metadata, reusable components (callouts, code blocks, embedded tools)</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">State</div>
+                    <div class="tech-value">Zustand untuk client-side state (newsletter subscription, tool results caching)</div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-teal">Backend & Data</div>
+            <div class="card-title">Serverless + Edge Functions</div>
+            <div class="card-desc">Backend operations minimal: newsletter signups, tool execution (grading logic, salary benchmarking), analytics tracking. Semua run as serverless functions di edge untuk low-latency response. Database hanya untuk newsletter subscribers dan tool usage logs — majority of content fully static.</div>
+            <div class="content-box">
+                <div class="box-label">Backend Architecture</div>
+                <div class="tech-stack">
+                    <div class="tech-label">Functions</div>
+                    <div class="tech-value">Cloudflare Workers (atau Vercel Edge Functions) — sub-50ms execution di Asia POPs</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Database</div>
+                    <div class="tech-value">Cloudflare D1 (SQLite at edge) — newsletter subscribers, tool usage analytics</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">CMS</div>
+                    <div class="tech-value">Git-based (GitHub repo) — content authors commit markdown, CI/CD auto-deploy to production</div>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-label">Email</div>
+                    <div class="tech-value">Resend API (atau Cloudflare Email Workers) — newsletter delivery, transactional emails</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-brown">Content Pipeline</div>
+            <div class="card-title">Markdown → HTML Publishing Flow</div>
+            <div class="card-desc">Content workflow optimized untuk speed dan consistency. Writers draft di markdown (VS Code atau any editor), commit ke Git branch, open PR untuk review. On merge to main: CI/CD trigger static build, generate HTML pages, deploy ke CDN. Zero manual deployment steps. Content goes live dalam under 5 minutes dari merge.</div>
+            <div class="content-box">
+                <div class="box-label">Publishing Steps</div>
+                <ul class="list">
+                    <li><strong>Step 1 — Author:</strong> Write article/regulation page dalam markdown dengan frontmatter (title, date, country, tags)</li>
+                    <li><strong>Step 2 — Review:</strong> Open GitHub PR, automated checks run (spelling, broken links, metadata validation)</li>
+                    <li><strong>Step 3 — Build:</strong> On merge, Next.js static export generate HTML + CSS + minimal JS bundles</li>
+                    <li><strong>Step 4 — Deploy:</strong> Cloudflare Pages (atau Vercel) deploy ke edge, invalidate CDN cache, content live globally</li>
+                    <li><strong>Step 5 — Notify:</strong> Slack notification ke team + analytics ping (new content published)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-orange">SEO & Discoverability</div>
+            <div class="card-title">Structured Data + Fast Core Web Vitals</div>
+            <div class="card-desc">SEO critical untuk discovery: majority of traffic datang dari organic search ("labor law Indonesia", "HR templates Malaysia", etc.). Kami optimize untuk Core Web Vitals (LCP under 2s, CLS near 0, FID under 100ms), semantic HTML, structured data markup (Article, FAQPage schema), dan internal linking strategy.</div>
+            <div class="content-box">
+                <div class="box-label">SEO Implementation</div>
+                <ul class="list">
+                    <li><strong>Metadata:</strong> Dynamic Open Graph tags, Twitter Cards, canonical URLs per page</li>
+                    <li><strong>Schema.org:</strong> Article markup untuk news, FAQPage untuk regulation vault, HowTo untuk templates</li>
+                    <li><strong>Sitemap:</strong> Auto-generated XML sitemap dengan lastmod timestamps, priority hints</li>
+                    <li><strong>Robots.txt:</strong> Allow all crawlers, explicit sitemap reference</li>
+                    <li><strong>Performance:</strong> Image optimization (next/image), font subsetting, critical CSS inline</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Analytics & Tracking</div>
+            <div class="card-title">Privacy-First Metrics</div>
+            <div class="card-desc">Kami track user behavior untuk understand content resonance dan optimize funnel, tapi respect privacy. No third-party trackers (Google Analytics replaced dengan self-hosted Plausible atau Cloudflare Web Analytics). Event tracking: page views, tool usage, newsletter signups, Aire CTR. Data stored 90 days max.</div>
+            <div class="content-box">
+                <div class="box-label">Key Metrics Tracked</div>
+                <ul class="list">
+                    <li><strong>Content:</strong> Page views per article/regulation page, time on page, scroll depth</li>
+                    <li><strong>Tools:</strong> Tool execution count, completion rate, result satisfaction (thumbs up/down)</li>
+                    <li><strong>Funnel:</strong> Newsletter signup conversion per entry point, Aire CTR dari newsletter footer</li>
+                    <li><strong>Performance:</strong> Core Web Vitals real user monitoring (RUM), TTFB per region</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="highlight-section">
+            <div class="section-title">Architecture Trade-offs</div>
+            <div class="section-desc"><strong>Why static-first:</strong> Content changes infrequently (weekly newsletter, occasional regulation updates). Pre-rendering everything = instant page loads, zero database queries on page view, bulletproof uptime. Trade-off: real-time personalization limited (can't show "you read 3 articles this week" without client-side JS). We accept this — content delivery speed > personalization features untuk discovery phase. <strong>Why edge functions:</strong> Tools need server-side logic (grading algorithms, salary data lookups). Edge execution = consistent sub-100ms response globally, no cold starts. Trade-off: limited compute time (Cloudflare Workers max 50ms CPU). We design tools untuk finish within budget — heavy ML inference offloaded ke Aire backend if needed.</div>
+        </div>
+    </div>
+</body>
+</html>

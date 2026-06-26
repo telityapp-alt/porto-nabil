@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Generation Funnel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #fffdf8; 
+            padding: 32px; 
+            max-width: 100%; 
+            overflow-x: hidden; 
+        }
+        .flow-container { 
+            background: #fffdf8; 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 10px; 
+            padding: 40px; 
+            max-width: 100%; 
+            box-shadow: inset 0 -3px 0 rgba(21, 19, 16, 0.09), 0 1px 3px rgba(21, 19, 16, 0.07), 0 4px 12px rgba(21, 19, 16, 0.05); 
+        }
+        .flow-header { text-align: center; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e6e0d4; }
+        .flow-title { font-size: 24px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .flow-subtitle { font-size: 14px; color: #55606d; font-weight: 600; }
+        
+        .card { 
+            background: linear-gradient(180deg, #f6f4ee 0%, #f0ede6 100%); 
+            border: 1px solid #d9d1c2; 
+            border-bottom-width: 2px; 
+            border-radius: 8px; 
+            padding: 24px; 
+            margin-bottom: 16px; 
+            box-shadow: inset 0 -2px 0 rgba(21, 19, 16, 0.06), 0 1px 2px rgba(21, 19, 16, 0.04); 
+            position: relative; 
+        }
+        
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            left: 20px; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        }
+        
+        .badge-orange { background: #f6a61e; color: #11222b; }
+        .badge-blue { background: #377cf6; color: #fffdf8; }
+        .badge-teal { background: #37d7c8; color: #11222b; }
+        .badge-brown { background: #c48a28; color: #fffdf8; }
+        
+        .card-title { font-size: 18px; font-weight: 800; color: #11222b; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .card-desc { font-size: 13px; line-height: 1.6; color: #32425b; margin-bottom: 16px; }
+        
+        .content-box { 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            padding: 14px; 
+            margin-bottom: 10px; 
+        }
+        .content-box:last-child { margin-bottom: 0; }
+        
+        .box-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #55606d; margin-bottom: 8px; }
+        
+        .list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .list li { font-size: 12px; line-height: 1.4; color: #32425b; padding-left: 16px; position: relative; }
+        .list li::before { content: '•'; position: absolute; left: 0; color: #377cf6; font-weight: 800; }
+        
+        .section-divider { border: none; border-top: 2px solid #e6e0d4; margin: 32px 0; }
+        
+        .highlight-section { 
+            padding: 20px; 
+            background: #fef3e2; 
+            border: 1px solid #f6d9a8; 
+            border-left-width: 3px; 
+            border-left-color: #f6a61e; 
+            border-radius: 6px; 
+            margin-top: 24px; 
+            box-shadow: 0 1px 2px rgba(21, 19, 16, 0.04); 
+        }
+        .section-title { font-size: 16px; font-weight: 800; color: #11222b; margin-bottom: 12px; }
+        .section-desc { font-size: 13px; line-height: 1.6; color: #32425b; }
+        
+        .funnel-stage { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            padding: 12px; 
+            background: #fffdf8; 
+            border: 1px solid #e6e0d4; 
+            border-radius: 6px; 
+            margin-bottom: 8px;
+        }
+        .funnel-stage:last-child { margin-bottom: 0; }
+        .stage-number { 
+            font-size: 16px; 
+            font-weight: 800; 
+            color: #377cf6; 
+            min-width: 24px;
+        }
+        .stage-text { font-size: 12px; line-height: 1.4; color: #32425b; }
+        .stage-text strong { font-weight: 800; color: #11222b; }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <div class="flow-header">
+            <div class="flow-title">Lead Generation Funnel</div>
+            <div class="flow-subtitle">Free value → newsletter → qualified leads untuk Aire</div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-orange">Stage 1</div>
+            <div class="card-title">Awareness: Free Tools & Content</div>
+            <div class="card-desc">User discover HR Asia melalui organic search ("labor law Indonesia", "HR templates", "job description best practices") atau social media shares. First impression: high-value content, zero gatekeeping. No signup required untuk access tools dan templates.</div>
+            <div class="content-box">
+                <div class="box-label">Entry Points</div>
+                <ul class="list">
+                    <li>Job Description Grader — SEO play untuk "how to write job description"</li>
+                    <li>Salary Competitiveness Check — search intent: "salary benchmark Asia"</li>
+                    <li>Regulation Vault — "labor law [country]" long-tail keywords</li>
+                    <li>Resource Library — "free HR templates" broad search</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Value Delivery Mechanism</div>
+                <div class="funnel-stage">
+                    <div class="stage-number">1</div>
+                    <div class="stage-text"><strong>Immediate utility:</strong> Tools return results dalam 30-120 seconds tanpa friction</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">2</div>
+                    <div class="stage-text"><strong>No dark patterns:</strong> Download templates langsung, tidak ada fake "processing" screens atau forced signups</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">3</div>
+                    <div class="stage-text"><strong>Context + action:</strong> Regulation vault tidak cuma cite law — kasih practical implication untuk day-to-day HR work</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-blue">Stage 2</div>
+            <div class="card-title">Consideration: Newsletter Subscription</div>
+            <div class="card-desc">Setelah user experience value, soft CTA untuk newsletter: "Get this weekly. One email, zero spam." Positioning bukan sebagai promo email, tapi sebagai curated intelligence briefing. User yang subscribe adalah qualified leads — mereka actively looking untuk stay updated on HR topics.</div>
+            <div class="content-box">
+                <div class="box-label">Conversion Points</div>
+                <ul class="list">
+                    <li>Bottom of every tool result page: "Want this insight weekly? Subscribe to Asia HR Pulse"</li>
+                    <li>After template download: "We publish 2-3 new templates monthly. Get notified."</li>
+                    <li>Footer CTA pada case studies dan long-form content</li>
+                    <li>Exit-intent popup (triggered once per 30 days max — no spam)</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Newsletter Promise</div>
+                <div class="funnel-stage">
+                    <div class="stage-number">Mon</div>
+                    <div class="stage-text"><strong>Weekly cadence:</strong> Every Monday. Predictable, not intrusive.</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">3+1+1</div>
+                    <div class="stage-text"><strong>Fixed structure:</strong> 3 news briefs, 1 resource, 1 regulation update. No filler.</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">0</div>
+                    <div class="stage-text"><strong>Zero sponsors:</strong> No affiliate links, no paid placements. Pure editorial.</div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="card">
+            <div class="badge badge-teal">Stage 3</div>
+            <div class="card-title">Conversion: Aire Introduction</div>
+            <div class="card-desc">Newsletter subscribers adalah warm leads. Mereka sudah familiar dengan brand voice dan trust content quality. Aire pitch embedded di newsletter footer: "When you're ready to stop doing [manual HR task], Aire runs this workflow automatically." Positioning sebagai natural next step, bukan cold pitch.</div>
+            <div class="content-box">
+                <div class="box-label">Contextual CTAs</div>
+                <ul class="list">
+                    <li><strong>News tentang hiring challenges:</strong> CTA ke Aire's assessment templates</li>
+                    <li><strong>Template spotlight (interview scorecards):</strong> "Or let Aire score candidates automatically"</li>
+                    <li><strong>Regulation update (compliance burden):</strong> Link ke Aire's compliance-ready workflows</li>
+                    <li><strong>Case study (talent mistakes):</strong> How Aire prevents common hiring errors via structured data</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="box-label">Landing Experience</div>
+                <div class="funnel-stage">
+                    <div class="stage-number">1</div>
+                    <div class="stage-text"><strong>Pre-qualified context:</strong> User sudah tau problem space dari HR Asia content</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">2</div>
+                    <div class="stage-text"><strong>Friction-free signup:</strong> No credit card, free forever core features — continuation of HR Asia's no-gatekeeping philosophy</div>
+                </div>
+                <div class="funnel-stage">
+                    <div class="stage-number">3</div>
+                    <div class="stage-text"><strong>Immediate activation:</strong> User bisa send first assessment dalam 60 seconds after signup (template library, inject & send)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="badge badge-brown">Stage 4</div>
+            <div class="card-title">Retention: Cross-Platform Ecosystem</div>
+            <div class="card-desc">User yang sudah pakai Aire tetap engaged dengan HR Asia content. Newsletter continue deliver value (news, templates, insights), reinforcing positioning bahwa Aire bukan cuma tool — ini adalah ecosystem untuk HR intelligence di Asia. Content fuels product awareness, product validates content quality.</div>
+            <div class="content-box">
+                <div class="box-label">Feedback Loop</div>
+                <ul class="list">
+                    <li>Aire users contribute case studies untuk HR Asia ("How we reduced time-to-hire by 40%")</li>
+                    <li>HR Asia templates become starting points untuk Aire assessment customization</li>
+                    <li>Newsletter announces new Aire features dengan practical use cases</li>
+                    <li>Community discussions (HR Asia) drive product roadmap decisions (Aire)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="highlight-section">
+            <div class="section-title">15% Hard Lead Conversion</div>
+            <div class="section-desc">Current conversion rate dari HR Asia visitors ke qualified Aire leads adalah 15% — significantly higher than industry standard (typically 2-5% for B2B SaaS). "Hard leads" means stored contact info dengan demonstrated intent (newsletter subscription, tool usage, template downloads). Bukan cuma anonymous traffic. Focus saat ini: product display dan UI excellence, bukan volume metrics. Funnel masih early stage, tapi conversion quality already proven.</div>
+        </div>
+    </div>
+</body>
+</html>
