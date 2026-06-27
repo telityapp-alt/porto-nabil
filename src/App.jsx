@@ -24,6 +24,7 @@ import FranchisePage from "./FranchisePage";
 import FranchiseMethodPage from "./FranchiseMethodPage";
 import PreppyPage from "./PreppyPage";
 import SafuBotProposalPage from "./SafuBotProposalPage";
+import ContactPopover from "./ContactPopover";
 
 const tabs = [
   {
@@ -929,6 +930,7 @@ function toSlug(name) {
 // Home page — renders hero + product panel + library
 function HomePage() {
   const [activeTab, setActiveTab] = useState("usage");
+  const [contactOpen, setContactOpen] = useState(false);
   const navigate = useNavigate();
   const currentTab = tabs.find((tab) => tab.id === activeTab) ?? tabs[0];
 
@@ -960,26 +962,26 @@ function HomePage() {
           </ul>
 
           <div className="hero-actions">
-            <button type="button" className="cta-button">
-              Get started - free
+            <button type="button" className="cta-button" onClick={() => navigate("/apps")}>
+              Our Apps
             </button>
-            <button type="button" className="ghost-button">
-              Book a live walkthrough
+            <button type="button" className="ghost-button" onClick={() => setContactOpen(true)}>
+              Contact Me
             </button>
           </div>
 
           <div className="hero-links">
-            <a href="/" onClick={(event) => event.preventDefault()}>
+            <a href="/" onClick={(e) => { e.preventDefault(); setContactOpen(true); }}>
               <LinkIcon />
               MCP
             </a>
             <span className="hero-dot" />
-            <a href="/" onClick={(event) => event.preventDefault()}>
+            <a href="/" onClick={(e) => { e.preventDefault(); setContactOpen(true); }}>
               <PlayIcon />
               Watch a demo
             </a>
             <span className="hero-dot" />
-            <a href="/" onClick={(event) => event.preventDefault()}>
+            <a href="/" onClick={(e) => { e.preventDefault(); setContactOpen(true); }}>
               <HeadsetIcon />
               Talk to a human
             </a>
@@ -1189,6 +1191,9 @@ function HomePage() {
 
       {/* Popover rendered on /portfolio/:slug route, overlaid on home */}
       <Outlet />
+      
+      {/* Contact Popover */}
+      <ContactPopover isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </>
   );
 }
