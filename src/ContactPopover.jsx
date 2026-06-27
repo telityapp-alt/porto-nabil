@@ -34,7 +34,6 @@ function ContactPopover({ isOpen, onClose }) {
 
           <div className="contact-buttons">
             <button className="contact-btn whatsapp" onClick={handleWhatsApp}>
-              <span className="contact-icon">📱</span>
               <div className="contact-btn-content">
                 <strong>WhatsApp</strong>
                 <span>Fast response, casual chat</span>
@@ -42,7 +41,6 @@ function ContactPopover({ isOpen, onClose }) {
             </button>
 
             <button className="contact-btn email" onClick={handleEmail}>
-              <span className="contact-icon">📧</span>
               <div className="contact-btn-content">
                 <strong>Email</strong>
                 <span>nabilazra1234@gmail.com</span>
@@ -50,7 +48,6 @@ function ContactPopover({ isOpen, onClose }) {
             </button>
 
             <button className="contact-btn instagram" onClick={handleInstagram}>
-              <span className="contact-icon">📸</span>
               <div className="contact-btn-content">
                 <strong>Instagram</strong>
                 <span>@nabilv1.0.0</span>
