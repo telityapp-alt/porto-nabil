@@ -22,14 +22,16 @@ export default function PricingPage() {
     {
       title: "Landing Page Only",
       desc: "Cocok untuk validasi ide bisnis atau campaign singkat.",
-      price: "Rp 7.000.000",
+      price: "Rp 7.500.000",
+      oldPrice: "Rp 14.000.000",
       features: ["1 Page High-converting", "Copywriting basic", "Responsive Design", "Setup Domain & Hosting"],
       cta: "Pilih Paket Ini"
     },
     {
       title: "Multi-feature + Dashboard",
       desc: "Web lengkap dengan dashboard admin untuk kelola data.",
-      price: "Rp 10.000.000",
+      price: "Rp 10.500.000",
+      oldPrice: "Rp 17.000.000",
       features: ["Multi-pages Website", "Custom Admin Dashboard", "CMS Integration", "SEO Basic Setup", "Analytics Integration"],
       cta: "Pilih Paket Ini",
       popular: true
@@ -37,7 +39,8 @@ export default function PricingPage() {
     {
       title: "Supermassive Platform",
       desc: "Production grade website dengan kapabilitas enterprise.",
-      price: "Rp 13.000.000",
+      price: "Rp 13.500.000",
+      oldPrice: "Rp 20.000.000",
       features: ["Custom Web Application", "Advanced UI/UX Animation", "Performance Optimization", "Scalable Architecture", "Advanced Security"],
       cta: "Pilih Paket Ini"
     }
@@ -47,7 +50,8 @@ export default function PricingPage() {
     {
       title: "Multi Features App",
       desc: "Aplikasi mobile/web dengan fitur lengkap dari awal.",
-      price: "Start dari Rp 10.500.000",
+      price: "Start dari Rp 11.000.000",
+      oldPrice: "Start dari Rp 17.500.000",
       features: ["Cross-platform App", "Custom Backend", "Authentication", "Push Notifications", "Publish to Stores"],
       cta: "Mulai Konsultasi",
       popular: true
@@ -204,6 +208,9 @@ export default function PricingPage() {
               <h3 className="pricing-title">{card.title}</h3>
               <p className="pricing-desc">{card.desc}</p>
               <div className="pricing-price-wrap">
+                {card.oldPrice && (
+                  <span className="pricing-old-price">{card.oldPrice}</span>
+                )}
                 <span className="pricing-price">{card.price}</span>
               </div>
               

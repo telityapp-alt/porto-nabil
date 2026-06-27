@@ -4752,6 +4752,17 @@
     margin-bottom: 16px;
     padding-bottom: 16px;
     border-bottom: 2px solid #e1e4e8;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pricing-old-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-decoration: line-through;
+    letter-spacing: -0.02em;
 }
 
 .pricing-price {
@@ -4771,10 +4782,10 @@
 .pricing-features li {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     font-size: 15px;
     color: #32425b;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .pricing-footer {
