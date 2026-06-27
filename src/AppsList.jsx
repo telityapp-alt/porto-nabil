@@ -23,51 +23,6 @@ function CaretUpIcon() {
   );
 }
 
-const categories = [
-  "All",
-  "Live",
-  "On Development",
-  "Analytics",
-  "Developer Tools",
-  "Productivity",
-  "Marketing",
-  "Design",
-  "Sales",
-  "Customer Support",
-  "Finance",
-  "HR",
-  "Legal",
-  "Engineering",
-  "Operations",
-  "Security",
-  "Data Science",
-  "Machine Learning",
-  "AI",
-  "Web3",
-  "Crypto",
-  "E-commerce",
-  "Education",
-  "Healthcare",
-  "Real Estate",
-  "Travel",
-  "Food & Beverage",
-  "Entertainment",
-  "Gaming",
-  "Social",
-  "Music",
-  "Video",
-  "Photography",
-  "Fitness",
-  "Lifestyle",
-  "News",
-  "Weather",
-  "Utilities",
-  "Reference",
-  "Books",
-  "Business",
-  "Navigation",
-];
-
 export default function AppsList() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("All");
@@ -82,6 +37,61 @@ export default function AppsList() {
       upvotes: 150 + i * 23, // static mock upvotes
       status: card.status || "On Development", // default status
     }));
+  }, []);
+
+  // Extract unique categories dynamically from libraryCards
+  const dynamicCategories = React.useMemo(() => {
+    const allCategories = new Set(["All", "Live", "On Development"]);
+    libraryCards.forEach(card => {
+      if (card.team) allCategories.add(card.team);
+      if (card.status) allCategories.add(card.status);
+    });
+    return Array.from(allCategories);
+  }, []);
+
+  // Extract tech stacks dynamically from richContent
+  const techStacks = React.useMemo(() => {
+    const stacks = new Set();
+    libraryCards.forEach(card => {
+      const kvBlock = card.richContent?.blocks?.find(b => b.type === "kv");
+      if (kvBlock) {
+        kvBlock.rows.forEach(row => {
+          if (row.label === "Tech Stack" && row.value) {
+            // Extract individual techs from string like "React + Vite + Capacitor"
+            row.value.split(/[+&,]/).forEach(tech => {
+              const trimmed = tech.trim();
+              if (trimmed) stacks.add(trimmed);
+            });
+          }
+        });
+      }
+    });
+    return Array.from(stacks).slice(0, 5); // Top 5
+  }, []);
+
+  // Extract client industries from card data
+  const clientIndustries = React.useMemo(() => {
+    const industries = new Set();
+    libraryCards.forEach(card => {
+      // Extract from team or place field
+      if (card.team && card.team.includes("Tech")) {
+        const match = card.team.match(/(\w+)\s+Tech/);
+        if (match) industries.add(match[1]);
+      }
+      if (card.place) {
+        // Extract industry keywords
+        if (card.place.includes("EdTech") || card.place.includes("Learning")) industries.add("Education");
+        if (card.place.includes("HR") || card.place.includes("Talent")) industries.add("HR Tech");
+        if (card.place.includes("Healthcare") || card.place.includes("Medical")) industries.add("Healthcare");
+        if (card.place.includes("SaaS") || card.place.includes("B2B")) industries.add("SaaS");
+      }
+    });
+    return Array.from(industries).slice(0, 4);
+  }, []);
+
+  // Get featured project (first Live project, fallback to Preppy)
+  const featuredProject = React.useMemo(() => {
+    return libraryCards.find(card => card.status?.includes("Live")) || libraryCards[0];
   }, []);
 
   const filteredApps = appsData.filter((app) => {
@@ -99,7 +109,7 @@ export default function AppsList() {
       <aside className="apps-left-sidebar">
         <h3 className="left-sidebar-title">Categories</h3>
         <div className="tags-list">
-          {categories.map((cat) => (
+          {dynamicCategories.map((cat) => (
             <button
               key={cat}
               className={`mini-tag-btn ${activeCategory === cat ? "active" : ""}`}
@@ -117,7 +127,7 @@ export default function AppsList() {
           role="navigation"
           aria-label="Filter by category"
         >
-          {categories.map((cat) => (
+          {dynamicCategories.map((cat) => (
             <button
               key={cat}
               className={`mini-tag-btn${activeCategory === cat ? " active" : ""}`}
@@ -214,18 +224,18 @@ export default function AppsList() {
             <div className="library-card-hero">
               <div className="library-card-screenshot-wrap">
                 <img
-                  src="/lib-audience-lab.png"
-                  alt="Project showcase"
+                  src={featuredProject.image}
+                  alt={`${featuredProject.name} showcase`}
                   className="library-card-screenshot"
                 />
               </div>
             </div>
             <div className="library-card-ribbon">
-              <strong>Latest Build</strong>
-              <span>Production ready</span>
+              <strong>{featuredProject.name}</strong>
+              <span>{featuredProject.status}</span>
             </div>
             <div className="library-card-meta">
-              <p>Research-driven design & conversion focus</p>
+              <p>{featuredProject.role}</p>
             </div>
           </article>
         </div>
@@ -233,13 +243,7 @@ export default function AppsList() {
         <div className="sidebar-widget">
           <span className="sidebar-eyebrow">Tech Stack</span>
           <div className="panel-chips">
-            {[
-              "React & Next.js",
-              "Node.js API",
-              "PostgreSQL",
-              "Cloudflare",
-              "Odoo ERP",
-            ].map((chip) => (
+            {techStacks.map((chip) => (
               <span key={chip} className="panel-chip">
                 {chip}
               </span>
@@ -250,8 +254,8 @@ export default function AppsList() {
         <div className="sidebar-widget">
           <span className="sidebar-eyebrow">Client Industries</span>
           <div className="trust-logos">
-            {["Healthcare", "Education", "E-commerce", "SaaS"].map((logo) => (
-              <span key={logo}>{logo}</span>
+            {clientIndustries.map((industry) => (
+              <span key={industry}>{industry}</span>
             ))}
           </div>
         </div>
