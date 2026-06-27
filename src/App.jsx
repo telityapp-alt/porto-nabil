@@ -23,6 +23,7 @@ import HppCalculatorPage from "./HppCalculatorPage";
 import FranchisePage from "./FranchisePage";
 import FranchiseMethodPage from "./FranchiseMethodPage";
 import PreppyPage from "./PreppyPage";
+import SafuBotProposalPage from "./SafuBotProposalPage";
 
 const tabs = [
   {
@@ -1482,6 +1483,12 @@ function App() {
                 <PreppyPage />
               </main>
             }
+          />
+
+          {/* SafuBot Proposal */}
+          <Route
+            path="/for-safubot"
+            element={<SafuBotProposalPage />}
           />
         </Routes>
         
