@@ -2328,7 +2328,7 @@
     background: rgba(21, 19, 16, 0.45);
     z-index: 9999;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     padding: 0;
 }
@@ -2347,13 +2347,13 @@
 .retro-window {
     width: 100%;
     max-width: 1100px;
-    height: auto;
-    max-height: 90vh;
+    height: calc(100vh - 56px);
     background: #fffdf8;
-    border-radius: 12px;
+    border-radius: 12px 12px 0 0;
     border: 1px solid #b5ad9b;
+    border-bottom: none;
     box-shadow:
-        0 16px 64px rgba(0, 0, 0, 0.22),
+        0 -16px 64px rgba(0, 0, 0, 0.22),
         0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     display: flex;
     flex-direction: column;
