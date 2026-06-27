@@ -21,7 +21,7 @@ function ContactPopover({ isOpen, onClose }) {
       <div className="contact-overlay" onClick={onClose} />
       <div className="contact-popover">
         <div className="contact-header">
-          <h3>Let's Connect</h3>
+          <h3>Mari Terhubung</h3>
           <button className="contact-close" onClick={onClose} aria-label="Close">
             ✕
           </button>
@@ -29,14 +29,14 @@ function ContactPopover({ isOpen, onClose }) {
 
         <div className="contact-body">
           <p className="contact-intro">
-            Reach out through your preferred channel. I'll get back to you ASAP.
+            Hubungi lewat channel yang paling nyaman buat Anda. Insyaallah bakal direspon secepat mungkin.
           </p>
 
           <div className="contact-buttons">
             <button className="contact-btn whatsapp" onClick={handleWhatsApp}>
               <div className="contact-btn-content">
                 <strong>WhatsApp</strong>
-                <span>Fast response, casual chat</span>
+                <span>Fast response, obrolan santai</span>
               </div>
             </button>
 
@@ -56,7 +56,7 @@ function ContactPopover({ isOpen, onClose }) {
           </div>
 
           <div className="contact-footer">
-            <p>Open to projects, consulting, or just a friendly chat about growth & web apps.</p>
+            <p>Terbuka untuk project, konsultasi, atau ngobrol santai soal growth & web development.</p>
           </div>
         </div>
       </div>
