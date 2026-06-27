@@ -128,8 +128,8 @@ export default function AppsList() {
           ))}
         </div>
         <div className="apps-list-header">
-          <span className="library-kicker">Today's feed</span>
-          <h2>Top product launches</h2>
+          <span className="library-kicker">Our Portfolio</span>
+          <h2>Produk yang sudah & sedang kami kerjakan</h2>
         </div>
 
         <div className="apps-toolbar">
@@ -137,7 +137,7 @@ export default function AppsList() {
             <SearchIcon />
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Cari produk kami..."
               className="search-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -209,36 +209,36 @@ export default function AppsList() {
 
       <aside className="apps-sidebar">
         <div className="sidebar-widget">
-          <span className="sidebar-eyebrow">Featured Launch</span>
+          <span className="sidebar-eyebrow">Featured Project</span>
           <article className="library-card featured-card">
             <div className="library-card-hero">
               <div className="library-card-screenshot-wrap">
                 <img
                   src="/lib-audience-lab.png"
-                  alt="Audience lab interface"
+                  alt="Project showcase"
                   className="library-card-screenshot"
                 />
               </div>
             </div>
             <div className="library-card-ribbon">
-              <strong>Audience lab</strong>
-              <span>Experiment workspace</span>
+              <strong>Latest Build</strong>
+              <span>Production ready</span>
             </div>
             <div className="library-card-meta">
-              <p>Hypotheses, test cells, and lift</p>
+              <p>Research-driven design & conversion focus</p>
             </div>
           </article>
         </div>
 
         <div className="sidebar-widget">
-          <span className="sidebar-eyebrow">Trending Topics</span>
+          <span className="sidebar-eyebrow">Tech Stack</span>
           <div className="panel-chips">
             {[
-              "Developer Tools",
-              "Productivity",
-              "Data & Analytics",
-              "Design Tools",
-              "Marketing",
+              "React & Next.js",
+              "Node.js API",
+              "PostgreSQL",
+              "Cloudflare",
+              "Odoo ERP",
             ].map((chip) => (
               <span key={chip} className="panel-chip">
                 {chip}
@@ -248,9 +248,9 @@ export default function AppsList() {
         </div>
 
         <div className="sidebar-widget">
-          <span className="sidebar-eyebrow">Top Teams Today</span>
+          <span className="sidebar-eyebrow">Client Industries</span>
           <div className="trust-logos">
-            {["Vercel", "Linear", "Ramp", "Retool"].map((logo) => (
+            {["Healthcare", "Education", "E-commerce", "SaaS"].map((logo) => (
               <span key={logo}>{logo}</span>
             ))}
           </div>
