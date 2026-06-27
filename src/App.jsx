@@ -787,16 +787,22 @@ function CheckIcon() {
 
 function HeaderLogo() {
   return (
-    <div style={{ fontSize: "24px", fontWeight: 900, color: "#11222b", letterSpacing: "-0.05em" }}>
-      growww
+    <div style={{ 
+      fontSize: "24px", 
+      fontWeight: 900, 
+      color: "#11222b", 
+      letterSpacing: "-0.05em",
+      fontFamily: "monospace"
+    }}>
+      BWA
     </div>
   );
 }
 
 function Wordmark() {
   return (
-    <div className="wordmark" aria-label="growww wordmark">
-      <span className="wordmark-text" style={{ fontSize: "28px", fontWeight: 900, letterSpacing: "-0.05em", color: "#11222b", fontFamily: "inherit" }}>growww</span>
+    <div className="wordmark" aria-label="Build With Azra wordmark">
+      <span className="wordmark-text" style={{ fontSize: "28px", fontWeight: 900, letterSpacing: "-0.05em", color: "#11222b", fontFamily: "inherit" }}>Build With Azra</span>
     </div>
   );
 }
